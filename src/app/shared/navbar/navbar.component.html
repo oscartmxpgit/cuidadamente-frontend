@@ -1,0 +1,18 @@
+<nav>
+  <a routerLink="/">Inicio</a>
+  <a routerLink="/about">Quiénes Somos</a>
+  <a routerLink="/services">Servicios</a>
+  <a routerLink="/faq">FAQ</a>
+  <a routerLink="/contact">Contacto</a>
+
+  <ng-container *ngIf="authService.isAuthenticated(); else guest">
+    <a routerLink="/appointments">Mis Citas</a>
+    <a routerLink="/doctor-dashboard" *ngIf="authService.isDoctor()">Panel Doctor</a>
+    <a routerLink="/admin-dashboard" *ngIf="authService.isAdmin()">Administración</a>
+    <button (click)="logout()">Cerrar Sesión</button>
+  </ng-container>
+
+  <ng-template #guest>
+    <a routerLink="/login">Iniciar Sesión</a>
+  </ng-template>
+</nav>

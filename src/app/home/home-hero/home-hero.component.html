@@ -1,0 +1,48 @@
+<div class="hero" ngClass.xs="xs" ngClass.sm="sm">
+    <div class="tb-container tb-position--relative container">
+        <div class="content-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between start">
+            <!-- Text Content -->
+            <div fxFlex="70" fxFlex.xs="100" fxLayout="column" class="text-section">
+                <div ngClass.gt-sm="tb-height--80" ngClass.sm="tb-height--50" ngClass.xs="tb-height--30"></div>
+  
+                <!-- Headline -->
+                <h4
+                    [@transitionTextEnter]="{value:'in', params: {animDelay: 200}}"
+                    ngClass.gt-sm="current-typo--h4"
+                    ngClass.sm="current-typo--h5"
+                    ngClass.xs="current-typo--h5"
+                    class="hero-headline">
+                    Bienvenido a Cuidadamente
+                </h4>
+  
+                <div ngClass.gt-sm="tb-height--16" ngClass.sm="tb-height--12" ngClass.xs="tb-height--10"></div>
+  
+                <!-- Subheadline -->
+                <h2
+                    [@transitionTextEnter]="{value:'in', params: {animDelay: 300}}"
+                    ngClass.gt-sm="current-typo--h1-light"
+                    ngClass.sm="current-typo--h2-light"
+                    ngClass.xs="current-typo--h3"
+                    class="hero-subheadline">
+                    subtítulo
+                </h2>
+  
+                <!-- Description -->
+                <p
+                    [@transitionTextEnter]="{value:'in', params: {animDelay: 800}}"
+                    class="detail tb-color--black-54 paragraph-text hero-description">
+                    más texto
+                </p>
+  
+                <!-- Buttons to navigate to sections -->
+                <div class="hero-buttons">
+                    <a (click)="scrollToContact()" class="btn btn-primary">Contacto</a>
+                </div>
+  
+                <div ngClass.gt-sm="tb-height--80" ngClass.sm="tb-height--50" ngClass.xs="tb-height--30"></div>
+            </div>
+  
+        </div>
+    </div>
+  </div>
+  
