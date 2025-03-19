@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 
 @Component({
@@ -8,10 +7,20 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  constructor(public authService: AuthService, private router: Router) {}
+  menuActive: boolean = false;
+
+  constructor(public authService: AuthService) {}
+
+  toggleMenu() {
+    this.menuActive = !this.menuActive;
+  }
+
+  closeMenu() {
+    this.menuActive = false;
+  }
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/']);
+    this.menuActive = false; // Close the menu after logout
   }
 }

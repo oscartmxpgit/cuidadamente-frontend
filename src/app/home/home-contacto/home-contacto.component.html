@@ -1,1 +1,33 @@
-<p>home-contact works!</p>
+<div class="container">
+    <form (ngSubmit)="submitForm()" #contactForm="ngForm" class="contact-section">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required [(ngModel)]="contact.nombre">
+      </div>
+  
+      <div class="form-group">
+        <label for="correoElectronico">Correo electrónico:</label>
+        <input type="email" class="form-control" id="correoElectronico" name="correoElectronico" required [(ngModel)]="contact.correoElectronico">
+      </div>
+  
+      <div class="form-group">
+        <label for="asunto">Asunto:</label>
+        <input type="text" class="form-control" id="asunto" name="asunto" required [(ngModel)]="contact.asunto">
+      </div>
+  
+      <div class="form-group">
+        <label for="mensaje">Tu mensaje:</label>
+        <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required [(ngModel)]="contact.mensaje"></textarea>
+      </div>
+  
+      <!-- reCAPTCHA widget -->
+      <div class="form-group re-captcha">
+        <re-captcha (resolved)="resolvedCaptcha($event)" [siteKey]="recaptchaSiteKey"></re-captcha>
+      </div>
+  
+      <div class="form-group d-flex justify-content-between">
+        <button type="submit" class="btn btn-primary" [disabled]="!contactForm.valid || !captchaResolved">Enviar mensaje</button>
+      </div>
+    </form>
+  </div>
+  

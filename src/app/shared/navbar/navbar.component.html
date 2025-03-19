@@ -1,18 +1,27 @@
-<nav>
-  <a routerLink="/">Inicio</a>
-  <a routerLink="/about">Quiénes Somos</a>
-  <a routerLink="/services">Servicios</a>
-  <a routerLink="/faq">FAQ</a>
-  <a routerLink="/contact">Contacto</a>
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a routerLink="/" class="nav-link" (click)="closeMenu()">Inicio</a>
+  </div>
+  <div class="navbar-toggle" (click)="toggleMenu()">
+    <span class="navbar-toggle-icon"></span>
+    <span class="navbar-toggle-icon"></span>
+    <span class="navbar-toggle-icon"></span>
+  </div>
+  <div class="navbar-menu" [class.is-active]="menuActive">
+    <a routerLink="/about" class="nav-link" (click)="closeMenu()">Quiénes Somos</a>
+    <a routerLink="/services" class="nav-link" (click)="closeMenu()">Servicios</a>
+    <a routerLink="/faq" class="nav-link" (click)="closeMenu()">FAQ</a>
+    <a routerLink="/contact" class="nav-link" (click)="closeMenu()">Contacto</a>
 
-  <ng-container *ngIf="authService.isAuthenticated(); else guest">
-    <a routerLink="/appointments">Mis Citas</a>
-    <a routerLink="/doctor-dashboard" *ngIf="authService.isDoctor()">Panel Doctor</a>
-    <a routerLink="/admin-dashboard" *ngIf="authService.isAdmin()">Administración</a>
-    <button (click)="logout()">Cerrar Sesión</button>
-  </ng-container>
+    <ng-container *ngIf="authService.isAuthenticated(); else guest">
+      <a routerLink="/appointments" class="nav-link" (click)="closeMenu()">Mis Citas</a>
+      <a routerLink="/doctor-dashboard" *ngIf="authService.isDoctor()" class="nav-link" (click)="closeMenu()">Panel Doctor</a>
+      <a routerLink="/admin-dashboard" *ngIf="authService.isAdmin()" class="nav-link" (click)="closeMenu()">Administración</a>
+      <button (click)="logout()" class="nav-button">Cerrar Sesión</button>
+    </ng-container>
 
-  <ng-template #guest>
-    <a routerLink="/login">Iniciar Sesión</a>
-  </ng-template>
+    <ng-template #guest>
+      <a routerLink="/login" class="nav-link" (click)="closeMenu()">Iniciar Sesión</a>
+    </ng-template>
+  </div>
 </nav>
