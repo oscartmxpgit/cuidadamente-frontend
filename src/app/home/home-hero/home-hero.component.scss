@@ -1,27 +1,36 @@
 .hero {
-  background: linear-gradient(135deg, #3a3f51 0%, #5c6bc0 100%); /* Softer background gradient */
-  color: #fff; /* White text color for better contrast */
+  background-color: #fff; /* White background */
+  color: #333; /* Dark text color for better contrast */
   padding: 60px 0;
   text-align: center;
 }
+
+.hero-logo {
+  margin-bottom: 20px;
+}
+
+.navbar-logo {
+  max-height: 100px; /* Adjust the max height as needed */
+}
+
 .hero-headline {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: #fff; /* White text color */
+  color: #333; /* Dark text color */
 }
 
 .hero-subheadline {
   font-size: 3rem;
   font-weight: lighter;
   margin-bottom: 1rem;
-  color: #fff; /* White text color */
+  color: #008080; /* Bluish green text color */
 }
 
 .hero-description {
   font-size: 1.25rem;
   margin-bottom: 2rem;
-  color: #d1d1d1; /* Light grey text color */
+  color: #666; /* Light grey text color */
 }
 
 .hero-buttons .btn-primary {

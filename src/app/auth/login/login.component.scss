@@ -1,0 +1,86 @@
+.login {
+  background-color: #f8f9fa; /* Light background color */
+  color: #333; /* Dark text color */
+  padding: 2rem 0;
+
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #008080; /* Bluish green text color */
+  }
+
+  p {
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .login-form {
+    .form-group {
+      margin-bottom: 1.5rem;
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        color: #333;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+    }
+
+    .btn-primary {
+      background-color: #008080; /* Bluish green button color */
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+
+      &:hover {
+        background-color: #006666; /* Darker bluish green on hover */
+        transform: translateY(-2px); /* Subtle lift effect on hover */
+      }
+
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+
+    .login-links {
+      text-align: center;
+      margin-top: 1.5rem;
+
+      a {
+        color: #008080; /* Bluish green link color */
+        text-decoration: none;
+        margin: 0 0.5rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #006666; /* Darker bluish green on hover */
+        }
+      }
+    }
+  }
+}

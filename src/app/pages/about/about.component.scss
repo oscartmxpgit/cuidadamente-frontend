@@ -1,0 +1,60 @@
+.about {
+  background-color: #f8f9fa; /* Light background color */
+  color: #333; /* Dark text color */
+  padding: 2rem 0;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #008080; /* Bluish green text color */
+  }
+
+  p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-section {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: #008080; /* Bluish green text color */
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 0.5rem;
+
+        strong {
+          color: #008080; /* Bluish green text color */
+        }
+      }
+    }
+
+    i {
+      margin-right: 0.5rem;
+    }
+  }
+}
