@@ -27,6 +27,6 @@ jobs:
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        branch: gh-pages  # La rama de GitHub Pages donde se desplegará la app
+        branch: gh-pages
         folder: dist/cuidadamente-frontend  
         token: ${{ secrets.GITHUB_TOKEN }}
