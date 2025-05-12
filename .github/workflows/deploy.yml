@@ -3,7 +3,7 @@ name: Deploy Angular App to GitHub Pages
 on:
   push:
     branches:
-      - main  # Ajusta esto si tu rama principal es diferente
+      - master
 
 jobs:
   build:
