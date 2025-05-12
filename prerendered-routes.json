@@ -1,0 +1,16 @@
+{
+  "routes": [
+    "/",
+    "/about",
+    "/admin-dashboard",
+    "/appointments",
+    "/contact",
+    "/doctor-dashboard",
+    "/faq",
+    "/home",
+    "/login",
+    "/patient-dashboard",
+    "/register",
+    "/services"
+  ]
+}
