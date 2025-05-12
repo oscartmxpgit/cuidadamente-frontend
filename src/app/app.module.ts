@@ -8,6 +8,8 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
+import { FormsModule } from '@angular/forms';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { HomeModule } from './home/home.module';
     AppRoutingModule,
     PagesModule,
     HomeModule,
-    SharedModule
+    SharedModule,
+    AuthModule
   ],
   providers: [
     provideClientHydration(),

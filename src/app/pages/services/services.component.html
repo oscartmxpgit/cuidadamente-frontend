@@ -1,9 +1,14 @@
-<section class="services">
-  <h2>Nuestros Servicios</h2>
-  <ul>
-    <li>Psicoterapia Individual</li>
-    <li>Evaluación y Diagnóstico</li>
-    <li>Atención en Crisis</li>
-    <li>Orientación Familiar</li>
-  </ul>
+<section class="services-section">
+  <h2 class="section-title">Nuestros Servicios</h2>
+  <p class="section-subtitle">Apoyamos tu bienestar emocional con atención profesional y personalizada</p>
+
+  <div class="services-grid">
+    <div class="service-card" *ngFor="let service of services">
+      <div class="icon">
+        <i [class]="service.icon"></i>
+      </div>
+      <h3>{{ service.title }}</h3>
+      <p>{{ service.description }}</p>
+    </div>
+  </div>
 </section>

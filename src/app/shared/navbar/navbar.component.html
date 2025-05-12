@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="navbar-brand">
     <a routerLink="/" class="nav-link" (click)="closeMenu()">
-      <img src="assets/images/homeIconTransp.png" alt="Logo" class="navbar-logo">
+      Cuidadamente
     </a>
   </div>
   <div class="navbar-toggle" (click)="toggleMenu()">
@@ -13,7 +13,6 @@
     <a routerLink="/about" class="nav-link" (click)="closeMenu()">Quiénes Somos</a>
     <a routerLink="/services" class="nav-link" (click)="closeMenu()">Servicios</a>
     <a routerLink="/faq" class="nav-link" (click)="closeMenu()">FAQ</a>
-    <a routerLink="/contact" class="nav-link" (click)="closeMenu()">Contacto</a>
 
     <ng-container *ngIf="authService.isAuthenticated(); else guest">
       <a routerLink="/appointments" class="nav-link" (click)="closeMenu()">Mis Citas</a>

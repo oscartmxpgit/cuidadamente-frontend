@@ -1,1 +1,17 @@
-<p>home-testimonials works!</p>
+<section class="testimonials-section">
+  <h2 class="section-title">Testimonios</h2>
+  <p class="section-subtitle">Lo que dicen nuestros pacientes sobre Cuidadamente</p>
+
+  <div class="testimonials-container">
+    <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+      <p class="testimonial-text">"{{ testimonial.message }}"</p>
+      <div class="testimonial-author">
+        <img [src]="testimonial.image" alt="Foto de {{ testimonial.name }}" class="author-img" />
+        <div>
+          <h4>{{ testimonial.name }}</h4>
+          <small>{{ testimonial.role }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

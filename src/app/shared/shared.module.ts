@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,16 @@ import { MatCardModule } from '@angular/material/card';
   imports: [
     CommonModule,
     RouterModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [ // ✅ Export components to make them available outside SharedModule
+    CommonModule,
     NavbarComponent,
+    FormsModule,
     RouterModule,
+    ReactiveFormsModule,
     FooterComponent,
     MatCardModule
   ]
