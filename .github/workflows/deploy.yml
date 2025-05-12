@@ -1,0 +1,32 @@
+name: Deploy Angular App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Ajusta esto si tu rama principal es diferente
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Especifica la versión de Node.js que usa tu proyecto Angular
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build Angular app
+      run: npm run build --prod  # Asegúrate de tener el comando 'build' en tu angular.json
+
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages  # La rama de GitHub Pages donde se desplegará la app
+        folder: dist/cuidadamente-frontend  # Asegúrate de que coincide con el nombre del directorio de distribución generado
+        token: ${{ secrets.GITHUB_TOKEN }}
