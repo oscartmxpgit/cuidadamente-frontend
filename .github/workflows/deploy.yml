@@ -10,23 +10,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: npm install --legacy-peer-deps
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
 
-    - name: Build Angular app
-      run: npm run build --prod  # Asegúrate de tener el comando 'build' en tu angular.json
+      - name: Build Angular app
+        run: ng build --configuration production
 
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        branch: gh-pages
-        folder: dist/cuidadamente-frontend  
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # Target branch
+          folder: dist/cuidadamente-frontend  # Output folder
+          token: ${{ secrets.GITHUB_TOKEN }}
