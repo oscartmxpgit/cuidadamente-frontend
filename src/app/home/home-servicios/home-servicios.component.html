@@ -1,0 +1,11 @@
+<!-- servicios.component.html -->
+<div @fadeIn class="services-container">
+    <mat-card *ngFor="let servicio of servicios" class="service-card" @fadeIn>
+      <mat-card-header>
+        <mat-card-title>{{ servicio.titulo }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ servicio.descripcion }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
