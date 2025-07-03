@@ -8,6 +8,12 @@
   margin-top: 40px;
 }
 
+@media (max-width: 600px) {
+  .navbar {
+    margin-top: 25px; // Ajusta a la altura real del toolbar en móvil
+  }
+}
+
 .navbar-logo {
   max-height: 40px; /* Adjust the max height as needed */
 }
@@ -76,45 +82,54 @@
 }
 
 .dropdown-menu {
-  display: block;
   position: absolute;
   top: 100%;
-  left: 0;
-  min-width: 220px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 210px;
+  max-width: 95vw;
   background: #fff;
   border: 1px solid #e0e0e0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   z-index: 1000;
-  padding: 0.5rem 0;
+  padding: 0.3rem 0;
   border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .dropdown-menu a,
 .dropdown-menu .dropdown-phone {
-  display: block;
-  padding: 0.5rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
   color: #333;
   text-decoration: none;
   font-size: 1rem;
   cursor: pointer;
   white-space: nowrap;
+  background: none;
+  border: none;
 }
 
-.dropdown-menu a:hover {
+.dropdown-menu a:hover,
+.dropdown-menu .dropdown-phone:hover {
   background: #f1f1f1;
 }
 
 .dropdown-divider {
   height: 1px;
   background: #e0e0e0;
-  margin: 0.3rem 0;
+  margin: 0.2rem 0;
 }
 
 .dropdown-phone {
-  font-weight: bold;
+  font-weight: 500;
   color: #007b5e;
-  font-size: 1.05rem;
-  cursor: default;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 /* Responsive adjustments */
@@ -149,6 +164,8 @@
   /* Responsive: make dropdown full width on mobile */
   .dropdown-menu {
     position: static;
+    left: 0;
+    transform: none;
     min-width: 100%;
     box-shadow: none;
     border-radius: 0;

@@ -1,0 +1,34 @@
+<h2>Registro de cita online</h2>
+<form [formGroup]="citaForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Nombre completo:</label>
+    <input formControlName="nombre" required>
+  </div>
+  <div>
+    <label>Teléfono:</label>
+    <input formControlName="telefono" required>
+  </div>
+  <div>
+    <label>Email:</label>
+    <input formControlName="email" required type="email">
+  </div>
+  <div>
+    <label>Servicio:</label>
+    <select formControlName="servicio" required>
+      <option *ngFor="let s of servicios" [value]="s">{{s}}</option>
+    </select>
+  </div>
+  <div>
+    <label>Día:</label>
+    <input formControlName="fecha" [matDatepicker]="picker" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </div>
+  <div>
+    <label>Hora:</label>
+    <select formControlName="hora" required>
+      <option *ngFor="let h of horasDisponibles" [value]="h">{{h}}</option>
+    </select>
+  </div>
+  <button type="submit" [disabled]="citaForm.invalid">Reservar cita</button>
+</form>

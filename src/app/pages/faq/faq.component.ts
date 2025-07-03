@@ -6,47 +6,60 @@ import { Component } from '@angular/core';
   styleUrl: './faq.component.scss'
 })
 export class FaqComponent {
-faqs = [
-  {
-    question: '¿Necesito una cita para ser atendido?',
-    answer: 'Sí, es necesario agendar una cita previa para asegurar tu atención. Puedes hacerlo fácilmente a través de nuestro sitio web o contactándonos por teléfono o WhatsApp. Así garantizamos una atención personalizada y sin tiempos de espera prolongados.',
-    open: false
-  },
-  {
-    question: '¿Aceptan seguros médicos?',
-    answer: 'Sí, actualmente trabajamos con varias aseguradoras de salud. Te recomendamos comunicarte con nosotros para confirmar si tu seguro es aceptado y conocer los pasos necesarios para utilizarlo en tu atención.',
-    open: false
-  },
-  {
-    question: '¿Las sesiones pueden ser virtuales?',
-    answer: 'Por supuesto. Ofrecemos sesiones virtuales mediante videollamadas seguras y confidenciales, ideales si no puedes acudir presencialmente. Esta modalidad está disponible para psicoterapia individual, orientación familiar y seguimiento psicológico.',
-    open: false
-  },
-  {
-    question: '¿Tienen atención de urgencia?',
-    answer: 'Sí. Contamos con un servicio de atención en crisis para situaciones de urgencia emocional, como ataques de pánico, ideación suicida o eventos traumáticos. En estos casos, contáctanos inmediatamente y te atenderemos lo antes posible.',
-    open: false
-  },
-  {
-    question: '¿Qué tipo de profesionales trabajan en Cuidadamente?',
-    answer: 'Nuestro equipo está conformado por psicólogos clínicos, psiquiatras, psicopedagogos y terapeutas familiares, todos con experiencia y formación en salud mental. Trabajamos en equipo para ofrecerte una atención integral y ética.',
-    open: false
-  },
-  {
-    question: '¿Cuánto dura una sesión de terapia?',
-    answer: 'Las sesiones de psicoterapia individual tienen una duración aproximada de 50 minutos. Sin embargo, dependiendo del tipo de intervención (por ejemplo, terapia familiar o atención en crisis), este tiempo puede variar.',
-    open: false
-  },
-  {
-    question: '¿Es confidencial todo lo que comparta durante la terapia?',
-    answer: 'Sí. La confidencialidad es un principio fundamental en nuestro trabajo. Toda la información que compartas con tu terapeuta será tratada de forma confidencial, salvo en casos excepcionales que impliquen riesgo para ti o para otros, conforme a la ley.',
-    open: false
-  },
-  {
-    question: '¿Puedo cambiar de terapeuta si no me siento cómodo/a?',
-    answer: 'Claro. Queremos que te sientas en confianza y comodidad. Si consideras que necesitas cambiar de profesional, puedes solicitarlo sin compromiso. Te ayudaremos a encontrar un terapeuta que se ajuste mejor a tus necesidades.',
-    open: false
-  }
-];
-
+  faqs = [
+    {
+      question: '¿Qué es Cuidadamente?',
+      answer: 'Cuidadamente es un centro de salud mental donde tú eres el protagonista. Nuestro equipo de especialistas te acompaña en tu bienestar emocional y crecimiento personal, con atención profesional, cercana y personalizada.',
+      open: false
+    },
+    {
+      question: '¿Cómo puedo pedir una cita?',
+      answer: 'Puedes solicitar tu cita online desde la opción "Registro cita online" en el menú principal o contactarnos directamente por teléfono, WhatsApp o correo electrónico. Los iconos de contacto están siempre visibles en la parte superior de la web.',
+      open: false
+    },
+    {
+      question: '¿Qué servicios ofrecéis?',
+      answer: 'Ofrecemos evaluación, orientación y diagnóstico, psicoterapia individual para adultos e infanto-juvenil, terapia de pareja, rehabilitación cognitiva, mediación familiar y social, mental training, talleres para adolescentes y adultos, escuela de padres y psicoterapia grupal.',
+      open: false
+    },
+    {
+      question: '¿Quién forma parte del equipo?',
+      answer: 'Nuestro equipo está formado por profesionales de la psicología, neuropsicología, integración social y mediación familiar. Puedes conocer más sobre cada profesional y sus especialidades en la sección "Quiénes somos".',
+      open: false
+    },
+    {
+      question: '¿Dónde estáis ubicados y cómo puedo contactar?',
+      answer: 'Nuestra dirección es c/Capitán Dema 1-4º. Puerta 2. Puedes contactarnos por teléfono (+34 682 391 660), correo electrónico (info@cuidadamente.org) o WhatsApp. Todos los datos de contacto están accesibles en la barra superior de la web.',
+      open: false
+    },
+    {
+      question: '¿Las sesiones pueden ser virtuales?',
+      answer: 'Sí, ofrecemos sesiones virtuales mediante videollamadas seguras y confidenciales, ideales si no puedes acudir presencialmente. Esta modalidad está disponible para psicoterapia individual, orientación familiar y seguimiento psicológico.',
+      open: false
+    },
+    {
+      question: '¿Trabajáis con seguros médicos?',
+      answer: 'Sí, colaboramos con varias aseguradoras de salud. Te recomendamos consultarnos para confirmar si tu seguro es aceptado y conocer los pasos necesarios para utilizarlo.',
+      open: false
+    },
+    {
+      question: '¿La información que comparto es confidencial?',
+      answer: 'Por supuesto. La confidencialidad es un principio fundamental en nuestro trabajo. Toda la información que compartas será tratada de forma confidencial, salvo en casos excepcionales que impliquen riesgo para ti o para otros, conforme a la ley.',
+      open: false
+    },
+    {
+      question: '¿Qué duración tienen las sesiones?',
+      answer: 'Las sesiones de psicoterapia individual suelen durar unos 50 minutos. En el caso de terapia familiar, de pareja o atención en crisis, la duración puede variar según las necesidades.',
+      open: false
+    },
+    {
+      question: '¿Puedo cambiar de profesional si lo necesito?',
+      answer: 'Sí, queremos que te sientas cómodo/a y en confianza. Si deseas cambiar de terapeuta, puedes solicitarlo sin compromiso y te ayudaremos a encontrar el profesional que mejor se adapte a tus necesidades.',
+      open: false
+    },
+    {
+      question: '¿Qué valores definen vuestro trabajo?',
+      answer: 'Nuestro trabajo se basa en la experiencia, conocimiento, actitud, compromiso, cercanía, comprensión afectiva, accesibilidad y confidencialidad. Nos esforzamos por ofrecerte una atención de calidad y humana.'
+    }
+  ];
 }

@@ -14,22 +14,14 @@
     <a routerLink="/services" class="nav-link" (click)="closeMenu()">Servicios</a>
     <a routerLink="/faq" class="nav-link" (click)="closeMenu()">FAQ</a>
 
-    <ng-container *ngIf="authService.isAuthenticated(); else guest">
+    <ng-container *ngIf="authService.isAuthenticated();">
       <a routerLink="/appointments" class="nav-link" (click)="closeMenu()">Mis Citas</a>
       <a routerLink="/doctor-dashboard" *ngIf="authService.isDoctor()" class="nav-link" (click)="closeMenu()">Panel Doctor</a>
       <a routerLink="/admin-dashboard" *ngIf="authService.isAdmin()" class="nav-link" (click)="closeMenu()">Administración</a>
       <button (click)="logout()" class="nav-button">Cerrar Sesión</button>
     </ng-container>
-
-    <ng-template #guest>
-      <div class="nav-link dropdown" (mouseenter)="showDropdown = true" (mouseleave)="showDropdown = false">
-        <span (click)="showDropdown = !showDropdown">Pide tu cita</span>
-        <div class="dropdown-menu" *ngIf="showDropdown">
-          <a routerLink="/registro-cita" (click)="closeMenu()">Registro cita online</a>
-          <div class="dropdown-divider"></div>
-          <span class="dropdown-phone">Solicitar cita telefónica:<br><strong>+34 682 391 660</strong></span>
-        </div>
-      </div>
-    </ng-template>
+  <a routerLink="/registro-cita" class="nav-link">
+     Registro cita
+  </a>
   </div>
 </nav>

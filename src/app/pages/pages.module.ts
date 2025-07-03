@@ -10,6 +10,9 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { RegistroCitaComponent } from './pages/registro-cita/registro-cita.component';
+import { share } from 'rxjs';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -21,12 +24,14 @@ import { BrowserModule } from '@angular/platform-browser';
     ContactComponent,
     DoctorDashboardComponent,
     AdminDashboardComponent,
-    PatientDashboardComponent
+    PatientDashboardComponent,
+    RegistroCitaComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     FormsModule,
+    SharedModule
   ]
 })
 export class PagesModule { }
