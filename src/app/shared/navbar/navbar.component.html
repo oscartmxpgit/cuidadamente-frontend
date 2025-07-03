@@ -22,7 +22,14 @@
     </ng-container>
 
     <ng-template #guest>
-      <a routerLink="/login" class="nav-link" (click)="closeMenu()">Iniciar Sesión</a>
+      <div class="nav-link dropdown" (mouseenter)="showDropdown = true" (mouseleave)="showDropdown = false">
+        <span (click)="showDropdown = !showDropdown">Pide tu cita</span>
+        <div class="dropdown-menu" *ngIf="showDropdown">
+          <a routerLink="/registro-cita" (click)="closeMenu()">Registro cita online</a>
+          <div class="dropdown-divider"></div>
+          <span class="dropdown-phone">Solicitar cita telefónica:<br><strong>+34 682 391 660</strong></span>
+        </div>
+      </div>
     </ng-template>
   </div>
 </nav>

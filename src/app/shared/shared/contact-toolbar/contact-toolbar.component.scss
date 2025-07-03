@@ -1,0 +1,46 @@
+.contact-toolbar {
+  width: 100%;
+  background: #007b5e;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: color 0.2s;
+    font-weight: 500;
+
+    &:hover {
+      color: #ffe082;
+    }
+  }
+
+  .contact-link {
+    font-weight: bold;
+  }
+
+  i {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-toolbar {
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 0.95rem;
+    padding: 0.2rem 0.1rem;
+  }
+}

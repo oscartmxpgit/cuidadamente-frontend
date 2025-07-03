@@ -12,29 +12,29 @@
 
                 <div ngClass.gt-sm="tb-height--16" ngClass.sm="tb-height--12" ngClass.xs="tb-height--10"></div>
 
-
-                <div ngClass.gt-sm="tb-height--16" ngClass.sm="tb-height--12" ngClass.xs="tb-height--10"></div>
-
-                <!-- Subheadline -->
-                <h2
+                <!-- Main Headline -->
+                <h1
                     [@transitionTextEnter]="{value:'in', params: {animDelay: 300}}"
                     ngClass.gt-sm="current-typo--h1-light"
                     ngClass.sm="current-typo--h2-light"
                     ngClass.xs="current-typo--h3"
+                    class="hero-headline">
+                    Cuidadamente: tu centro de salud mental.
+                </h1>
+
+                <!-- Subheadline -->
+                <h2
+                    [@transitionTextEnter]="{value:'in', params: {animDelay: 500}}"
                     class="hero-subheadline">
-                    Centro de Salud Mental <b>Cuidadamente</b>
+                    Un equipo de especialistas a tu servicio.
                 </h2>
 
-                <!-- Description -->
-                <p
-                    [@transitionTextEnter]="{value:'in', params: {animDelay: 800}}"
-                    class="detail tb-color--black-54 paragraph-text hero-description">
-                    Nuestro equipo de expertos te brinda apoyo en salud mental de manera accesible y rápida.
-                </p>
-
-                <!-- Buttons to navigate to sections -->
-                <div class="hero-buttons">
-                    <a (click)="scrollToContact()" class="btn btn-primary">Contacto</a>
+                <!-- Contact Info -->
+                <div class="hero-contact" [@transitionTextEnter]="{value:'in', params: {animDelay: 700}}">
+                    <h3>Contacto:</h3>
+                    <p><i class="fas fa-phone"></i> Tlf: +34 682 391 660</p>
+                    <p><i class="fas fa-envelope"></i> Correo electrónico: info&#64;cuidadamente.org</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Dirección: c/Capitán Dema 1-4º. Puerta 2.</p>
                 </div>
 
                 <div ngClass.gt-sm="tb-height--80" ngClass.sm="tb-height--50" ngClass.xs="tb-height--30"></div>

@@ -1,5 +1,14 @@
 <div class="center"> 
+  <div *ngIf="htmlChunk" [appInsertHtml]="htmlChunk.htmlContent"></div>
+  
   <app-home-hero></app-home-hero>
+  
+  <!-- Contact Section -->
+  <section id="contact" class="section py-5 bg-light">
+    <br />
+    <h2 class="section-title">Contacto</h2>
+    <app-home-contacto></app-home-contacto>
+  </section>
 
   <!-- Servicios Section -->
   <section id="servicios" class="py-5 bg-light">
@@ -13,10 +22,4 @@
     <app-home-testimonios></app-home-testimonios>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section py-5 bg-light">
-    <br />
-    <h2 class="section-title">Contacto</h2>
-    <app-home-contacto></app-home-contacto>
-  </section>
 </div>

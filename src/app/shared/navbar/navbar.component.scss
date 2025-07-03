@@ -5,6 +5,7 @@
   background-color: #f8f9fa; /* Lighter background color */
   padding: 0.2rem 1rem; /* Reduced height */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
 }
 
 .navbar-logo {
@@ -68,6 +69,54 @@
   transform: translateY(-2px); /* Subtle lift effect on hover */
 }
 
+/* Dropdown styles for "Pide tu cita" */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  z-index: 1000;
+  padding: 0.5rem 0;
+  border-radius: 6px;
+}
+
+.dropdown-menu a,
+.dropdown-menu .dropdown-phone {
+  display: block;
+  padding: 0.5rem 1.2rem;
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+  background: #f1f1f1;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: #e0e0e0;
+  margin: 0.3rem 0;
+}
+
+.dropdown-phone {
+  font-weight: bold;
+  color: #007b5e;
+  font-size: 1.05rem;
+  cursor: default;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .navbar {
@@ -95,5 +144,13 @@
 
   .nav-button {
     margin-top: 1rem;
+  }
+
+  /* Responsive: make dropdown full width on mobile */
+  .dropdown-menu {
+    position: static;
+    min-width: 100%;
+    box-shadow: none;
+    border-radius: 0;
   }
 }

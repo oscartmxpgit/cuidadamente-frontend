@@ -8,6 +8,7 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class NavbarComponent {
   menuActive: boolean = false;
+  showDropdown: boolean = false;
 
   constructor(public authService: AuthService) {}
 
@@ -17,10 +18,12 @@ export class NavbarComponent {
 
   closeMenu() {
     this.menuActive = false;
+    this.showDropdown = false;
   }
 
   logout() {
     this.authService.logout();
-    this.menuActive = false; // Close the menu after logout
+    this.menuActive = false;
+    this.showDropdown = false;
   }
 }

@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { FormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
+import { InsertHtmlDirective } from './directives/insert-html.directive';
 
 @NgModule({
   declarations: [

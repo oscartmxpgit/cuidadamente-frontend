@@ -6,11 +6,15 @@ import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InsertHtmlDirective } from '../directives/insert-html.directive';
+import { ContactToolbarComponent } from './shared/contact-toolbar/contact-toolbar.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    InsertHtmlDirective,
+    ContactToolbarComponent
   ],
   imports: [
     CommonModule,
@@ -22,11 +26,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   exports: [ // ✅ Export components to make them available outside SharedModule
     CommonModule,
     NavbarComponent,
+    ContactToolbarComponent,
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
     FooterComponent,
-    MatCardModule
+    MatCardModule,
+    InsertHtmlDirective
   ]
 })
 export class SharedModule { }
