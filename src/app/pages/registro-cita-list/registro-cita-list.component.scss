@@ -1,0 +1,32 @@
+.registro-cita-table {
+  width: 100%;
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+
+  th.mat-header-cell {
+    background: #007b5e;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.7rem 0.5rem;
+  }
+
+  td.mat-cell {
+    font-size: 0.98rem;
+    padding: 0.6rem 0.5rem;
+    color: #333;
+  }
+
+  tr.mat-row:nth-child(even) td {
+    background: #f6f6f6;
+  }
+}
+
+@media (max-width: 700px) {
+  .registro-cita-table, .registro-cita-table th, .registro-cita-table td {
+    font-size: 0.92rem;
+    padding: 0.4rem 0.2rem;
+  }
+}

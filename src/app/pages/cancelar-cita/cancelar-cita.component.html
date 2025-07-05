@@ -1,0 +1,8 @@
+<div class="container" *ngIf="!loading">
+  <h2>Cancelar Cita</h2>
+  <p>{{ mensaje }}</p>
+</div>
+
+<div *ngIf="loading">
+  <p>Procesando cancelación...</p>
+</div>

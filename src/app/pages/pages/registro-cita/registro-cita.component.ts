@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar'; // <-- Importa MatSnackBar
+import { RegistroCitaService } from '../../../services/registroCita.service';
 
 @Component({
   selector: 'app-registro-cita',
@@ -26,7 +28,7 @@ export class RegistroCitaComponent {
     '16:00', '17:00', '18:00', '19:00'
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, private registroCitaService: RegistroCitaService) {
     this.citaForm = this.fb.group({
       nombre: ['', Validators.required],
       telefono: ['', Validators.required],
@@ -38,11 +40,47 @@ export class RegistroCitaComponent {
   }
 
   onSubmit() {
-    if (this.citaForm.valid) {
-      // Aquí puedes enviar la cita al backend o mostrar un mensaje de éxito
-      console.log(this.citaForm.value);
-      alert('¡Cita registrada correctamente!');
-      this.citaForm.reset();
-    }
+    console.log('Formulario enviado:', this.citaForm.value);
+  if (this.citaForm.valid) {
+    const cita = this.citaForm.value;
+    this.registroCitaService.add(cita).subscribe({
+      next: () => {
+        this.snackBar.open('¡Cita registrada correctamente!', 'Cerrar', {
+          duration: 3000,
+          verticalPosition: 'bottom',
+        });
+        this.citaForm.reset();
+      },
+      error: () => {
+        this.snackBar.open('Error al registrar la cita. Inténtalo de nuevo.', 'Cerrar', {
+          duration: 3000,
+          verticalPosition: 'bottom',
+        });
+      }
+    });
+  } else {
+    // Marca todos los campos como tocados para mostrar errores en la UI
+    this.citaForm.markAllAsTouched();
+
+    // Encuentra los campos inválidos y muestra un mensaje
+    const invalidFields = Object.keys(this.citaForm.controls)
+      .filter(key => this.citaForm.get(key)?.invalid)
+      .map(key => {
+        switch (key) {
+          case 'nombre': return 'Nombre';
+          case 'telefono': return 'Teléfono';
+          case 'email': return 'Email';
+          case 'servicio': return 'Servicio';
+          case 'fecha': return 'Día';
+          case 'hora': return 'Hora';
+          default: return key;
+        }
+      });
+    this.snackBar.open(
+      `Por favor completa correctamente: ${invalidFields.join(', ')}`,
+      'Cerrar',
+      { duration: 4000, verticalPosition: 'bottom' }
+    );
   }
+}
 }

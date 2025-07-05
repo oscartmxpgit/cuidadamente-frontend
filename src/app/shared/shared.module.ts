@@ -10,6 +10,7 @@ import { ContactToolbarComponent } from './shared/contact-toolbar/contact-toolba
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatTableModule
   ],
   exports: [ // ✅ Export components to make them available outside SharedModule
     CommonModule,
@@ -41,7 +43,8 @@ import { MatInputModule } from '@angular/material/input';
     MatNativeDateModule,
     MatDatepickerModule,
     MatInputModule,
-    InsertHtmlDirective
+    InsertHtmlDirective,
+    MatTableModule
   ]
 })
 export class SharedModule { }

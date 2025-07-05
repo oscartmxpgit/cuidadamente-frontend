@@ -10,12 +10,22 @@ export class RegistroCitaListComponent implements OnInit {
   citas: RegistroCita[] = [];
   loading = true;
 
+ displayedColumns: string[] = [
+  'nombre', 'telefono', 'email', 'servicio', 'fecha', 'hora', 'fechaSolicitud', 'cancelada', 'fechaCancelacion'
+];
+
   constructor(private registroCitaService: RegistroCitaService) {}
 
   ngOnInit() {
-    this.registroCitaService.getAll().subscribe(data => {
-      this.citas = data;
-      this.loading = false;
+    this.registroCitaService.getAll().subscribe({
+      next: (data) => {
+        this.citas = data;
+        this.loading = false;
+      },
+      error: () => {
+        this.citas = [];
+        this.loading = false;
+      }
     });
   }
 }

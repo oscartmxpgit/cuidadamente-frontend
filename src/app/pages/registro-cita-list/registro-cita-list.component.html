@@ -1,26 +1,70 @@
 <h2>Listado de Citas</h2>
-<table *ngIf="!loading">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Teléfono</th>
-      <th>Email</th>
-      <th>Servicio</th>
-      <th>Fecha</th>
-      <th>Hora</th>
-      <th>Fecha Solicitud</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let cita of citas">
-      <td>{{ cita.nombre }}</td>
-      <td>{{ cita.telefono }}</td>
-      <td>{{ cita.email }}</td>
-      <td>{{ cita.servicio }}</td>
-      <td>{{ cita.fecha | date }}</td>
-      <td>{{ cita.hora }}</td>
-      <td>{{ cita.fechaSolicitud | date:'short' }}</td>
-    </tr>
-  </tbody>
+<table mat-table [dataSource]="citas"
+  class="mat-elevation-z2 registro-cita-table" *ngIf="!loading">
+
+  <!-- Nombre -->
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+    <td mat-cell *matCellDef="let cita">{{ cita.nombre }}</td>
+  </ng-container>
+
+  <!-- Teléfono -->
+  <ng-container matColumnDef="telefono">
+    <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+    <td mat-cell *matCellDef="let cita">{{ cita.telefono }}</td>
+  </ng-container>
+
+  <!-- Email -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let cita">{{ cita.email }}</td>
+  </ng-container>
+
+  <!-- Servicio -->
+  <ng-container matColumnDef="servicio">
+    <th mat-header-cell *matHeaderCellDef>Servicio</th>
+    <td mat-cell *matCellDef="let cita">{{ cita.servicio }}</td>
+  </ng-container>
+
+  <!-- Fecha -->
+  <ng-container matColumnDef="fecha">
+    <th mat-header-cell *matHeaderCellDef>Fecha</th>
+    <td mat-cell *matCellDef="let cita">{{ cita.fecha | date }}</td>
+  </ng-container>
+
+  <!-- Hora -->
+  <ng-container matColumnDef="hora">
+    <th mat-header-cell *matHeaderCellDef>Hora</th>
+    <td mat-cell *matCellDef="let cita">{{ cita.hora }}</td>
+  </ng-container>
+
+  <!-- Fecha Solicitud -->
+  <ng-container matColumnDef="fechaSolicitud">
+    <th mat-header-cell *matHeaderCellDef>Fecha Solicitud</th>
+    <td mat-cell *matCellDef="let cita">{{ cita.fechaSolicitud | date:'short'
+      }}</td>
+  </ng-container>
+
+  <!-- Cancelada -->
+  <ng-container matColumnDef="cancelada">
+    <th mat-header-cell *matHeaderCellDef>Cancelada</th>
+    <td mat-cell *matCellDef="let cita">
+      <span
+        [ngClass]="{'cancelada': cita.cancelada, 'no-cancelada': !cita.cancelada}">
+        {{ cita.cancelada ? 'Sí' : 'No' }}
+      </span>
+    </td>
+  </ng-container>
+
+  <!-- Fecha Cancelación -->
+  <ng-container matColumnDef="fechaCancelacion">
+    <th mat-header-cell *matHeaderCellDef>Fecha Cancelación</th>
+    <td mat-cell *matCellDef="let cita">
+      {{ cita.fechaCancelacion ? (cita.fechaCancelacion | date:'short') : '-' }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 <div *ngIf="loading">Cargando...</div>
