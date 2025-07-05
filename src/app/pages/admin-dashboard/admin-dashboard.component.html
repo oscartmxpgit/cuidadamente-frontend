@@ -4,6 +4,7 @@
   <div class="admin-actions">
     <button (click)="loadDoctors()">Ver Doctores</button>
     <button (click)="loadPatients()">Ver Pacientes</button>
+    <button routerLink="/registro-cita-list">Ver Citas</button> <!-- Nuevo botón -->
   </div>
 
   <div *ngIf="doctors.length">

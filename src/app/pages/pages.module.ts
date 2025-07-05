@@ -13,6 +13,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RegistroCitaComponent } from './pages/registro-cita/registro-cita.component';
 import { share } from 'rxjs';
 import { SharedModule } from '../shared/shared.module';
+import { RegistroCitaListComponent } from './registro-cita-list/registro-cita-list.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { SharedModule } from '../shared/shared.module';
     DoctorDashboardComponent,
     AdminDashboardComponent,
     PatientDashboardComponent,
-    RegistroCitaComponent
+    RegistroCitaComponent,
+    RegistroCitaListComponent
   ],
   imports: [
     BrowserModule,

@@ -13,15 +13,14 @@
     <a routerLink="/about" class="nav-link" (click)="closeMenu()">Quiénes Somos</a>
     <a routerLink="/services" class="nav-link" (click)="closeMenu()">Servicios</a>
     <a routerLink="/faq" class="nav-link" (click)="closeMenu()">FAQ</a>
+    <a routerLink="/registro-cita" class="nav-link" (click)="closeMenu()">Registro cita</a>
 
-    <ng-container *ngIf="authService.isAuthenticated();">
-      <a routerLink="/appointments" class="nav-link" (click)="closeMenu()">Mis Citas</a>
-      <a routerLink="/doctor-dashboard" *ngIf="authService.isDoctor()" class="nav-link" (click)="closeMenu()">Panel Doctor</a>
+    <ng-container *ngIf="authService.isAuthenticated(); else loginBtn">
       <a routerLink="/admin-dashboard" *ngIf="authService.isAdmin()" class="nav-link" (click)="closeMenu()">Administración</a>
       <button (click)="logout()" class="nav-button">Cerrar Sesión</button>
     </ng-container>
-  <a routerLink="/registro-cita" class="nav-link">
-     Registro cita
-  </a>
+    <ng-template #loginBtn>
+      <button routerLink="/login" class="nav-button" (click)="closeMenu()">Iniciar sesión</button>
+    </ng-template>
   </div>
 </nav>

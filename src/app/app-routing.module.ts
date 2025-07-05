@@ -13,6 +13,7 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
 import { PatientDashboardComponent } from './pages/patient-dashboard/patient-dashboard.component';
 import { HomeComponent } from './home/home/home.component';
 import { RegistroCitaComponent } from './pages/pages/registro-cita/registro-cita.component';
+import { RegistroCitaListComponent } from './pages/registro-cita-list/registro-cita-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'patient-dashboard', component: PatientDashboardComponent, canActivate: [AuthGuard] },
   { path: 'doctor-dashboard', component: DoctorDashboardComponent, canActivate: [AuthGuard] },
   { path: 'registro-cita', component: RegistroCitaComponent },
+  { path: 'registro-cita-list', component: RegistroCitaListComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 

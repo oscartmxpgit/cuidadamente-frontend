@@ -20,13 +20,13 @@ export class LoginComponent {
   ) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
-      contrasena: ['', Validators.required] // Change 'password' to 'contrasena'
+      contrasena: ['', Validators.required]
     });
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
-      const { email, contrasena } = this.loginForm.value; // Change 'password' to 'contrasena'
+      const { email, contrasena } = this.loginForm.value;
       this.authService.login(email, contrasena).subscribe(
         () => {
           this.router.navigate(['/home']);
