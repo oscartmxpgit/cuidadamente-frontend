@@ -15,6 +15,7 @@ import { share } from 'rxjs';
 import { SharedModule } from '../shared/shared.module';
 import { RegistroCitaListComponent } from './registro-cita-list/registro-cita-list.component';
 import { CancelarCitaComponent } from './cancelar-cita/cancelar-cita.component';
+import { ContactListComponent } from './contact-list/contact-list.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { CancelarCitaComponent } from './cancelar-cita/cancelar-cita.component';
     PatientDashboardComponent,
     RegistroCitaComponent,
     RegistroCitaListComponent,
-    CancelarCitaComponent
+    CancelarCitaComponent,
+    ContactListComponent
   ],
   imports: [
     BrowserModule,

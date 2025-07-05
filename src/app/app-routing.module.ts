@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home/home.component';
 import { RegistroCitaComponent } from './pages/pages/registro-cita/registro-cita.component';
 import { RegistroCitaListComponent } from './pages/registro-cita-list/registro-cita-list.component';
 import { CancelarCitaComponent } from './pages/cancelar-cita/cancelar-cita.component';
+import { ContactListComponent } from './pages/contact-list/contact-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'doctor-dashboard', component: DoctorDashboardComponent, canActivate: [AuthGuard] },
   { path: 'registro-cita', component: RegistroCitaComponent },
   { path: 'registro-cita-list', component: RegistroCitaListComponent },
+  { path: 'contact-list', component: ContactListComponent },
   { path: 'cancelar-cita', component: CancelarCitaComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
