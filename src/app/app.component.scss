@@ -1,14 +1,20 @@
+//El truco es que tanto :host como main y .container tengan flex: 1 0 auto;.
+//Así, el footer se queda abajo si hay poco contenido, pero se empuja si hay mucho.
+//No necesitas JS ni hacks adicionales.
 :host {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-.main-content {
-  flex: 1;
+.main-content, main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
+  flex: 1 0 auto;
   padding: 1rem;
 }
 
