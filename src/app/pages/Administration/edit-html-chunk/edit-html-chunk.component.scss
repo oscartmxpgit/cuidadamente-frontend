@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  padding: 16px;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+}
+
+.dialog-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.quill-editor {
+  height: 240px;
+  margin-bottom: 16px;
+
+  ::ng-deep .ql-toolbar {
+    border-radius: 4px 4px 0 0;
+    background: #f7f7f7;
+  }
+
+  ::ng-deep .ql-container {
+    border-radius: 0 0 4px 4px;
+    font-size: 15px;
+  }
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}

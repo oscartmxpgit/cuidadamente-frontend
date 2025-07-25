@@ -12,6 +12,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule} from '@angular/material/icon';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MatIconModule} from '@angular/material/icon';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
-    MatTableModule
+    MatTableModule,
+    QuillModule.forRoot()
   ],
   exports: [ // ✅ Export components to make them available outside SharedModule
     CommonModule,
@@ -46,7 +48,8 @@ import { MatIconModule} from '@angular/material/icon';
     MatDatepickerModule,
     MatInputModule,
     InsertHtmlDirective,
-    MatTableModule
+    MatTableModule,
+    QuillModule
   ]
 })
 export class SharedModule { }

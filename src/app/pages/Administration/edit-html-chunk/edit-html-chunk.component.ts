@@ -1,4 +1,4 @@
-import { Component, Inject, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { HtmlChunk } from '../../../models/HtmlChunk';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
@@ -8,10 +8,19 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./edit-html-chunk.component.scss']
 })
 export class EditHtmlChunkComponent implements OnInit {
-  @ViewChild('editableDiv') editableDiv!: ElementRef<HTMLDivElement>;
-
   chunk: HtmlChunk;
   editableHtml: string = '';
+
+  // Optional: customize toolbar
+  quillModules = {
+    toolbar: [
+      ['bold', 'italic', 'underline'],
+      [{ 'header': [1, 2, 3, false] }],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      ['link', 'image'],
+      ['clean']
+    ]
+  };
 
   constructor(
     private dialogRef: MatDialogRef<EditHtmlChunkComponent>,
@@ -25,8 +34,7 @@ export class EditHtmlChunkComponent implements OnInit {
   }
 
   onSave() {
-    const updatedHtml = this.editableDiv.nativeElement.innerHTML;
-    this.dialogRef.close({ ...this.chunk, htmlContent: updatedHtml });
+    this.dialogRef.close({ ...this.chunk, htmlContent: this.editableHtml });
   }
 
   onCancel() {
