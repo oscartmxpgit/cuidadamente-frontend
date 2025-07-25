@@ -8,14 +8,17 @@ import { FaqComponent } from './pages/faq/faq.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AuthGuard } from './auth.guard';
-import { DoctorDashboardComponent } from './pages/doctor-dashboard/doctor-dashboard.component';
-import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { AdminDashboardComponent } from './pages/Administration/admin-dashboard/admin-dashboard.component';
 import { PatientDashboardComponent } from './pages/patient-dashboard/patient-dashboard.component';
 import { HomeComponent } from './home/home/home.component';
-import { RegistroCitaComponent } from './pages/pages/registro-cita/registro-cita.component';
-import { RegistroCitaListComponent } from './pages/registro-cita-list/registro-cita-list.component';
+import { RegistroCitaListComponent } from './pages/Administration/registro-cita-list/registro-cita-list.component';
 import { CancelarCitaComponent } from './pages/cancelar-cita/cancelar-cita.component';
-import { ContactListComponent } from './pages/contact-list/contact-list.component';
+import { ContactListComponent } from './pages/Administration/contact-list/contact-list.component';
+import { ImageManagementComponent } from './pages/Administration/image-management/image-management.component';
+import { DoctorDashboardComponent } from './pages/Administration/doctor-dashboard/doctor-dashboard.component';
+import { RegistroCitaComponent } from './pages/registro-cita/registro-cita.component';
+import { EditHtmlChunkComponent } from './pages/Administration/edit-html-chunk/edit-html-chunk.component';
+import { HtmlChunksListComponent } from './pages/Administration/html-chunks-list/html-chunks-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -34,6 +37,9 @@ const routes: Routes = [
   { path: 'registro-cita-list', component: RegistroCitaListComponent },
   { path: 'contact-list', component: ContactListComponent },
   { path: 'cancelar-cita', component: CancelarCitaComponent },
+  { path: 'image-managment', component: ImageManagementComponent, canActivate: [AuthGuard] },
+  { path: 'html-chunks-managment', component: HtmlChunksListComponent, canActivate: [AuthGuard] },
+
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 

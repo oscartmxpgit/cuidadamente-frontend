@@ -11,6 +11,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MatTableModule } from '@angular/material/table';
     ReactiveFormsModule,
     FooterComponent,
     MatCardModule,
+    MatIconModule,
     MatNativeDateModule,
     MatDatepickerModule,
     MatInputModule,

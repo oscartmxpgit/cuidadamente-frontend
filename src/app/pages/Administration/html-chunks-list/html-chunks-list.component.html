@@ -1,0 +1,29 @@
+<h2>Listado de Fragmentos HTML</h2>
+
+<table mat-table [dataSource]="htmlChunks" class="mat-elevation-z2 html-chunks-table" *ngIf="!loading">
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+    <td mat-cell *matCellDef="let chunk">{{ chunk.name }}</td>
+  </ng-container>
+
+  <!-- Language Column -->
+  <ng-container matColumnDef="language">
+    <th mat-header-cell *matHeaderCellDef>Idioma</th>
+    <td mat-cell *matCellDef="let chunk">{{ chunk.language || '-' }}</td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <td mat-cell *matCellDef="let chunk">
+      <button mat-button color="primary" (click)="editChunk(chunk)">Editar</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<div *ngIf="loading" class="loading">Cargando fragmentos...</div>

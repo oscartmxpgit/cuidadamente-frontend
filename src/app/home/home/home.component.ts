@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { HtmlChunk, HtmlChunkService } from '../../services/html-chunk.service';
+import { HtmlChunkService } from '../../services/html-chunk.service';
+import { HtmlChunk } from '../../models/HtmlChunk';
 
 @Component({
   selector: 'app-home',

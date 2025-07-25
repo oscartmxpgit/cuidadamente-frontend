@@ -1,0 +1,14 @@
+<h2>Edit HTML Chunk: {{ chunk.name }}</h2>
+
+<!-- Editable div -->
+<div
+  #editableDiv
+  contenteditable="true"
+  [innerHTML]="editableHtml"
+  style="border: 1px solid #ccc; min-height: 200px; padding: 10px; overflow-y: auto;"
+></div>
+
+<div style="margin-top: 10px; text-align: right;">
+  <button (click)="onCancel()">Cancel</button>
+  <button (click)="onSave()">Save</button>
+</div>
