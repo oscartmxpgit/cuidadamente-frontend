@@ -1,4 +1,5 @@
-<section class="about">
+
+  <section class="about">
   <div class="container">
     <h2>¿Quiénes somos?</h2>
     <p>
@@ -10,7 +11,6 @@
       <p>
         Proporcionamos un servicio de alta calidad accesible para todos. Creamos un entorno seguro donde nuestros pacientes reciben la atención que necesitan para mejorar su bienestar emocional.
       </p>
-      <!-- Puedes agregar aquí una imagen de fondo si lo deseas -->
     </div>
 
     <div class="about-section">
@@ -28,48 +28,43 @@
       <p>
         Somos un equipo de profesionales de la psicología, neuropsicología, integración social y mediación familiar comprometidos con tu salud mental.
       </p>
+
       <div class="team-list">
-        <!-- Ejemplo de profesional -->
         <div class="team-member">
-          <img src="assets/img/antonio-crespillo.jpg" alt="Antonio Crespillo" />
-          <h4>Antonio Crespillo</h4>
-          <p><strong>Titulación:</strong> Licenciado en Psicología por la UNED<br>
-          Prácticas de tóxicos en la CMN</p>
-          <p><strong>Servicios:</strong> Psicología adolescente y juvenil, Asesoramiento a familias, Asesoramiento en desarrollo de la personalidad, Evaluación y diagnóstico</p>
+          <img [src]="getImageUrl('crespillo.jpg')" alt="Antonio Crespillo" />
+          <div *ngIf="htmlChunk" [appInsertHtml]="htmlChunk.htmlContent"></div>
         </div>
         <div class="team-member">
-          <img src="assets/img/pascual-berenguer.jpg" alt="Pascual Berenguer" />
+          <img [src]="getImageUrl('pascual-berenguer.jpg')" alt="Pascual Berenguer" />
           <h4>Pascual Berenguer</h4>
           <p><strong>Titulación:</strong> <!-- Añade aquí la titulación --></p>
           <p><strong>Servicios:</strong> <!-- Añade aquí los servicios --></p>
         </div>
         <div class="team-member">
-          <img src="assets/img/manuela-berenguer.jpg" alt="Manuela Berenguer" />
+          <img [src]="getImageUrl('manuela-berenguer.jpg')" alt="Manuela Berenguer" />
           <h4>Manuela Berenguer</h4>
           <p><strong>Titulación:</strong> Máster en Psicología General Sanitaria UMH, Máster en Intervención Psicológica en Niños y Adolescentes UNIR, Máster en Terapias de Tercera Generación UNIR</p>
           <p><strong>Servicios:</strong> Intervención Psicológica en adultos y adolescentes: problemas de ansiedad, autoestima, gestión del estrés, bajo estado de ánimo, trauma, desahogo emocional. Terapia familiar y de pareja: relaciones de pareja, conflictos familiares, periodos de crisis. Enfermedad grave, procesos oncológicos y duelo.</p>
         </div>
         <div class="team-member">
-          <img src="assets/img/laura.jpg" alt="Laura" />
+          <img [src]="getImageUrl('laura.jpg')" alt="Laura" />
           <h4>Laura</h4>
           <p><strong>Titulación:</strong> <!-- Añade aquí la titulación --></p>
           <p><strong>Servicios:</strong> <!-- Añade aquí los servicios --></p>
         </div>
         <div class="team-member">
-          <img src="assets/img/judit-escuderos.jpg" alt="Judit Escuderos" />
+          <img [src]="getImageUrl('judit-escuderos.jpg')" alt="Judit Escuderos" />
           <h4>Judit Escuderos</h4>
           <p><strong>Titulación:</strong> Grado en Psicología UMH, Máster en Psicología General Sanitaria UMH, Máster en Neuropsicología VIU</p>
           <p><strong>Servicios:</strong> Terapia psicológica infanto-juvenil, Terapia psicológica adultez-vejez, Rehabilitación cognitiva en trastornos del desarrollo, Rehabilitación cognitiva en adultos, Evaluación y diagnóstico, Talleres</p>
         </div>
         <div class="team-member">
-          <img src="assets/img/maria-brotons.jpg" alt="María Brotons" />
+          <img [src]="getImageUrl('maria-brotons.jpg')" alt="María Brotons" />
           <h4>María Brotons</h4>
           <p><strong>Titulación:</strong> Grado en Psicología, Máster en Psicología General Sanitaria con especialización en Terapia familiar sistémica</p>
           <p><strong>Servicios:</strong> Terapia individual adultos y adolescentes (ansiedad, depresión, estrés, dificultades de adaptación, pérdida de sentido vital), Duelo, cuidados paliativos, Talleres</p>
         </div>
       </div>
-      <!-- Puedes agregar un link a una página de profesionales si existe -->
-      <!-- <a routerLink="/profesionales" class="btn-link">Ver todos los profesionales</a> -->
     </div>
 
     <div class="about-section">
