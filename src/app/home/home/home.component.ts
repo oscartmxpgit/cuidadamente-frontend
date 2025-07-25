@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HtmlChunkService } from '../../services/html-chunk.service';
 import { HtmlChunk } from '../../models/HtmlChunk';
 
 @Component({
@@ -11,11 +10,8 @@ import { HtmlChunk } from '../../models/HtmlChunk';
 export class HomeComponent {
   htmlChunk?: HtmlChunk;
 
-  constructor(private htmlChunkService: HtmlChunkService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.htmlChunkService.getHtmlChunkByName('Example1').subscribe(chunk => {
-      this.htmlChunk = chunk;
-    });
   }
 }
