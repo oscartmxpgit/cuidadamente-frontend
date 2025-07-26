@@ -19,6 +19,7 @@ import { DoctorDashboardComponent } from './Administration/doctor-dashboard/doct
 import { EditHtmlChunkComponent } from './Administration/edit-html-chunk/edit-html-chunk.component';
 import { HtmlChunksListComponent } from './Administration/html-chunks-list/html-chunks-list.component';
 import { QuestionnaireWizardComponent } from './questionaire-wizard/questionaire-wizard.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { QuestionnaireWizardComponent } from './questionaire-wizard/questionaire
     ImageManagementComponent,
     EditHtmlChunkComponent,
     HtmlChunksListComponent,
-    QuestionnaireWizardComponent
+    QuestionnaireWizardComponent,
+    ThankYouComponent
   ],
   imports: [
     BrowserModule,

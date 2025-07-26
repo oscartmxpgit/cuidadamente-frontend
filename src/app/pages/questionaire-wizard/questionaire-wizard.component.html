@@ -1,5 +1,5 @@
 <div class="wizard-background"></div>
-<div class="wizard-container">
+<div class="wizard-container" *ngIf="!showThankYou">
   <div class="progress-bar-container">
     <progress [value]="currentStep + 1" [max]="questions.length"></progress>
   </div>
@@ -12,10 +12,26 @@
   <div class="answers">
     <!-- Pregunta abierta -->
     <ng-container *ngIf="!currentQuestion.options?.length">
-      <input type="text" 
-             [(ngModel)]="currentAnswer" 
-             (ngModelChange)="answerCurrent(currentQuestion.id, currentAnswer)"
-             placeholder="Escribe tu respuesta aquí" />
+      <input
+        [type]="
+          currentQuestion.id === 3
+            ? 'text' 
+            : (currentQuestion.inputType || 'text')
+        "
+        [autocomplete]="currentQuestion.autocomplete || 'off'"
+        [(ngModel)]="currentAnswer"
+        (ngModelChange)="answerCurrent(currentQuestion.id, currentAnswer)"
+        [required]="
+          currentQuestion.inputType === 'tel' || currentQuestion.inputType === 'email'
+        "
+        [attr.min]="currentQuestion.id === 3 ? 0 : null"
+        (keydown)="
+          currentQuestion.id === 3 ? blockInvalidChars($event) : null
+        "
+        pattern="{{ currentQuestion.id === 3 ? '[0-9]*' : null }}"
+        [attr.inputmode]="currentQuestion.id === 3 ? 'numeric' : null"
+        placeholder="Escribe tu respuesta aquí"
+      />
     </ng-container>
 
     <!-- Pregunta con opciones -->
@@ -23,9 +39,11 @@
       <ng-container *ngIf="currentQuestion.multiple; else singleChoice">
         <div *ngFor="let option of currentQuestion.options">
           <label>
-            <input type="checkbox"
-                   [checked]="currentAnswer?.includes(option)"
-                   (change)="onCheckboxChange(currentQuestion.id, option, $event)" />
+            <input
+              type="checkbox"
+              [checked]="currentAnswer?.includes(option)"
+              (change)="onCheckboxChange(currentQuestion.id, option, $event)"
+            />
             {{ option }}
           </label>
         </div>
@@ -34,11 +52,13 @@
       <ng-template #singleChoice>
         <div *ngFor="let option of currentQuestion.options">
           <label>
-            <input type="radio"
-                   [name]="'q' + currentQuestion.id"
-                   [value]="option"
-                   [(ngModel)]="currentAnswer"
-                   (ngModelChange)="answerCurrent(currentQuestion.id, currentAnswer)" />
+            <input
+              type="radio"
+              [name]="'q' + currentQuestion.id"
+              [value]="option"
+              [(ngModel)]="currentAnswer"
+              (ngModelChange)="answerCurrent(currentQuestion.id, currentAnswer)"
+            />
             {{ option }}
           </label>
         </div>
@@ -48,7 +68,28 @@
 
   <div class="wizard-buttons">
     <button (click)="prevStep()" [disabled]="currentStep === 0">Anterior</button>
-    <button *ngIf="currentStep < questions.length - 1" (click)="nextStep()">Siguiente</button>
-    <button *ngIf="currentStep === questions.length - 1" (click)="finish()">Finalizar</button>
+    <button
+      *ngIf="currentStep < questions.length - 1"
+      (click)="nextStep()"
+      [disabled]="!canGoNext()"
+    >
+      Siguiente
+    </button>
+    <button
+      *ngIf="currentStep === questions.length - 1"
+      (click)="finish()"
+      [disabled]="!canGoNext()"
+    >
+      Finalizar
+    </button>
   </div>
 </div>
+
+<div *ngIf="showThankYou">
+  <app-thank-you 
+    [name]="thankYouData.name" 
+    [phone]="thankYouData.phone" 
+    [email]="thankYouData.email">
+  </app-thank-you>
+</div>
+

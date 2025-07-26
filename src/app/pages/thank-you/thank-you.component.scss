@@ -1,0 +1,49 @@
+.thank-you-message {
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 2rem;
+  border-radius: 16px;
+  background: #f9f9f9;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  color: #333;
+
+  h2 {
+    font-size: 2rem;
+    color: #2e7d32; // Verde suave
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      font-size: 1rem;
+      margin: 0.5rem 0;
+
+      strong {
+        color: #555;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 1.5rem;
+    h2 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+    li {
+      font-size: 0.95rem;
+    }
+  }
+}

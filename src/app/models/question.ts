@@ -23,7 +23,8 @@ export const questions: Question[] = [
     text: '¿Qué tipo de terapia te gustaría realizar?',
     description: 'Esto nos ayudará a saber quién participará en las sesiones.',
     options: ['Individual', 'En pareja', 'Para un/a menor de edad'],
-    multiple: false
+    multiple: false,
+    inputType: 'text', // tipo por defecto si es un input libre
   },
   {
     id: 3,
@@ -32,7 +33,7 @@ export const questions: Question[] = [
     options: [],
     multiple: false,
     inputType: 'number',
-    autocomplete: 'bday-year',
+    autocomplete: 'bday', // o 'bday-year' si quieres solo el año
   },
   {
     id: 4,
@@ -47,7 +48,7 @@ export const questions: Question[] = [
       'Busco un camino para crecer personalmente',
       'Ninguna de las anteriores'
     ],
-    multiple: true
+    multiple: true,
   },
   {
     id: 5,
@@ -62,7 +63,7 @@ export const questions: Question[] = [
       'Estoy lidiando con problemas físicos o médicos propios o de alguien cercano',
       'Ninguna de estas opciones'
     ],
-    multiple: true
+    multiple: true,
   },
   {
     id: 6,
@@ -76,7 +77,7 @@ export const questions: Question[] = [
       'Siento que necesito un cambio importante en mi vida',
       'Ninguna de las anteriores'
     ],
-    multiple: true
+    multiple: true,
   },
   {
     id: 7,
@@ -85,6 +86,7 @@ export const questions: Question[] = [
     options: [],
     multiple: false,
     inputType: 'text',
+    autocomplete: 'off', // no relevante, pero para prevenir sugerencias automáticas genéricas
   },
   {
     id: 8,
@@ -103,5 +105,5 @@ export const questions: Question[] = [
     multiple: false,
     inputType: 'email',
     autocomplete: 'email',
-  },
+  }
 ];
