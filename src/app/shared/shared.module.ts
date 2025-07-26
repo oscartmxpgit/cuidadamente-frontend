@@ -13,6 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule} from '@angular/material/icon';
 import { QuillModule } from 'ngx-quill';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { QuillModule } from 'ngx-quill';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatInputModule,
+    MatDialogModule,
+    MatButtonModule,
     MatNativeDateModule,
     MatTableModule,
     QuillModule.forRoot()
@@ -47,6 +51,8 @@ import { QuillModule } from 'ngx-quill';
     MatNativeDateModule,
     MatDatepickerModule,
     MatInputModule,
+    MatDialogModule,
+    MatButtonModule,
     InsertHtmlDirective,
     MatTableModule,
     QuillModule
