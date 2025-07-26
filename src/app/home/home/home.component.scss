@@ -23,7 +23,7 @@
   background-color: #ffffff;
 }
 
-.testimonials-container {
+.valores-container {
   background-color: #f9f9f9;
   padding: 3rem 1rem;
   border-radius: 8px;
@@ -38,9 +38,9 @@
   margin-bottom: 2rem;
 }
 
-.testimonials-slider {
+.valores-slider {
   display: flex;
-  overflow-x: auto; /* Horizontal scroll for testimonials */
+  overflow-x: auto; /* Horizontal scroll for valores */
   scroll-behavior: smooth; /* Smooth scrolling */
   gap: 2rem; /* Spacing between items */
 }

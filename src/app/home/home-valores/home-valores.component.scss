@@ -1,4 +1,4 @@
-.testimonials-section {
+.valores-section {
   padding: 3rem 1rem;
   background-color: #f9fafb;
   text-align: center;
@@ -16,26 +16,26 @@
   margin-bottom: 2rem;
 }
 
-.testimonials-container {
+.valores-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
-.testimonial-card {
+.valor-card {
   background: white;
   padding: 1.5rem;
   border-radius: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
-.testimonial-text {
+.valor-text {
   font-style: italic;
   margin-bottom: 1rem;
   color: #374151;
 }
 
-.testimonial-author {
+.valor-author {
   display: flex;
   align-items: center;
   gap: 1rem;

@@ -171,3 +171,18 @@
     border-radius: 0;
   }
 }
+
+.highlighted-word {
+  color: #004d40;                /* verde oscuro */
+  font-weight: 400;              /* normal, sin negrita */
+  font-style: oblique 10deg;    /* cursiva ligera y suave */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* limpia y legible */
+  letter-spacing: 0.07em;        /* un poco más de espacio entre letras */
+  font-size: 1.4rem;             /* tamaño un poco más grande */
+  transition: color 0.3s ease;
+}
+
+.highlighted-word:hover {
+  color: #00695c;                /* verde más claro al hover */
+  cursor: pointer;
+}

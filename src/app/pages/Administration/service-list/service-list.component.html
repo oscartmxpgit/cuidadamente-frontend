@@ -1,8 +1,8 @@
 <h2>Listado de Servicios</h2>
-
-<button mat-raised-button color="primary" routerLink="/services/create" style="margin-bottom: 1rem;">
+<button mat-raised-button color="primary" (click)="abrirDialogoCrear()" style="margin-bottom: 1rem;">
   Crear Servicio
 </button>
+
 
 <table mat-table [dataSource]="services" class="mat-elevation-z2" *ngIf="!loading">
 
