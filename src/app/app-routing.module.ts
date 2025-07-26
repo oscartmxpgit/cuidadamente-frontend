@@ -20,6 +20,8 @@ import { RegistroCitaComponent } from './pages/registro-cita/registro-cita.compo
 import { EditHtmlChunkComponent } from './pages/Administration/edit-html-chunk/edit-html-chunk.component';
 import { HtmlChunksListComponent } from './pages/Administration/html-chunks-list/html-chunks-list.component';
 import { QuestionnaireWizardComponent } from './pages/questionaire-wizard/questionaire-wizard.component';
+import { AnswerDetailsComponent } from './pages/Administration/answer-details/answer-details.component';
+import { AnswersListComponent } from './pages/Administration/answers-list/answers-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,6 +43,7 @@ const routes: Routes = [
   { path: 'image-managment', component: ImageManagementComponent, canActivate: [AuthGuard] },
   { path: 'html-chunks-managment', component: HtmlChunksListComponent, canActivate: [AuthGuard] },
   { path: 'questionarie-wizard', component: QuestionnaireWizardComponent },
+  { path: 'questionarie-answers', component: AnswersListComponent },
 
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];

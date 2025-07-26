@@ -20,6 +20,8 @@ import { EditHtmlChunkComponent } from './Administration/edit-html-chunk/edit-ht
 import { HtmlChunksListComponent } from './Administration/html-chunks-list/html-chunks-list.component';
 import { QuestionnaireWizardComponent } from './questionaire-wizard/questionaire-wizard.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
+import { AnswersListComponent } from './Administration/answers-list/answers-list.component';
+import { AnswerDetailsComponent } from './Administration/answer-details/answer-details.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
     EditHtmlChunkComponent,
     HtmlChunksListComponent,
     QuestionnaireWizardComponent,
-    ThankYouComponent
+    ThankYouComponent,
+    AnswersListComponent,
+    AnswerDetailsComponent
   ],
   imports: [
     BrowserModule,

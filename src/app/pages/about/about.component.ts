@@ -1,26 +1,30 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { FileService } from '../../services/fileService';
-import { HtmlChunk } from '../../models/HtmlChunk';
 import { HtmlChunkService } from '../../services/html-chunk.service';
+
+interface TeamMember {
+  imageFileName: string;
+  altText: string;
+  chunkName: string;    // nombre para cargar htmlChunk desde BD
+  htmlContent?: string; // html cargado desde BD (chunk)
+}
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
-   encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None
 })
-export class AboutComponent {
+export class AboutComponent implements OnInit {
   imageUrls: { [key: string]: SafeUrl } = {};
-  htmlChunk?: HtmlChunk;
-
-  imageFileNames: string[] = [
-    'crespillo.jpg',
-    'pascual-berenguer.jpg',
-    'manuela-berenguer.jpg',
-    'laura.jpg',
-    'judit-escuderos.jpg',
-    'maria-brotons.jpg'
+  teamMembers: TeamMember[] = [
+    { imageFileName: 'crespillo.jpg', altText: 'Antonio Crespillo', chunkName: 'team-member-1' },
+    { imageFileName: 'pascual-berenguer.jpg', altText: 'Pascual Berenguer', chunkName: 'team-member-2' },
+    { imageFileName: 'manuela-berenguer.jpg', altText: 'Manuela Berenguer', chunkName: 'team-member-3' },
+    { imageFileName: 'laura.jpg', altText: 'Laura', chunkName: 'team-member-4' },
+    { imageFileName: 'judit-escuderos.jpg', altText: 'Judit Escuderos', chunkName: 'team-member-5' },
+    { imageFileName: 'maria-brotons.jpg', altText: 'María Brotons', chunkName: 'team-member-6' }
   ];
 
   constructor(
@@ -30,12 +34,21 @@ export class AboutComponent {
   ) {}
 
   ngOnInit(): void {
-    this.htmlChunkService.getHtmlChunkByName('team-member-1').subscribe(chunk => {
-      this.htmlChunk = chunk;
-      
-    });
+    // Carga imágenes
+    this.teamMembers.forEach(member => this.loadImage(member.imageFileName));
 
-    this.imageFileNames.forEach(fileName => this.loadImage(fileName));
+    // Carga chunks html para cada miembro
+    this.teamMembers.forEach(member => {
+      this.htmlChunkService.getHtmlChunkByName(member.chunkName).subscribe({
+        next: chunk => {
+          member.htmlContent = chunk.htmlContent;
+        },
+        error: err => {
+          console.error(`Error loading HTML chunk for ${member.chunkName}`, err);
+          member.htmlContent = '<p>Información no disponible.</p>';
+        }
+      });
+    });
   }
 
   loadImage(fileName: string): void {
@@ -50,7 +63,6 @@ export class AboutComponent {
   }
 
   getImageUrl(fileName: string): SafeUrl {
-    console.log(`Getting URL for image: ${fileName}`);
     return this.imageUrls[fileName] || '';
   }
 }

@@ -1,0 +1,42 @@
+<h2>Respuestas</h2>
+
+<table mat-table [dataSource]="answers" class="mat-elevation-z2 answers-table" *ngIf="!loading">
+
+  <!-- userName Column -->
+  <ng-container matColumnDef="userName">
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+    <td mat-cell *matCellDef="let answer">{{ answer.userName }}</td>
+  </ng-container>
+
+  <!-- phone Column -->
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+    <td mat-cell *matCellDef="let answer">{{ answer.phone || '-' }}</td>
+  </ng-container>
+
+  <!-- email Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let answer">{{ answer.email || '-' }}</td>
+  </ng-container>
+
+  <!-- createdAt Column -->
+  <ng-container matColumnDef="createdAt">
+    <th mat-header-cell *matHeaderCellDef>Fecha</th>
+    <td mat-cell *matCellDef="let answer">{{ answer.createdAt | date:'short' }}</td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <td mat-cell *matCellDef="let answer">
+      <button mat-button color="primary" (click)="viewAnswerDetails(answer)">Ver detalles</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+<div *ngIf="loading" class="loading">Cargando respuestas...</div>

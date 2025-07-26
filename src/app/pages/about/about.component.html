@@ -1,5 +1,4 @@
-
-  <section class="about">
+<section class="about">
   <div class="container">
     <h2>¿Quiénes somos?</h2>
     <p>
@@ -30,39 +29,9 @@
       </p>
 
       <div class="team-list">
-        <div class="team-member">
-          <img [src]="getImageUrl('crespillo.jpg')" alt="Antonio Crespillo" />
-          <div *ngIf="htmlChunk" [appInsertHtml]="htmlChunk.htmlContent"></div>
-        </div>
-        <div class="team-member">
-          <img [src]="getImageUrl('pascual-berenguer.jpg')" alt="Pascual Berenguer" />
-          <h4>Pascual Berenguer</h4>
-          <p><strong>Titulación:</strong> <!-- Añade aquí la titulación --></p>
-          <p><strong>Servicios:</strong> <!-- Añade aquí los servicios --></p>
-        </div>
-        <div class="team-member">
-          <img [src]="getImageUrl('manuela-berenguer.jpg')" alt="Manuela Berenguer" />
-          <h4>Manuela Berenguer</h4>
-          <p><strong>Titulación:</strong> Máster en Psicología General Sanitaria UMH, Máster en Intervención Psicológica en Niños y Adolescentes UNIR, Máster en Terapias de Tercera Generación UNIR</p>
-          <p><strong>Servicios:</strong> Intervención Psicológica en adultos y adolescentes: problemas de ansiedad, autoestima, gestión del estrés, bajo estado de ánimo, trauma, desahogo emocional. Terapia familiar y de pareja: relaciones de pareja, conflictos familiares, periodos de crisis. Enfermedad grave, procesos oncológicos y duelo.</p>
-        </div>
-        <div class="team-member">
-          <img [src]="getImageUrl('laura.jpg')" alt="Laura" />
-          <h4>Laura</h4>
-          <p><strong>Titulación:</strong> <!-- Añade aquí la titulación --></p>
-          <p><strong>Servicios:</strong> <!-- Añade aquí los servicios --></p>
-        </div>
-        <div class="team-member">
-          <img [src]="getImageUrl('judit-escuderos.jpg')" alt="Judit Escuderos" />
-          <h4>Judit Escuderos</h4>
-          <p><strong>Titulación:</strong> Grado en Psicología UMH, Máster en Psicología General Sanitaria UMH, Máster en Neuropsicología VIU</p>
-          <p><strong>Servicios:</strong> Terapia psicológica infanto-juvenil, Terapia psicológica adultez-vejez, Rehabilitación cognitiva en trastornos del desarrollo, Rehabilitación cognitiva en adultos, Evaluación y diagnóstico, Talleres</p>
-        </div>
-        <div class="team-member">
-          <img [src]="getImageUrl('maria-brotons.jpg')" alt="María Brotons" />
-          <h4>María Brotons</h4>
-          <p><strong>Titulación:</strong> Grado en Psicología, Máster en Psicología General Sanitaria con especialización en Terapia familiar sistémica</p>
-          <p><strong>Servicios:</strong> Terapia individual adultos y adolescentes (ansiedad, depresión, estrés, dificultades de adaptación, pérdida de sentido vital), Duelo, cuidados paliativos, Talleres</p>
+        <div class="team-member" *ngFor="let member of teamMembers">
+          <img [src]="getImageUrl(member.imageFileName)" [alt]="member.altText" />
+          <div *ngIf="member.htmlContent" [appInsertHtml]="member.htmlContent"></div>
         </div>
       </div>
     </div>
