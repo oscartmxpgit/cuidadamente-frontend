@@ -1,12 +1,26 @@
 <section class="services-section">
   <h2 class="section-title">Nuestros Servicios</h2>
-  <p class="section-subtitle">Apoyamos tu bienestar emocional con atención profesional y personalizada</p>
+  <p class="section-subtitle">
+    Apoyamos tu bienestar emocional con atención profesional y personalizada
+  </p>
 
   <div class="services-grid">
     <div class="service-card" *ngFor="let service of services">
-      
+    <img *ngIf="service.imageUrl" [src]="service.imageUrl" [alt]="service.title" class="service-img" />
       <h3>{{ service.title }}</h3>
-      <p>{{ service.description }}</p>
+
+      <p>
+        {{
+          showFull[service.title]
+            ? service.description
+            : (service.description ? (service.description | slice:0:150) + '...' : '')
+        }}
+      </p>
+
+      <button *ngIf="service.description && service.description.length > 150"
+              (click)="toggleDescription(service.title)">
+        {{ showFull[service.title] ? 'Ver menos' : 'Más información' }}
+      </button>
     </div>
   </div>
 </section>

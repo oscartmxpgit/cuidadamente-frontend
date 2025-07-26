@@ -12,7 +12,7 @@
   <div class="navbar-menu" [class.is-active]="menuActive">
     <a routerLink="/about" class="nav-link" (click)="closeMenu()">Quiénes Somos</a>
     <a routerLink="/services" class="nav-link" (click)="closeMenu()">Servicios</a>
-    <a routerLink="/faq" class="nav-link" (click)="closeMenu()">FAQ</a>
+    <!-- <a routerLink="/faq" class="nav-link" (click)="closeMenu()">FAQ</a> -->
     <a routerLink="/registro-cita" class="nav-link" (click)="closeMenu()">Registro cita</a>
 
     <ng-container *ngIf="authService.isAuthenticated(); else loginBtn">

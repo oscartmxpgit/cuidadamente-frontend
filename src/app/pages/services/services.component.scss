@@ -1,25 +1,7 @@
-.services-section {
-  padding: 4rem 1rem;
-  background-color: #f3f4f6;
-  text-align: center;
-}
-
-.section-title {
-  font-size: 2rem;
-  color: #111827;
-  margin-bottom: 0.5rem;
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  color: #6b7280;
-  margin-bottom: 2rem;
-}
-
 .services-grid {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* Siempre 3 columnas */
 }
 
 .service-card {
@@ -34,8 +16,30 @@
   transform: translateY(-5px);
 }
 
-.icon {
-  font-size: 2.5rem;
+/* Botón más discreto */
+.service-card button {
+  background: transparent;
+  border: none;
   color: #3b82f6;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.service-card button:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.service-img {
+  width: 100%;       /* Ocupa todo el ancho del contenedor tarjeta */
+  height: 180px;     /* Puedes ajustar la altura fija que prefieras */
+  object-fit: contain; /* Ajusta la imagen para que quepa sin recortarse */
+  border-radius: 0.5rem;
   margin-bottom: 1rem;
+  background-color: #f9fafb; /* Fondo claro opcional para que destaque */
+  display: block;    /* Para evitar espacios extra */
 }
