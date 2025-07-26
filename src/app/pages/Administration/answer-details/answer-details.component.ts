@@ -38,9 +38,39 @@ export class AnswerDetailsComponent {
   }
 
   formatValue(value: any): string {
-    if (typeof value === 'object') {
-      return JSON.stringify(value, null, 2);
+    if (value === null || value === undefined || value === '') return '—';
+
+    // Si es booleano
+    if (typeof value === 'boolean') return value ? 'Sí' : 'No';
+
+    // Si es array: eliminar corchetes y comillas
+    if (Array.isArray(value)) {
+      return value
+        .filter(v => v !== null && v !== undefined && v !== '')
+        .map(v => this.formatValue(v)) // Formatea cada valor recursivamente
+        .join(', ');
     }
-    return value;
+
+    // Si es objeto: mostrar clave: valor sin corchetes
+    if (typeof value === 'object') {
+      return Object.entries(value)
+        .map(([k, v]) => `${k}: ${this.formatValue(v)}`)
+        .join(', ');
+    }
+
+    // Si es string con comillas (como '"texto"'), quitarlas
+    if (typeof value === 'string') {
+      return value.replace(/^"(.*)"$/, '$1');
+    }
+
+    return String(value);
   }
+
+  hasAnswers(): boolean {
+    if (!this.parsedAnswers) return false;
+    if (Array.isArray(this.parsedAnswers)) return this.parsedAnswers.length > 0;
+    return Object.keys(this.parsedAnswers).length > 0;
+  }
+
+
 }

@@ -1,41 +1,43 @@
-<h2>Detalle de la respuesta</h2>
-
-<div class="answer-details">
-  <p><strong>Nombre:</strong> {{ answer.userName }}</p>
-  <p><strong>Teléfono:</strong> {{ answer.phone || '-' }}</p>
-  <p><strong>Email:</strong> {{ answer.email || '-' }}</p>
-
-  <p><strong>Respuestas:</strong></p>
-
-  <ng-container *ngIf="parsedAnswers; else noAnswers">
-    <div *ngIf="isArray(parsedAnswers); else objectAnswers">
-      <ul>
-        <li *ngFor="let item of parsedAnswers; let i = index">
-          <strong>Respuesta {{ i + 1 }}:</strong>
-          <ul>
-            <li *ngFor="let prop of item | keyvalue">
-              <strong>{{ prop.key }}:</strong> {{ formatValue(prop.value) }}
-            </li>
-          </ul>
-        </li>
-      </ul>
+<ng-container *ngIf="parsedAnswers else noAnswers">
+  <div *ngIf="isArray(parsedAnswers); else objectAnswers">
+    <div class="table-responsive">
+      <table class="answers-table">
+        <thead>
+          <tr>
+            <th>Pregunta</th>
+            <th>Respuesta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of parsedAnswers">
+            <td>{{ item.questionText }}</td>
+            <td>{{ formatValue(item.answer) }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <ng-template #objectAnswers>
-      <ul>
-        <li *ngFor="let item of parsedAnswers | keyvalue">
-          <strong>{{ item.key }}:</strong> {{ formatValue(item.value) }}
-        </li>
-      </ul>
-    </ng-template>
-  </ng-container>
-
-  <ng-template #noAnswers>
-    <p>No hay respuestas disponibles.</p>
-  </ng-template>
-
-  <p><strong>Fecha:</strong> {{ answer.createdAt | date:'full' }}</p>
-
-  <div class="actions">
-    <button mat-button color="primary" (click)="close()">Cerrar</button>
   </div>
-</div>
+
+  <ng-template #objectAnswers>
+    <div class="table-responsive">
+      <table class="answers-table">
+        <thead>
+          <tr>
+            <th>Pregunta</th>
+            <th>Respuesta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of parsedAnswers | keyvalue">
+            <td>{{ item.key }}</td>
+            <td>{{ formatValue(item.value) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-template>
+</ng-container>
+
+<ng-template #noAnswers>
+  <p>No hay respuestas disponibles.</p>
+</ng-template>

@@ -20,7 +20,7 @@
         "
         [autocomplete]="currentQuestion.autocomplete || 'off'"
         [(ngModel)]="currentAnswer"
-        (ngModelChange)="answerCurrent(currentQuestion.id, currentAnswer)"
+        (ngModelChange)="answerCurrent(currentQuestion.text, currentAnswer)"
         [required]="
           currentQuestion.inputType === 'tel' || currentQuestion.inputType === 'email'
         "
@@ -42,7 +42,7 @@
             <input
               type="checkbox"
               [checked]="currentAnswer?.includes(option)"
-              (change)="onCheckboxChange(currentQuestion.id, option, $event)"
+              (change)="onCheckboxChange(currentQuestion.text, option, $event)"
             />
             {{ option }}
           </label>
@@ -57,7 +57,7 @@
               [name]="'q' + currentQuestion.id"
               [value]="option"
               [(ngModel)]="currentAnswer"
-              (ngModelChange)="answerCurrent(currentQuestion.id, currentAnswer)"
+              (ngModelChange)="answerCurrent(currentQuestion.text, currentAnswer)"
             />
             {{ option }}
           </label>
