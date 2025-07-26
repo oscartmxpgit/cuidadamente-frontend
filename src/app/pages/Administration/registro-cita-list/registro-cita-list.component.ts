@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RegistroCita, RegistroCitaService } from '../../../services/registroCita.service';
+import { RegistroCita, RegistroCitaService } from '../../../tarjetas/registroCita.service';
 
 @Component({
   selector: 'app-registro-cita-list',

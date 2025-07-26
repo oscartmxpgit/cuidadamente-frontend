@@ -15,6 +15,7 @@ import { MatIconModule} from '@angular/material/icon';
 import { QuillModule } from 'ngx-quill';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule,
     MatButtonModule,
     MatNativeDateModule,
+    MatSelectModule,
     MatTableModule,
     QuillModule.forRoot()
   ],
@@ -53,6 +55,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatDialogModule,
     MatButtonModule,
+    MatSelectModule,
     InsertHtmlDirective,
     MatTableModule,
     QuillModule

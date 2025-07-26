@@ -1,25 +1,27 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Service } from '../../../models/service';
-import { ServicesService } from '../../../services/services.service';
+import { TarjetasService } from '../../../tarjetas/tarjetas.service';
 import { Observable } from 'rxjs';
+import { Tarjeta } from '../../../models/tarjeta';
 
 @Component({
-  selector: 'app-service-edit',
-  templateUrl: './service-edit.component.html',
-  styleUrls: ['./service-edit.component.scss']
+  selector: 'app-tarjeta-edit',
+  templateUrl: './tarjeta-edit.component.html',
+  styleUrls: ['./tarjeta-edit.component.scss']
 })
-export class ServiceEditComponent implements OnInit {
+export class TarjetaEditComponent implements OnInit {
   form!: FormGroup;
   loading = false;
   esEdicion = false;
 
+  tipos: string[] = ['Servicio', 'Valores', 'Otro']; // Opciones para el combo
+
   constructor(
     private fb: FormBuilder,
-    private servicesService: ServicesService,
-    private dialogRef: MatDialogRef<ServiceEditComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Partial<Service> // puede ser vacío al crear
+    private servicesService: TarjetasService,
+    private dialogRef: MatDialogRef<TarjetaEditComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Partial<Tarjeta> // puede ser vacío al crear
   ) {}
 
   ngOnInit() {
@@ -27,6 +29,7 @@ export class ServiceEditComponent implements OnInit {
 
     this.form = this.fb.group({
       title: [this.data?.title || '', Validators.required],
+      tipo: [this.data?.tipo || '', Validators.required],  // <-- nuevo control para tipo
       imageFileName: [this.data?.imageFileName || ''],
       description: [this.data?.description || '']
     });
@@ -35,7 +38,7 @@ export class ServiceEditComponent implements OnInit {
   guardar() {
     if (this.form.invalid) return;
 
-    const servicio: Service = {
+    const servicio: Tarjeta = {
       ...this.data,
       ...this.form.value
     };

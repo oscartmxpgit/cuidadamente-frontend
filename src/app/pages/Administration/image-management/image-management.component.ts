@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { FileService } from '../../../services/fileService';
+import { FileService } from '../../../tarjetas/fileService';
 
 @Component({
   selector: 'app-image-management',

@@ -3,10 +3,10 @@
   <p class="section-subtitle">Principios que guían nuestro trabajo y compromiso contigo</p>
 
   <div class="valores-container">
-    <div class="valor-card" *ngFor="let valor of valores">
-      <img [src]="valor.icono" alt="{{ valor.titulo }}" class="valor-icon" />
-      <h3 class="valor-title">{{ valor.titulo }}</h3>
-      <p class="valor-description">{{ valor.descripcion }}</p>
+    <div class="valor-card" *ngFor="let valor of tarjetas">
+      <img *ngIf="valor.imageFileName" [src]="valor.imageFileName" alt="{{ valor.title }}" class="valor-icon" />
+      <h3 class="valor-title">{{ valor.title }}</h3>
+      <p class="valor-description">{{ valor.description }}</p>
     </div>
   </div>
 </section>

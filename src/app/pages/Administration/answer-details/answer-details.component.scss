@@ -3,34 +3,91 @@
   margin-top: 12px;
 }
 
+/* Tabla de respuestas */
 .answers-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.95rem;
   min-width: 500px;
+  table-layout: auto;
+  background-color: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+}
 
-  th, td {
-    padding: 12px 16px;
-    border: 1px solid #e0e0e0;
-    text-align: left;
-    vertical-align: top;
-    word-break: break-word;
+.answers-table th,
+.answers-table td {
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+  vertical-align: top;
+  word-break: break-word;
+}
+
+.answers-table thead {
+  background-color: #e3f2fd;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.answers-table thead th {
+  color: #0d47a1;
+  font-weight: 600;
+}
+
+.answers-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.answers-table td {
+  color: #333;
+}
+
+/* Scroll vertical del bloque contenedor */
+.scrollable-table {
+  max-height: 600px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 8px;
+  margin: 12px 0;
+  width: 100%;
+  background-color: #fafafa;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Mensaje vacío */
+.no-answers {
+  padding: 12px;
+  color: #777;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Escritorio */
+@media (min-width: 1024px) {
+  .scrollable-table {
+    max-height: 800px;
+    width: 90%;
+    margin: 0 auto 24px auto;
+  }
+}
+
+/* Móviles */
+@media (max-width: 600px) {
+  .scrollable-table {
+    max-height: 300px;
+    width: 100%;
   }
 
-  thead {
-    background-color: #e3f2fd;
-
-    th {
-      color: #0d47a1;
-      font-weight: 600;
-    }
+  .answers-table {
+    font-size: 0.85rem;
+    min-width: unset;
   }
 
-  tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-
-  td {
-    color: #333;
+  .answers-table th,
+  .answers-table td {
+    padding: 10px 12px;
   }
 }

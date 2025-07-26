@@ -1,5 +1,5 @@
-<ng-container *ngIf="parsedAnswers else noAnswers">
-  <div *ngIf="isArray(parsedAnswers); else objectAnswers">
+<ng-container *ngIf="parsedAnswers; else noAnswers">
+  <div class="scrollable-table">
     <div class="table-responsive">
       <table class="answers-table">
         <thead>
@@ -9,35 +9,25 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of parsedAnswers">
-            <td>{{ item.questionText }}</td>
-            <td>{{ formatValue(item.answer) }}</td>
-          </tr>
+          <ng-container *ngIf="isArray(parsedAnswers); else objectAnswers">
+            <tr *ngFor="let item of parsedAnswers">
+              <td>{{ item.questionText }}</td>
+              <td>{{ formatValue(item.answer) }}</td>
+            </tr>
+          </ng-container>
+
+          <ng-template #objectAnswers>
+            <tr *ngFor="let item of parsedAnswers | keyvalue">
+              <td>{{ item.key }}</td>
+              <td>{{ formatValue(item.value) }}</td>
+            </tr>
+          </ng-template>
         </tbody>
       </table>
     </div>
   </div>
-
-  <ng-template #objectAnswers>
-    <div class="table-responsive">
-      <table class="answers-table">
-        <thead>
-          <tr>
-            <th>Pregunta</th>
-            <th>Respuesta</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of parsedAnswers | keyvalue">
-            <td>{{ item.key }}</td>
-            <td>{{ formatValue(item.value) }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </ng-template>
 </ng-container>
 
 <ng-template #noAnswers>
-  <p>No hay respuestas disponibles.</p>
+  <p class="no-answers">No hay respuestas disponibles.</p>
 </ng-template>

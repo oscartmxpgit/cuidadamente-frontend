@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Question, questions } from '../../models/question';
-import { CuestionarioResponseService } from '../../services/cuestionario-response.service';
+import { CuestionarioResponseService } from '../../tarjetas/cuestionario-response.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -80,10 +80,20 @@ export class QuestionnaireWizardComponent {
   finish() {
     this.answerCurrent(this.currentQuestion.text, this.currentAnswer);
 
+    const totalQuestions = this.questions.length;
+
+    const getTextAnswer = (index: number): string => {
+      const answer = this.responses[index]?.answer;
+      if (Array.isArray(answer)) {
+        return answer.join(', ');
+      }
+      return answer || '';
+    };
+
     this.thankYouData = {
-      name: this.getAnswerTextByQuestionText('¿Cómo te gustaría que te llamemos?'),
-      phone: this.getAnswerTextByQuestionText('¿Cuál es tu número de teléfono de contacto?'),
-      email: this.getAnswerTextByQuestionText('¿Cuál es tu correo electrónico?'),
+      name: getTextAnswer(0),
+      phone: getTextAnswer(totalQuestions - 2),
+      email: getTextAnswer(totalQuestions - 1)
     };
 
     const payload = {
@@ -107,6 +117,8 @@ export class QuestionnaireWizardComponent {
       }
     });
   }
+
+
 
   private getAnswerTextByQuestionText(questionText: string): string {
     const resp = this.responses.find(r => r.questionText === questionText);

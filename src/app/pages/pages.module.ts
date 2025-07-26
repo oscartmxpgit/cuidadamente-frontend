@@ -22,8 +22,8 @@ import { QuestionnaireWizardComponent } from './questionaire-wizard/questionaire
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { AnswersListComponent } from './Administration/answers-list/answers-list.component';
 import { AnswerDetailsComponent } from './Administration/answer-details/answer-details.component';
-import { ServiceListComponent } from './Administration/service-list/service-list.component';
-import { ServiceEditComponent } from './Administration/service-edit/service-edit.component';
+import { TarjetasListComponent } from './Administration/tarjetas-list/tarjetas-list.component';
+import { TarjetaEditComponent } from './Administration/tarjeta-edit/tarjeta-edit.component';
 
 
 @NgModule({
@@ -47,8 +47,8 @@ import { ServiceEditComponent } from './Administration/service-edit/service-edit
     ThankYouComponent,
     AnswersListComponent,
     AnswerDetailsComponent,
-    ServiceListComponent,
-    ServiceEditComponent
+    TarjetasListComponent,
+    TarjetaEditComponent
   ],
   imports: [
     BrowserModule,

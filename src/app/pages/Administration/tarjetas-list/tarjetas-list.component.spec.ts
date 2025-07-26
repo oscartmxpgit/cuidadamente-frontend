@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ServiceEditComponent } from './service-edit.component';
+import { TarjetasListComponent } from './tarjetas-list.component';
 
-describe('ServiceEditComponent', () => {
-  let component: ServiceEditComponent;
-  let fixture: ComponentFixture<ServiceEditComponent>;
+describe('TarjetasListComponent', () => {
+  let component: TarjetasListComponent;
+  let fixture: ComponentFixture<TarjetasListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ServiceEditComponent]
+      declarations: [TarjetasListComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ServiceEditComponent);
+    fixture = TestBed.createComponent(TarjetasListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

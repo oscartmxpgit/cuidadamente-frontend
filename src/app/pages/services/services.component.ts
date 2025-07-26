@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FileService } from '../../services/fileService';
-import { ServicesService } from '../../services/services.service';
-import { Service } from '../../models/service';
+import { FileService } from '../../tarjetas/fileService';
+import { TarjetasService } from '../../tarjetas/tarjetas.service';
+import { Tarjeta } from '../../models/tarjeta';
 
 @Component({
   selector: 'app-services',
@@ -10,11 +10,11 @@ import { Service } from '../../models/service';
 })
 export class ServicesComponent implements OnInit {
   showFull: { [key: string]: boolean } = {};
-  services: Service[] = [];
+  services: Tarjeta[] = [];
 
   constructor(
     private fileService: FileService,
-    private servicesService: ServicesService  // inyectamos servicio backend
+    private servicesService: TarjetasService  // inyectamos servicio backend
   ) {}
 
   ngOnInit() {

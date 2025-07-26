@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { FileService } from '../../services/fileService';
-import { HtmlChunkService } from '../../services/html-chunk.service';
+import { FileService } from '../../tarjetas/fileService';
+import { HtmlChunkService } from '../../tarjetas/html-chunk.service';
 
 interface TeamMember {
   imageFileName: string;

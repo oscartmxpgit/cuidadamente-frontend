@@ -22,8 +22,8 @@ import { HtmlChunksListComponent } from './pages/Administration/html-chunks-list
 import { QuestionnaireWizardComponent } from './pages/questionaire-wizard/questionaire-wizard.component';
 import { AnswerDetailsComponent } from './pages/Administration/answer-details/answer-details.component';
 import { AnswersListComponent } from './pages/Administration/answers-list/answers-list.component';
-import { ServiceListComponent } from './pages/Administration/service-list/service-list.component';
-import { ServiceEditComponent } from './pages/Administration/service-edit/service-edit.component';
+import { TarjetasListComponent } from './pages/Administration/tarjetas-list/tarjetas-list.component';
+import { TarjetaEditComponent } from './pages/Administration/tarjeta-edit/tarjeta-edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -46,7 +46,7 @@ const routes: Routes = [
   { path: 'html-chunks-managment', component: HtmlChunksListComponent, canActivate: [AuthGuard] },
   { path: 'questionarie-wizard', component: QuestionnaireWizardComponent },
   { path: 'questionarie-answers', component: AnswersListComponent },
-  { path: 'services-list', component: ServiceListComponent, canActivate: [AuthGuard] },
+  { path: 'services-list', component: TarjetasListComponent, canActivate: [AuthGuard] },
 
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];

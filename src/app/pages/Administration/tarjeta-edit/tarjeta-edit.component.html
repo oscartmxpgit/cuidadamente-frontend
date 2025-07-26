@@ -1,0 +1,39 @@
+<h2>{{ esEdicion ? 'Editar Tarjeta' : 'Crear Tarjeta' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="guardar()">
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Título</mat-label>
+    <input matInput formControlName="title" required />
+    <mat-error *ngIf="form.controls['title'].invalid">El título es obligatorio</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Tipo</mat-label>
+    <mat-select formControlName="tipo" required>
+      <mat-option value="Servicio">Servicio</mat-option>
+      <mat-option value="Valores">Valores</mat-option>
+      <mat-option value="Otro">Otro</mat-option>
+      <!-- Puedes agregar más opciones según lo necesites -->
+    </mat-select>
+    <mat-error *ngIf="form.controls['tipo'].invalid">El tipo es obligatorio</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Archivo Imagen</mat-label>
+    <input matInput formControlName="imageFileName" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Descripción</mat-label>
+    <textarea matInput formControlName="description" rows="5"></textarea>
+  </mat-form-field>
+
+  <div class="form-actions">
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || loading">
+      Guardar
+    </button>
+    <button mat-button type="button" (click)="cancelar()">Cancelar</button>
+  </div>
+
+</form>

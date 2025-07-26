@@ -1,8 +1,21 @@
-<h2>Listado de Servicios</h2>
-<button mat-raised-button color="primary" (click)="abrirDialogoCrear()" style="margin-bottom: 1rem;">
-  Crear Servicio
-</button>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+  <div>
+    <h2 style="margin: 0;">Listado de Servicios</h2>
+    <button mat-raised-button color="primary" (click)="abrirDialogoCrear()" style="margin-top: 8px;">
+      Crear Servicio
+    </button>
+  </div>
 
+  <mat-form-field appearance="fill" style="width: 200px;">
+    <mat-label>Filtrar por Tipo</mat-label>
+    <mat-select [(value)]="tipoSeleccionado" (selectionChange)="cargarTarjetas()">
+      <mat-option value="">Todos</mat-option>
+      <mat-option value="Servicio">Servicio</mat-option>
+      <mat-option value="Valores">Valores</mat-option>
+      <mat-option value="Otro">Otro</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
 
 <table mat-table [dataSource]="services" class="mat-elevation-z2" *ngIf="!loading">
 
@@ -29,7 +42,7 @@
     <th mat-header-cell *matHeaderCellDef>Acciones</th>
     <td mat-cell *matCellDef="let service">
       <button mat-button color="accent" (click)="abrirDialogoEdicion(service)">Editar</button>
-    <button mat-button color="warn" (click)="eliminarServicio(service.id)">Eliminar</button>
+      <button mat-button color="warn" (click)="eliminarTarjeta(service.id)">Eliminar</button>
     </td>
   </ng-container>
 

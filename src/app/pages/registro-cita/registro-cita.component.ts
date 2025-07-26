@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar'; // <-- Importa MatSnackBar
-import { RegistroCitaService } from '../../services/registroCita.service';
+import { RegistroCitaService } from '../../tarjetas/registroCita.service';
 
 @Component({
   selector: 'app-registro-cita',
