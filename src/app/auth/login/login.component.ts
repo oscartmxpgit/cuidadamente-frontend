@@ -29,7 +29,7 @@ export class LoginComponent {
       const { email, contrasena } = this.loginForm.value;
       this.authService.login(email, contrasena).subscribe(
         () => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/admin-dashboard']);
         },
         error => {
           this.errorMessage = 'Error de inicio de sesion. Por favor verifique su nombre de usuario y contraseña.'; // Set error message on failure

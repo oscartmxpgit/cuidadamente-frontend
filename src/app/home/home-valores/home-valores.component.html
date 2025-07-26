@@ -4,7 +4,7 @@
 
   <div class="valores-container">
     <div class="valor-card" *ngFor="let valor of tarjetas">
-      <img *ngIf="valor.imageFileName" [src]="valor.imageFileName" alt="{{ valor.title }}" class="valor-icon" />
+      <img *ngIf="valor.imageUrl" [src]="valor.imageUrl" alt="{{ valor.title }}" class="valor-icon" />
       <h3 class="valor-title">{{ valor.title }}</h3>
       <p class="valor-description">{{ valor.description }}</p>
     </div>

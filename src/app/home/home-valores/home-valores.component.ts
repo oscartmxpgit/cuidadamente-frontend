@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TarjetasService } from '../../tarjetas/tarjetas.service';
 import { Tarjeta } from '../../models/tarjeta';
+import { FileService } from '../../tarjetas/fileService';
 
 @Component({
   selector: 'app-home-valores',
@@ -11,7 +12,10 @@ export class HomeValoresComponent implements OnInit {
   tarjetas: Tarjeta[] = [];
   loading = false;
 
-  constructor(private tarjetasService: TarjetasService) {}
+  constructor(
+    private tarjetasService: TarjetasService,
+    private fileService: FileService
+  ) {}
 
   ngOnInit(): void {
     this.cargarValores();
@@ -22,6 +26,20 @@ export class HomeValoresComponent implements OnInit {
     this.tarjetasService.obtenerPorTipo('Valores').subscribe({
       next: data => {
         this.tarjetas = data;
+
+        for (const tarjeta of this.tarjetas) {
+          if (tarjeta.imageFileName) {
+            this.fileService.loadImage(tarjeta.imageFileName).subscribe({
+              next: blobUrl => {
+                tarjeta.imageUrl = blobUrl; // string
+              },
+              error: err => {
+                console.error(`Error cargando imagen ${tarjeta.imageFileName}`, err);
+              }
+            });
+          }
+        }
+
         this.loading = false;
       },
       error: () => {
