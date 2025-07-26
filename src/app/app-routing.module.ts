@@ -19,6 +19,7 @@ import { DoctorDashboardComponent } from './pages/Administration/doctor-dashboar
 import { RegistroCitaComponent } from './pages/registro-cita/registro-cita.component';
 import { EditHtmlChunkComponent } from './pages/Administration/edit-html-chunk/edit-html-chunk.component';
 import { HtmlChunksListComponent } from './pages/Administration/html-chunks-list/html-chunks-list.component';
+import { QuestionnaireWizardComponent } from './pages/questionaire-wizard/questionaire-wizard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'cancelar-cita', component: CancelarCitaComponent },
   { path: 'image-managment', component: ImageManagementComponent, canActivate: [AuthGuard] },
   { path: 'html-chunks-managment', component: HtmlChunksListComponent, canActivate: [AuthGuard] },
+  { path: 'questionarie-wizard', component: QuestionnaireWizardComponent },
 
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];

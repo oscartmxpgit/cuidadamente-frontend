@@ -18,6 +18,7 @@ import { RegistroCitaComponent } from './registro-cita/registro-cita.component';
 import { DoctorDashboardComponent } from './Administration/doctor-dashboard/doctor-dashboard.component';
 import { EditHtmlChunkComponent } from './Administration/edit-html-chunk/edit-html-chunk.component';
 import { HtmlChunksListComponent } from './Administration/html-chunks-list/html-chunks-list.component';
+import { QuestionnaireWizardComponent } from './questionaire-wizard/questionaire-wizard.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { HtmlChunksListComponent } from './Administration/html-chunks-list/html-
     ContactListComponent,
     ImageManagementComponent,
     EditHtmlChunkComponent,
-    HtmlChunksListComponent
+    HtmlChunksListComponent,
+    QuestionnaireWizardComponent
   ],
   imports: [
     BrowserModule,

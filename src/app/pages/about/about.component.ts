@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { FileService } from '../services/fileService';
+import { FileService } from '../../services/fileService';
 import { HtmlChunk } from '../../models/HtmlChunk';
 import { HtmlChunkService } from '../../services/html-chunk.service';
 

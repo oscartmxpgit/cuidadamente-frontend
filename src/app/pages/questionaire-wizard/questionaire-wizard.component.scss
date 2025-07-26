@@ -1,0 +1,184 @@
+/* Contenedor principal */
+.wizard-container { 
+  min-height: 450px; /* un poco más alto para comodidad */
+  max-width: 600px;
+  margin: 2rem auto;
+  background: rgba(240, 255, 240, 0.9); /* verde muy suave */
+  border-radius: 15px;
+  padding: 30px 25px;
+  box-shadow: 0 10px 25px rgba(0, 80, 0, 0.12); /* sombra verdosa */
+  position: relative;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1b3a1b; /* verde oscuro para texto */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Animación relajante de fondo */
+@keyframes calmBackgroundGreen {
+  0% {
+    background-position: 0% 50%, 50% 0%, 100% 50%;
+  }
+  50% {
+    background-position: 100% 50%, 50% 100%, 0% 50%;
+  }
+  100% {
+    background-position: 0% 50%, 50% 0%, 100% 50%;
+  }
+}
+
+.wizard-background {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+  /* Tres capas de gradientes lineales con verdes muy suaves, casi blancos */
+  background: 
+    linear-gradient(120deg, #e6f4e6, #c8e6c9, #e6f4e6),
+    linear-gradient(60deg, #f0faf0, #dcedc8, #f0faf0),
+    linear-gradient(0deg, #f4fbf4, #d0f0c0, #f4fbf4);
+  background-size: 200% 200%, 150% 150%, 300% 300%;
+  background-repeat: no-repeat;
+  animation: calmBackgroundGreen 30s ease-in-out infinite;
+  filter: blur(60px);
+  opacity: 0.75;
+}
+
+
+/* Texto pregunta */
+.question-text p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  color: #2e7d32; /* verde medio */
+  user-select: none;
+}
+
+/* Descripción */
+.question-text small {
+  display: block;
+  margin-bottom: 20px;
+  font-style: italic;
+  color: #4caf50; /* verde más claro */
+}
+
+/* Input texto */
+.answers input[type="text"] {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1.1rem;
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  color: #1b3a1b;
+  background: #f0fff0;
+}
+
+.answers input[type="text"]:focus {
+  border-color: #2e7d32;
+  box-shadow: 0 0 10px rgba(46,125,50,0.5);
+}
+
+/* Opciones checkbox y radio */
+.answers label {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  font-size: 1.1rem;
+  cursor: pointer;
+  user-select: none;
+  color: #1b3a1b;
+  transition: color 0.3s ease;
+}
+
+.answers label:hover {
+  color: #2e7d32;
+}
+
+.answers input[type="checkbox"],
+.answers input[type="radio"] {
+  margin-right: 12px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #2e7d32;
+}
+
+/* Botones */
+.wizard-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.wizard-buttons button {
+  background: #388e3c; /* verde oscuro */
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(46,125,50,0.5);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  flex: 1;
+  margin: 0 8px;
+  min-width: 120px;
+}
+
+.wizard-buttons button:first-child {
+  background: #a5d6a7; /* verde claro para el botón "Anterior" */
+  color: #1b3a1b;
+  box-shadow: none;
+  margin-left: 0;
+}
+
+.wizard-buttons button:disabled {
+  background: #c8e6c9;
+  cursor: not-allowed;
+  box-shadow: none;
+  color: #6b8e23;
+}
+
+.wizard-buttons button:hover:not(:disabled) {
+  background: #2e7d32;
+  box-shadow: 0 6px 14px rgba(46,125,50,0.7);
+}
+
+/* Barra de progreso */
+.progress-bar-container {
+  margin-bottom: 20px;
+}
+
+progress {
+  width: 100%;
+  height: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #dcedc8;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+progress::-webkit-progress-bar {
+  background-color: #dcedc8;
+  border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+  background: linear-gradient(90deg, #388e3c, #81c784);
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+progress::-moz-progress-bar {
+  background: linear-gradient(90deg, #388e3c, #81c784);
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
