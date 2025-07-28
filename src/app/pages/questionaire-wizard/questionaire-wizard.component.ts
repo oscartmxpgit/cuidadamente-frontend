@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Question, questions } from '../../models/question';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Question } from '../../models/question';
 import { CuestionarioResponseService } from '../../tarjetas/cuestionario-response.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -8,27 +9,45 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './questionaire-wizard.component.html',
   styleUrls: ['./questionaire-wizard.component.scss']
 })
-export class QuestionnaireWizardComponent {
-  questions: Question[] = questions;
+export class QuestionnaireWizardComponent implements OnInit {
+  questions: Question[] = [];
   currentStep = 0;
-  // Store questionText instead of questionId
   responses: { questionText: string; answer: string | string[] }[] = [];
+
+  currentAnswer: any = '';
+  showThankYou = false;
+  thankYouData = { name: '', phone: '', email: '' };
+
+  constructor(
+    private http: HttpClient,
+    private responseService: CuestionarioResponseService,
+    private snackBar: MatSnackBar
+  ) {}
 
   get currentQuestion(): Question {
     return this.questions[this.currentStep];
   }
 
-  constructor(private responseService: CuestionarioResponseService, private snackBar: MatSnackBar) { }
-
-  currentAnswer: any = '';
-
   ngOnInit() {
-    this.loadCurrentAnswer();
+    this.http.get<Question[]>('/assets/data/questions.json').subscribe({
+      next: (data) => {
+        this.questions = data;
+        this.loadCurrentAnswer();
+      },
+      error: (err) => {
+        console.error('Error loading questions:', err);
+        this.snackBar.open('Error cargando las preguntas', 'Cerrar', {
+          duration: 4000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+      }
+    });
   }
 
   loadCurrentAnswer() {
-    const existing = this.responses.find(r => r.questionText === this.currentQuestion.text);
-    this.currentAnswer = existing ? existing.answer : (this.currentQuestion.multiple ? [] : '');
+    const existing = this.responses.find(r => r.questionText === this.currentQuestion?.text);
+    this.currentAnswer = existing ? existing.answer : (this.currentQuestion?.multiple ? [] : '');
   }
 
   answerCurrent(questionText: string, answer: string | string[]) {
@@ -73,10 +92,6 @@ export class QuestionnaireWizardComponent {
     }
   }
 
-  // questionnaire-wizard.component.ts (add these properties)
-  showThankYou = false;
-  thankYouData = { name: '', phone: '', email: '' };
-
   finish() {
     this.answerCurrent(this.currentQuestion.text, this.currentAnswer);
 
@@ -118,8 +133,6 @@ export class QuestionnaireWizardComponent {
     });
   }
 
-
-
   private getAnswerTextByQuestionText(questionText: string): string {
     const resp = this.responses.find(r => r.questionText === questionText);
     if (!resp) return '';
@@ -139,7 +152,7 @@ export class QuestionnaireWizardComponent {
       return answer && answer.trim().length > 0;
     }
 
-    if (this.currentQuestion.text === 'Edad') { // example check by question text
+    if (this.currentQuestion.text === 'Edad') {
       const n = Number(answer);
       if (!answer || isNaN(n) || n < 0 || !Number.isInteger(n)) {
         return false;

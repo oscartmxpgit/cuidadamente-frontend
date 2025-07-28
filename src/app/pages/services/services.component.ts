@@ -18,7 +18,7 @@ export class ServicesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.servicesService.obtenerTodos().subscribe(servicesFromApi => {
+    this.servicesService.obtenerPorTipo('Servicio').subscribe(servicesFromApi => {
       this.services = servicesFromApi;
 
       // Cargar las imágenes
