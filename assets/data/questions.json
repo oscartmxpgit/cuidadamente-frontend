@@ -1,0 +1,99 @@
+[
+  {
+    "id": 1,
+    "text": "¿Cómo quieres que te llamemos?",
+    "description": "Tu nombre o un apodo, como prefieras.",
+    "options": [],
+    "multiple": false,
+    "inputType": "text",
+    "autocomplete": "given-name"
+  },
+  {
+    "id": 2,
+    "text": "¿Qué tipo de terapia buscas?",
+    "description": "Queremos saber si vendrás solo o acompañado.",
+    "options": ["Individual", "En pareja", "Para un/a menor"],
+    "multiple": false,
+    "inputType": "text"
+  },
+  {
+    "id": 3,
+    "text": "¿Cuántos años tienes?",
+    "description": "Si eres menor, necesitaremos permiso de tus padres.",
+    "options": [],
+    "multiple": false,
+    "inputType": "number",
+    "autocomplete": "bday"
+  },
+  {
+    "id": 4,
+    "text": "¿Por qué te interesa empezar terapia?",
+    "description": "Elige todo lo que encaje contigo.",
+    "options": [
+      "Ansiedad o estrés",
+      "Tristeza frecuente",
+      "Adaptación en otro país",
+      "Problemas laborales",
+      "Relaciones personales",
+      "Crecimiento personal",
+      "Otro motivo"
+    ],
+    "multiple": true
+  },
+  {
+    "id": 5,
+    "text": "¿Te reconoces en alguna de estas situaciones?",
+    "description": "Marca todas las que quieras.",
+    "options": [
+      "Alimentación o imagen corporal",
+      "Dificultades sexuales",
+      "Adicciones",
+      "Situaciones traumáticas",
+      "Quiero cambiar mi forma de pensar",
+      "Problemas físicos propios o de alguien cercano",
+      "Ninguna"
+    ],
+    "multiple": true
+  },
+  {
+    "id": 6,
+    "text": "¿Cómo te sientes últimamente?",
+    "description": "Selecciona lo que más se acerque.",
+    "options": [
+      "Me cuesta adaptarme a otro país",
+      "Una enfermedad me afecta (a mí o a alguien cercano)",
+      "Quiero conocerme mejor",
+      "Siento que valgo poco",
+      "Necesito un cambio en mi vida",
+      "Nada de esto"
+    ],
+    "multiple": true
+  },
+  {
+    "id": 7,
+    "text": "¿En qué horarios te viene mejor?",
+    "description": "Por ejemplo: mañanas, tardes, fines de semana...",
+    "options": [],
+    "multiple": false,
+    "inputType": "text",
+    "autocomplete": "off"
+  },
+  {
+    "id": 8,
+    "text": "¿Cuál es tu teléfono?",
+    "description": "Incluye el prefijo del país si puedes.",
+    "options": [],
+    "multiple": false,
+    "inputType": "tel",
+    "autocomplete": "tel"
+  },
+  {
+    "id": 9,
+    "text": "¿Y tu correo electrónico?",
+    "description": "Lo usamos para contactarte o enviarte información.",
+    "options": [],
+    "multiple": false,
+    "inputType": "email",
+    "autocomplete": "email"
+  }
+]
