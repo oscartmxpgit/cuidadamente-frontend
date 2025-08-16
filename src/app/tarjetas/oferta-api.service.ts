@@ -20,7 +20,7 @@ export class OfertaApiService {
     return this.http.get<Oferta>(`${this.base}/${id}`);
   }
 
-  crear(oferta: Oferta): Observable<number> {
+  crear(oferta: Partial<Oferta>): Observable<number> {
     return this.http.post<number>(this.base, oferta);
   }
 
