@@ -129,9 +129,6 @@ export class OfertaFormComponent implements OnInit {
   }
 
   private sincronizarHorarios(ofertaId: number, horariosOriginales: HorarioOferta[]) {
-    console.log('Sincronizando horarios para oferta ID:', ofertaId);
-    console.log('Horarios originales:', horariosOriginales);
-    console.log('Horarios del formulario:', this.form.value.horarios);
     
     const requests: Observable<any>[] = [];
     const horariosForm: HorarioOferta[] = this.normalizarHorasParaGuardar(this.form.value.horarios)

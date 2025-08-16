@@ -24,6 +24,15 @@ export class OfertaApiService {
     return this.http.post<number>(this.base, oferta);
   }
 
+  obtenerHorasDisponibles(servicioId: number): Observable<string[]> {
+    return this.http.get<string[]>(`${this.base}/${servicioId}/horas`);
+  }
+
+
+  obtenerDiasYHoras(servicioId: number): Observable<Record<string, string[]>> {
+    return this.http.get<Record<string, string[]>>(`${this.base}/disponibilidad/${servicioId}`);
+  }
+
   actualizar(id: number, oferta: Oferta) {
     return this.http.put(`${this.base}/${id}`, oferta);
   }
