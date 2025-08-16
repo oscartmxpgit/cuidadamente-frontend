@@ -28,7 +28,6 @@ export class OfertaApiService {
     return this.http.get<string[]>(`${this.base}/${servicioId}/horas`);
   }
 
-
   obtenerDiasYHoras(servicioId: number): Observable<Record<string, string[]>> {
     return this.http.get<Record<string, string[]>>(`${this.base}/disponibilidad/${servicioId}`);
   }
@@ -46,6 +45,7 @@ export class OfertaApiService {
   }
 
   actualizarHorario(id: number, hid: number, horario: HorarioOferta) {
+    console.log('Actualizando horario:', id, hid, horario);
     return this.http.put(`${this.base}/${id}/horarios/${hid}`, horario);
   }
 
