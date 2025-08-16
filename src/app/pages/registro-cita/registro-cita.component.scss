@@ -66,3 +66,62 @@ button[type="submit"]:hover:enabled {
     padding: 1rem 0.5rem;
   }
 }
+
+.error {
+  color: #d32f2f;
+  font-size: 0.95em;
+  margin-top: 0.2em;
+}
+form div {
+  margin-bottom: 1em;
+}
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3em;
+}
+input, select, button {
+  width: 100%;
+  padding: 0.5em;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+button:disabled {
+  background-color: #90caf9;
+  cursor: not-allowed;
+}
+
+/* Ajuste específico para que el mat-datepicker luzca como los demás inputs */
+.mat-form-field-appearance-fill {
+  width: 100%;
+
+  .mat-form-field-flex {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 0 12px;
+    height: 40px;
+    align-items: center; /* centra verticalmente el input y el icono */
+  }
+
+  .mat-input-element {
+    height: 100%;
+    padding: 8px 0; /* quita padding extra que rompe la alineación */
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  .mat-datepicker-toggle-default-icon {
+    color: #3f51b5;
+  }
+
+  &.mat-focused .mat-form-field-flex {
+    border-color: #3f51b5;
+  }
+}

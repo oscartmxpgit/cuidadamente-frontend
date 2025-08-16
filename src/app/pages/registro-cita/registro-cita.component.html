@@ -5,7 +5,8 @@
   <div>
     <label>Nombre completo:</label>
     <input formControlName="nombre" required autocomplete="name">
-    <div class="error" *ngIf="citaForm.get('nombre')?.invalid && citaForm.get('nombre')?.touched">
+    <div class="error"
+      *ngIf="citaForm.get('nombre')?.invalid && citaForm.get('nombre')?.touched">
       El nombre es obligatorio.
     </div>
   </div>
@@ -14,7 +15,8 @@
   <div>
     <label>Teléfono:</label>
     <input formControlName="telefono" required autocomplete="tel">
-    <div class="error" *ngIf="citaForm.get('telefono')?.invalid && citaForm.get('telefono')?.touched">
+    <div class="error"
+      *ngIf="citaForm.get('telefono')?.invalid && citaForm.get('telefono')?.touched">
       El teléfono es obligatorio.
     </div>
   </div>
@@ -23,7 +25,8 @@
   <div>
     <label>Email:</label>
     <input formControlName="email" required type="email" autocomplete="email">
-    <div class="error" *ngIf="citaForm.get('email')?.invalid && citaForm.get('email')?.touched">
+    <div class="error"
+      *ngIf="citaForm.get('email')?.invalid && citaForm.get('email')?.touched">
       Introduce un email válido.
     </div>
   </div>
@@ -32,41 +35,43 @@
   <div>
     <label>Servicio:</label>
     <select formControlName="servicio" required autocomplete="off">
-      <option value="">-- Selecciona un servicio --</option>
+      <option value>-- Selecciona un servicio --</option>
       <option *ngFor="let s of servicios" [value]="s.id">{{s.nombre}}</option>
     </select>
-    <div class="error" *ngIf="citaForm.get('servicio')?.invalid && citaForm.get('servicio')?.touched">
+    <div class="error"
+      *ngIf="citaForm.get('servicio')?.invalid && citaForm.get('servicio')?.touched">
       Selecciona un servicio.
     </div>
   </div>
 
   <!-- Día -->
-  <!-- Día -->
-<div>
-  <label>Día:</label>
-  <mat-form-field appearance="fill">
-    <input matInput 
-           formControlName="fecha" 
-           [matDatepicker]="picker" 
-           [matDatepickerFilter]="dateFilter" 
-           placeholder="Selecciona un día" 
-           autocomplete="off">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-  <div class="error" *ngIf="citaForm.get('fecha')?.invalid && citaForm.get('fecha')?.touched">
-    Selecciona un día válido.
+  <div>
+    <label>Día:</label>
+    <mat-form-field appearance="fill">
+      <input matInput
+        formControlName="fecha"
+        [matDatepicker]="picker"
+        [matDatepickerFilter]="dateFilter"
+        placeholder="Selecciona un día"
+        autocomplete="off">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div class="error"
+      *ngIf="citaForm.get('fecha')?.invalid && citaForm.get('fecha')?.touched">
+      Selecciona un día válido.
+    </div>
   </div>
-</div>
 
   <!-- Hora -->
   <div>
     <label>Hora:</label>
     <select formControlName="hora" required autocomplete="off">
-      <option value="">-- Selecciona una hora --</option>
+      <option value>-- Selecciona una hora --</option>
       <option *ngFor="let h of horasDisponibles" [value]="h">{{h}}</option>
     </select>
-    <div class="error" *ngIf="citaForm.get('hora')?.invalid && citaForm.get('hora')?.touched">
+    <div class="error"
+      *ngIf="citaForm.get('hora')?.invalid && citaForm.get('hora')?.touched">
       Selecciona una hora.
     </div>
   </div>
@@ -74,35 +79,3 @@
   <!-- Botón de envío -->
   <button type="submit" [disabled]="citaForm.invalid">Reservar cita</button>
 </form>
-
-<style>
-.error {
-  color: #d32f2f;
-  font-size: 0.95em;
-  margin-top: 0.2em;
-}
-form div {
-  margin-bottom: 1em;
-}
-label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.3em;
-}
-input, select, button {
-  width: 100%;
-  padding: 0.5em;
-  font-size: 1em;
-  box-sizing: border-box;
-}
-button {
-  background-color: #1976d2;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-button:disabled {
-  background-color: #90caf9;
-  cursor: not-allowed;
-}
-</style>

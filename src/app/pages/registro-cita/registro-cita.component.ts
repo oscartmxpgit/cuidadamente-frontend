@@ -36,7 +36,6 @@ export class RegistroCitaComponent implements OnInit {
   ngOnInit(): void {
     this.loadServicios();
 
-    // Cuando cambia el servicio, cargar días y horas disponibles
     this.citaForm.get('servicio')?.valueChanges.subscribe((servicioId: number) => {
       if (servicioId) {
         this.loadDiasYHorasDisponibles(servicioId);
@@ -49,17 +48,45 @@ export class RegistroCitaComponent implements OnInit {
       this.citaForm.get('hora')?.setValue('');
     });
 
-    // Cuando cambia la fecha, actualizar horas disponibles
     this.citaForm.get('fecha')?.valueChanges.subscribe((fecha: Date) => {
       if (!fecha) {
         this.horasDisponibles = [];
         return;
       }
       const dia = fecha.getDay(); // 0=Domingo, 1=Lunes...
-      this.horasDisponibles = this.diasYHoras[dia] || [];
+      const rangos = this.diasYHoras[dia] || [];
+      this.horasDisponibles = rangos.flatMap(this.generarHorasPorBloque);
       this.citaForm.get('hora')?.setValue('');
     });
   }
+
+  // Función para generar bloques de 1 hora a partir de un rango "HH:mm-HH:mm"
+  generarHorasPorBloque(rango: string): string[] {
+    const [inicioStr, finStr] = rango.split('-');
+    const [hInicio, mInicio] = inicioStr.split(':').map(Number);
+    const [hFin, mFin] = finStr.split(':').map(Number);
+
+    const inicio = new Date();
+    inicio.setHours(hInicio, mInicio, 0, 0);
+
+    const fin = new Date();
+    fin.setHours(hFin, mFin, 0, 0);
+
+    const bloques: string[] = [];
+    const copia = new Date(inicio);
+
+    while (copia.getTime() + 60 * 60 * 1000 <= fin.getTime()) {
+      const horaInicio = copia.getHours().toString().padStart(2, '0');
+      const minInicio = copia.getMinutes().toString().padStart(2, '0');
+      copia.setHours(copia.getHours(), copia.getMinutes() + 60); // sumamos 1 hora
+      const horaFin = copia.getHours().toString().padStart(2, '0');
+      const minFin = copia.getMinutes().toString().padStart(2, '0');
+      bloques.push(`${horaInicio}:${minInicio}-${horaFin}:${minFin}`);
+    }
+
+    return bloques;
+  }
+
 
   private loadServicios() {
     this.ofertaApi.listar().subscribe({
