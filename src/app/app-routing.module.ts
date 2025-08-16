@@ -9,21 +9,16 @@ import { ServicesComponent } from './pages/services/services.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AuthGuard } from './auth.guard';
 import { AdminDashboardComponent } from './pages/Administration/admin-dashboard/admin-dashboard.component';
-import { PatientDashboardComponent } from './pages/patient-dashboard/patient-dashboard.component';
 import { HomeComponent } from './home/home/home.component';
 import { RegistroCitaListComponent } from './pages/Administration/registro-cita-list/registro-cita-list.component';
 import { CancelarCitaComponent } from './pages/cancelar-cita/cancelar-cita.component';
 import { ContactListComponent } from './pages/Administration/contact-list/contact-list.component';
 import { ImageManagementComponent } from './pages/Administration/image-management/image-management.component';
-import { DoctorDashboardComponent } from './pages/Administration/doctor-dashboard/doctor-dashboard.component';
 import { RegistroCitaComponent } from './pages/registro-cita/registro-cita.component';
-import { EditHtmlChunkComponent } from './pages/Administration/edit-html-chunk/edit-html-chunk.component';
 import { HtmlChunksListComponent } from './pages/Administration/html-chunks-list/html-chunks-list.component';
 import { QuestionnaireWizardComponent } from './pages/questionaire-wizard/questionaire-wizard.component';
-import { AnswerDetailsComponent } from './pages/Administration/answer-details/answer-details.component';
 import { AnswersListComponent } from './pages/Administration/answers-list/answers-list.component';
 import { TarjetasListComponent } from './pages/Administration/tarjetas-list/tarjetas-list.component';
-import { TarjetaEditComponent } from './pages/Administration/tarjeta-edit/tarjeta-edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,8 +31,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard] },
-  { path: 'patient-dashboard', component: PatientDashboardComponent, canActivate: [AuthGuard] },
-  { path: 'doctor-dashboard', component: DoctorDashboardComponent, canActivate: [AuthGuard] },
   { path: 'registro-cita', component: RegistroCitaComponent },
   { path: 'registro-cita-list', component: RegistroCitaListComponent },
   { path: 'contact-list', component: ContactListComponent },

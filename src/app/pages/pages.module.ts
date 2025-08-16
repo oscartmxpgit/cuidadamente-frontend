@@ -6,7 +6,6 @@ import { FaqComponent } from './faq/faq.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { ContactComponent } from './contact/contact.component';
 import { AdminDashboardComponent } from './Administration/admin-dashboard/admin-dashboard.component';
-import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from '../shared/shared.module';
@@ -15,7 +14,6 @@ import { CancelarCitaComponent } from './cancelar-cita/cancelar-cita.component';
 import { ContactListComponent } from './Administration/contact-list/contact-list.component';
 import { ImageManagementComponent } from './Administration/image-management/image-management.component';
 import { RegistroCitaComponent } from './registro-cita/registro-cita.component';
-import { DoctorDashboardComponent } from './Administration/doctor-dashboard/doctor-dashboard.component';
 import { EditHtmlChunkComponent } from './Administration/edit-html-chunk/edit-html-chunk.component';
 import { HtmlChunksListComponent } from './Administration/html-chunks-list/html-chunks-list.component';
 import { QuestionnaireWizardComponent } from './questionaire-wizard/questionaire-wizard.component';
@@ -33,9 +31,7 @@ import { TarjetaEditComponent } from './Administration/tarjeta-edit/tarjeta-edit
     FaqComponent,
     AppointmentsComponent,
     ContactComponent,
-    DoctorDashboardComponent,
     AdminDashboardComponent,
-    PatientDashboardComponent,
     RegistroCitaComponent,
     RegistroCitaListComponent,
     CancelarCitaComponent,
