@@ -15,7 +15,7 @@
       (click)="closeMenu()">Servicios</a>
     <!-- <a routerLink="/faq" class="nav-link" (click)="closeMenu()">FAQ</a> -->
     <a routerLink="/registro-cita" class="nav-link"
-      (click)="closeMenu()">Registro cita</a>
+      (click)="closeMenu()">Pedir cita</a>
 
     <ng-container *ngIf="authService.isAuthenticated(); else loginBtn">
       <a routerLink="/admin-dashboard" *ngIf="authService.isAdmin()"

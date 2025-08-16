@@ -2,7 +2,7 @@
 const fs = require('fs');
 const https = require('https');
 
-const baseUrl = 'https://script.google.com/macros/s/AKfycbwazzOvA-nK8cTTPOlKTqLMy1nkJfCdSlmtmAnasdEYhxK6jt6hp6KIqXDfRgOvFeh4YA/exec';
+const baseUrl = 'https://script.google.com/macros/s/AKfycbwZfz-DqdTnJywlfSbypzpMuIF0lMDbTwxNlccBI7NZREDQ-xjMyVnYEp815PBcgAhNSg/exec';
 const outputDir = 'D:/MyProjects/cuidadamente-frontend/src/assets/data';
 
 const sheets = [

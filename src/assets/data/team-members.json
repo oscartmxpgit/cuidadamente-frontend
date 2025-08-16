@@ -1,6 +1,6 @@
 [
   { "imageFileName": "crespillo.jpg", "altText": "Antonio Crespillo", "chunkName": "team-member-1" },
-  { "imageFileName": "pascual-berenguer.jpg", "altText": "Pascual Berenguer", "chunkName": "team-member-2" },
+  { "imageFileName": "pascual.jpg", "altText": "Pascual Berenguer", "chunkName": "team-member-2" },
   { "imageFileName": "manuela-berenguer.jpg", "altText": "Manuela Berenguer", "chunkName": "team-member-3" },
   { "imageFileName": "laura.jpg", "altText": "Laura", "chunkName": "team-member-4" },
   { "imageFileName": "judit-escuderos.jpg", "altText": "Judit Escuderos", "chunkName": "team-member-5" },
