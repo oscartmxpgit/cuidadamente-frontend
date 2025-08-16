@@ -22,6 +22,9 @@ import { AnswersListComponent } from './Administration/answers-list/answers-list
 import { AnswerDetailsComponent } from './Administration/answer-details/answer-details.component';
 import { TarjetasListComponent } from './Administration/tarjetas-list/tarjetas-list.component';
 import { TarjetaEditComponent } from './Administration/tarjeta-edit/tarjeta-edit.component';
+import { OfertaListComponent } from './Administration/oferta-list/oferta-list.component';
+import { OfertaDetalleComponent } from './Administration/oferta-detalle/oferta-detalle.component';
+import { OfertaFormComponent } from './Administration/oferta-form/oferta-form.component';
 
 
 @NgModule({
@@ -44,7 +47,10 @@ import { TarjetaEditComponent } from './Administration/tarjeta-edit/tarjeta-edit
     AnswersListComponent,
     AnswerDetailsComponent,
     TarjetasListComponent,
-    TarjetaEditComponent
+    TarjetaEditComponent,
+    OfertaListComponent,
+    OfertaDetalleComponent,
+    OfertaFormComponent
   ],
   imports: [
     BrowserModule,

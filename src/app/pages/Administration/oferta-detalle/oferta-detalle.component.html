@@ -1,0 +1,23 @@
+<!-- src/app/components/oferta-detalle/oferta-detalle.component.html -->
+<div *ngIf="oferta">
+  <h2>{{ oferta.nombre }}</h2>
+  <p>{{ oferta.descripcion }}</p>
+
+  <h3>Horarios</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Día</th>
+        <th>Inicio</th>
+        <th>Fin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let h of oferta.horarios">
+        <td>{{ nombreDia(h.diaSemana) }}</td>
+        <td>{{ h.horaInicio }}</td>
+        <td>{{ h.horaFin }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

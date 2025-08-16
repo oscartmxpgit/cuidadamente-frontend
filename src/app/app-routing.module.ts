@@ -19,6 +19,8 @@ import { HtmlChunksListComponent } from './pages/Administration/html-chunks-list
 import { QuestionnaireWizardComponent } from './pages/questionaire-wizard/questionaire-wizard.component';
 import { AnswersListComponent } from './pages/Administration/answers-list/answers-list.component';
 import { TarjetasListComponent } from './pages/Administration/tarjetas-list/tarjetas-list.component';
+import { OfertaListComponent } from './pages/Administration/oferta-list/oferta-list.component';
+import { OfertaFormComponent } from './pages/Administration/oferta-form/oferta-form.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,16 +32,19 @@ const routes: Routes = [
   { path: 'appointments', component: AppointmentsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard] },
   { path: 'registro-cita', component: RegistroCitaComponent },
   { path: 'registro-cita-list', component: RegistroCitaListComponent },
   { path: 'contact-list', component: ContactListComponent },
   { path: 'cancelar-cita', component: CancelarCitaComponent },
+  
+  /* management */
+  { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard] },
   { path: 'image-managment', component: ImageManagementComponent, canActivate: [AuthGuard] },
   { path: 'html-chunks-managment', component: HtmlChunksListComponent, canActivate: [AuthGuard] },
   { path: 'questionarie-wizard', component: QuestionnaireWizardComponent },
   { path: 'questionarie-answers', component: AnswersListComponent },
   { path: 'services-list', component: TarjetasListComponent, canActivate: [AuthGuard] },
+  { path: 'ofertas-list', component: OfertaListComponent, canActivate: [AuthGuard] },
 
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];

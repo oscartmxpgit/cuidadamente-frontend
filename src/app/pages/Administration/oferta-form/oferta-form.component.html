@@ -1,0 +1,54 @@
+<h2>{{ esEdicion ? 'Editar Oferta' : 'Crear Nueva Oferta' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="guardar()" class="oferta-form">
+
+  <div class="form-fields">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" required>
+      <mat-error *ngIf="form.controls['nombre'].invalid">El nombre es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="descripcion" rows="3"></textarea>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="activa">Activa</mat-checkbox>
+  </div>
+
+  <h3>Horarios</h3>
+  <div class="horarios-container">
+    <div formArrayName="horarios">
+      <div *ngFor="let h of horarios.controls; let i=index" [formGroupName]="i" class="horario-row">
+        <mat-form-field appearance="fill">
+          <mat-label>Día</mat-label>
+          <mat-select formControlName="diaSemana" required>
+            <mat-option *ngFor="let d of dias; let idx = index" [value]="idx">{{ d }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Inicio</mat-label>
+          <input matInput type="time" formControlName="horaInicio" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Fin</mat-label>
+          <input matInput type="time" formControlName="horaFin" required>
+        </mat-form-field>
+
+        <button mat-icon-button color="warn" type="button" (click)="eliminarHorario(i)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <button mat-button type="button" (click)="agregarHorario()">Agregar Horario</button>
+
+  <div class="form-actions">
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || loading">Guardar</button>
+    <button mat-button type="button" (click)="cancelar()">Cancelar</button>
+  </div>
+</form>

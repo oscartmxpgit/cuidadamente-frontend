@@ -16,6 +16,7 @@ import { QuillModule } from 'ngx-quill';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { MatSelectModule } from '@angular/material/select';
     FooterComponent,
     MatCardModule,
     MatIconModule,
+    MatCheckboxModule,
     MatNativeDateModule,
     MatDatepickerModule,
     MatInputModule,
