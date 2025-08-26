@@ -1,45 +1,31 @@
 <section class="about">
   <div class="container">
     <h2>¿Quiénes somos?</h2>
-    <p>
-      Cuidadamente es un espacio donde tú eres el protagonista. Queremos acompañarte en el camino hacia tu salud y crecimiento personal, de la mano de profesionales con experiencia, formación y desde la empatía y humanidad.
-    </p>
 
-    <div class="about-section">
-      <h3>Nuestro trabajo</h3>
-      <p>
-        Proporcionamos un servicio de alta calidad accesible para todos. Creamos un entorno seguro donde nuestros pacientes reciben la atención que necesitan para mejorar su bienestar emocional.
-      </p>
-    </div>
     <div class="about-section">
       <h3>Nuestro equipo</h3>
-      <p>
-        Nuestro equipo está comprometido con tu salud mental, desde un enfoque integral. Combinando diferentes perspectivas te ofrecemos una atención personalizada, atendiendo tus necesidades específicas con calidad y calidez.
-      </p>
-      <p>
-        Somos un equipo de profesionales de la psicología, neuropsicología, integración social y mediación familiar comprometidos con tu salud mental.
-      </p>
 
-      <div class="team-list">
-        <div class="team-member" *ngFor="let member of teamMembers">
-          <img [src]="getImageUrl(member.imageFileName)" [alt]="member.altText" />
-          <div *ngIf="member.htmlContent" [appInsertHtml]="member.htmlContent"></div>
-        </div>
+      <div class="team-grid">
+        <ng-container *ngFor="let member of teamMembers">
+          <div class="team-card" *ngIf="imageUrls[member.imageFileName]">
+            <img [src]="getImageUrl(member.imageFileName)" [alt]="member.altText" />
+            
+            <div class="team-content">
+              <div [innerHTML]="truncateHtml(member.htmlContent || '', 100)"></div>
+              <span class="show-more" (click)="openModal(member)">...</span>
+            </div>
+          </div>
+        </ng-container>
       </div>
     </div>
+  </div>
 
-    <div class="about-section">
-      <h3>Nuestros valores</h3>
-      <ul>
-        <li><strong>Experiencia</strong> (Pascual)</li>
-        <li><strong>Conocimiento</strong> (Pascual)</li>
-        <li><strong>Actitud</strong> (Pascual)</li>
-        <li><strong>Compromiso:</strong> ofrecemos servicios de calidad (Antonio y Jose Gabriel)</li>
-        <li><strong>Cercanía</strong> (Antonio y Jose Gabriel)</li>
-        <li><strong>Comprensión afectiva</strong> (Antonio y Jose Gabriel)</li>
-        <li><strong>Accesibilidad</strong></li>
-        <li><strong>Confidencialidad</strong></li>
-      </ul>
+  <!-- Modal -->
+  <div class="modal" *ngIf="selectedMember">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <img [src]="getImageUrl(selectedMember.imageFileName)" [alt]="selectedMember.altText" />
+      <div [innerHTML]="selectedMember.htmlContent"></div>
     </div>
   </div>
 </section>

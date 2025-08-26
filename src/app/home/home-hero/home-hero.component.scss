@@ -1,5 +1,5 @@
 .hero {
-  background-color: #fff; /* White background */
+  background-color: #fff7f0; /* Soft warm cream background */
   color: #333; /* Dark text color for better contrast */
   padding: 60px 0;
   text-align: center;
@@ -10,7 +10,7 @@
 }
 
 .navbar-logo {
-  max-height: 100px; /* Adjust the max height as needed */
+  max-height: 200px; /* Adjust the max height as needed */
 }
 
 .hero-headline {
@@ -24,7 +24,7 @@
   font-size: 3rem;
   font-weight: lighter;
   margin-bottom: 1rem;
-  color: #008080; /* Bluish green text color */
+  color: #e65100; /* orange tone */
 }
 
 .hero-description {
@@ -34,15 +34,16 @@
 }
 
 .hero-buttons .btn-primary {
-  background-color: #6c757d; /* Softer button color */
+  background-color: #e65100; /* primary orange */
   border: none;
   padding: 10px 20px;
   font-size: 1rem;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  color: #fff;
 }
 
 .hero-buttons .btn-primary:hover {
-  background-color: #495057; /* Darker button color on hover */
+  background-color: #ff6f00; /* brighter orange on hover */
   transform: translateY(-2px); /* Subtle lift effect on hover */
 }
 
@@ -67,7 +68,7 @@
   font-size: 1.25rem;
   font-weight: bold;
   color: #fff;
-  background-color: #224635; 
+  background-color: #f57c00; /* bold orange for main hero CTA */
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -75,5 +76,5 @@
 }
 
 .hero-button:hover {
-  background-color: #0056b3;
+  background-color: #ef6c00; /* deeper orange hover */
 }

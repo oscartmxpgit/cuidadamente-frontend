@@ -22,3 +22,7 @@ body {
   text-align: center;
   margin-top: auto; // Ensure footer is pushed to the bottom
 }
+
+.mat-mdc-form-field-flex {
+  background-color: transparent !important;
+}

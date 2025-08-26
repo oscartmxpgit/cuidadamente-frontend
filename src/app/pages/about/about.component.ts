@@ -20,6 +20,7 @@ interface TeamMember {
 export class AboutComponent implements OnInit {
   imageUrls: { [key: string]: SafeUrl } = {};
   teamMembers: TeamMember[] = [];
+  selectedMember: TeamMember | null = null;
 
   constructor(
     private fileService: FileService,
@@ -35,24 +36,29 @@ export class AboutComponent implements OnInit {
   private loadTeamMembers(): void {
     this.http.get<TeamMember[]>('assets/data/team-members.json').subscribe({
       next: (members) => {
-        this.teamMembers = members;
-
-        this.teamMembers.forEach(member => {
-          this.loadImage(member.imageFileName);
-          this.loadHtmlChunk(member);
+        // Filter only members with valid images
+        const validMembers: TeamMember[] = [];
+        members.forEach(member => {
+          this.fileService.loadImage(member.imageFileName).subscribe({
+            next: url => {
+              this.imageUrls[member.imageFileName] = this.sanitizer.bypassSecurityTrustUrl(url);
+              validMembers.push(member);
+              this.loadHtmlChunk(member);
+              this.teamMembers = [...validMembers]; // Update after each image loads
+            },
+            error: () => {
+              console.warn(`Image not found: ${member.imageFileName}. Skipping member.`);
+            }
+          });
         });
       },
-      error: err => {
-        console.error('Error loading team members JSON', err);
-      }
+      error: err => console.error('Error loading team members JSON', err)
     });
   }
 
   private loadHtmlChunk(member: TeamMember): void {
     this.htmlChunkService.getHtmlChunkByName(member.chunkName).subscribe({
-      next: chunk => {
-        member.htmlContent = chunk.htmlContent;
-      },
+      next: chunk => member.htmlContent = chunk.htmlContent,
       error: err => {
         console.error(`Error loading HTML chunk for ${member.chunkName}`, err);
         member.htmlContent = '<p>Información no disponible.</p>';
@@ -60,18 +66,26 @@ export class AboutComponent implements OnInit {
     });
   }
 
-  private loadImage(fileName: string): void {
-    this.fileService.loadImage(fileName).subscribe(
-      url => {
-        this.imageUrls[fileName] = this.sanitizer.bypassSecurityTrustUrl(url);
-      },
-      error => {
-        console.error(`Error loading image ${fileName}:`, error);
-      }
-    );
-  }
-
   getImageUrl(fileName: string): SafeUrl {
     return this.imageUrls[fileName] || '';
+  }
+
+  openModal(member: TeamMember) {
+    this.selectedMember = member;
+  }
+
+  closeModal() {
+    this.selectedMember = null;
+  }
+
+  truncateHtml(html: string, maxLength: number): string {
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    let text = div.textContent || div.innerText || '';
+    if (text.length > maxLength) {
+      text = text.substr(0, maxLength);
+      text = text.substr(0, Math.min(text.length, text.lastIndexOf(' '))) + '...';
+    }
+    return text;
   }
 }

@@ -1,13 +1,13 @@
 .valores-section {
   padding: 3rem 1rem;
-  background-color: #f9fafb;
+  background-color: #fff7f0; /* same warm cream background */
   text-align: center;
 }
 
 .section-title {
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  color: #1f2937;
+  color: #e65100; /* orange accent for titles */
 }
 
 .section-subtitle {
@@ -31,6 +31,12 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.valor-card:hover {
+  transform: translateY(-5px); /* subtle lift on hover */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 .valor-icon {
@@ -46,7 +52,7 @@
 .valor-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1f2937;
+  color: #e65100; /* orange accent */
   margin-bottom: 0.5rem;
 }
 

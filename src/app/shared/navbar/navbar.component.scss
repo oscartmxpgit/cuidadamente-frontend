@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #f8f9fa; /* Lighter background color */
+  background-color: #f5f0eb; /* Slightly darker neutral gray */
   padding: 0.2rem 1rem; /* Reduced height */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 40px;
@@ -10,9 +10,10 @@
 
 @media (max-width: 600px) {
   .navbar {
-    margin-top: 25px; // Ajusta a la altura real del toolbar en móvil
+    margin-top: 25px; /* Ajusta a la altura real del toolbar en móvil */
   }
 }
+
 
 .navbar-logo {
   max-height: 40px; /* Adjust the max height as needed */
@@ -61,18 +62,19 @@
 }
 
 .nav-button {
-  background-color: #6c757d; /* Softer button color */
+  background-color: #e65100; /* warm orange */
   color: #fff; /* White text color */
   border: none;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   cursor: pointer; /* Hand cursor */
+  border-radius: 6px;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .nav-button:hover {
-  background-color: #495057; /* Darker button color on hover */
-  transform: translateY(-2px); /* Subtle lift effect on hover */
+  background-color: #ff6f00; /* brighter orange on hover */
+  transform: translateY(-2px); /* subtle lift effect */
 }
 
 /* Dropdown styles for "Pide tu cita" */
@@ -173,9 +175,9 @@
 }
 
 .highlighted-word {
-  color: #004d40;                /* verde oscuro */
+  color: #e65100;                /* warm orange tone */
   font-weight: 400;              /* normal, sin negrita */
-  font-style: oblique 10deg;    /* cursiva ligera y suave */
+  font-style: oblique 10deg;     /* cursiva ligera y suave */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* limpia y legible */
   letter-spacing: 0.07em;        /* un poco más de espacio entre letras */
   font-size: 1.4rem;             /* tamaño un poco más grande */
@@ -183,6 +185,7 @@
 }
 
 .highlighted-word:hover {
-  color: #00695c;                /* verde más claro al hover */
+  color: #ff6f00;                /* brighter orange on hover */
   cursor: pointer;
 }
+

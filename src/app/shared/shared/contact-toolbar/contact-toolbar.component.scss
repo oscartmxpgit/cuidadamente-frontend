@@ -1,6 +1,6 @@
 .contact-toolbar {
   width: 100%;
-  background: #007b5e;
+  background: #e65100; /* deep burnt orange */
   color: #fff;
   display: flex;
   align-items: center;
@@ -26,7 +26,7 @@
     padding: 0 0.2rem;
 
     &:hover {
-      color: #ffe082;
+      color: #ffd54f; /* warm amber for hover */
     }
   }
 
