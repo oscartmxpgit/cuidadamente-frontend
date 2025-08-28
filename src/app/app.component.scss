@@ -1,6 +1,9 @@
-//El truco es que tanto :host como main y .container tengan flex: 1 0 auto;.
-//Así, el footer se queda abajo si hay poco contenido, pero se empuja si hay mucho.
-//No necesitas JS ni hacks adicionales.
+/* 
+El truco es que tanto :host como main y .container tengan flex: 1 0 auto;
+Así, el footer se queda abajo si hay poco contenido, pero se empuja si hay mucho.
+No necesitas JS ni hacks adicionales.
+*/
+
 :host {
   display: flex;
   flex-direction: column;
@@ -11,7 +14,9 @@
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
+  background-color: #fff7f0; /* Orange accent background */
 }
+
 
 .container {
   flex: 1 0 auto;
@@ -23,4 +28,35 @@ app-footer {
   padding: 1rem;
   text-align: center;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Orange accent */
+:root {
+  --accent-color: #ff7043;
+}
+
+/* Input & field focus state */
+.mat-mdc-form-field.mat-focused .mat-mdc-form-field-flex {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 1px var(--accent-color) inset;
+}
+
+/* Datepicker icon */
+.mat-datepicker-toggle-default-icon {
+  color: var(--accent-color) !important;
+}
+
+/* Buttons */
+button,
+.mat-mdc-raised-button,
+.mat-mdc-outlined-button {
+  background-color: var(--accent-color) !important;
+  color: #fff !important;
+  border: none;
+}
+
+button:hover,
+.mat-mdc-raised-button:hover,
+.mat-mdc-outlined-button:hover {
+  background-color: #e55b2f !important; /* darker orange */
 }

@@ -9,7 +9,7 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; // Ensure body takes full viewport height
+  min-height: 100vh; /* Ensure body takes full viewport height */
 }
 
 .content {
@@ -20,9 +20,26 @@ body {
   background-color: #f1f1f1;
   padding: 10px;
   text-align: center;
-  margin-top: auto; // Ensure footer is pushed to the bottom
+  margin-top: auto; /* Ensure footer is pushed to the bottom */
 }
 
+/* Make form field background transparent */
 .mat-mdc-form-field-flex {
   background-color: transparent !important;
+}
+
+/* Orange accent color */
+:root {
+  --accent-color: #ff7043; /* warm orange */
+}
+
+/* Apply orange color to inputs focus border */
+.mat-mdc-form-field.mat-focused .mat-mdc-form-field-flex {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 1px var(--accent-color) inset;
+}
+
+/* Apply orange color to datepicker icon */
+.mat-datepicker-toggle-default-icon {
+  color: var(--accent-color) !important;
 }

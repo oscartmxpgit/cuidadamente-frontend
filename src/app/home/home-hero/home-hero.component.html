@@ -1,49 +1,51 @@
-<div class="hero" ngClass.xs="xs" ngClass.sm="sm">
-    <div class="tb-container tb-position--relative container">
-        <div class="content-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between start">
-            <!-- Text Content -->
-            <div fxFlex="70" fxFlex.xs="100" fxLayout="column" class="text-section">
-                <div ngClass.gt-sm="tb-height--80" ngClass.sm="tb-height--50" ngClass.xs="tb-height--30"></div>
+<div class="hero">
+  <!-- Transparent background image layer -->
+  <div class="hero-bg" [style.background-image]="'url(' + imageUrl + ')'"></div>
 
-                <!-- Logo -->
-                <div class="hero-logo">
-                    <img src="assets/images/LogoTransp.png" alt="Logo" class="navbar-logo">
-                </div>
+  <div class="tb-container tb-position--relative container">
+    <div class="content-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between start">
+      <!-- Text Content -->
+      <div fxFlex="70" fxFlex.xs="100" fxLayout="column" class="text-section">
+        <div ngClass.gt-sm="tb-height--80" ngClass.sm="tb-height--50" ngClass.xs="tb-height--30"></div>
 
-                <div ngClass.gt-sm="tb-height--16" ngClass.sm="tb-height--12" ngClass.xs="tb-height--10"></div>
-
-                <!-- Main Headline -->
-                <h1
-                    [@transitionTextEnter]="{value:'in', params: {animDelay: 300}}"
-                    ngClass.gt-sm="current-typo--h1-light"
-                    ngClass.sm="current-typo--h2-light"
-                    ngClass.xs="current-typo--h3"
-                    class="hero-headline">
-                    Cuidadamente: tu centro de salud mental.
-                </h1>
-
-                <!-- Subheadline -->
-                <h2
-                    [@transitionTextEnter]="{value:'in', params: {animDelay: 500}}"
-                    class="hero-subheadline">
-                    Un equipo de especialistas a tu servicio.
-                </h2>
-
-                <!-- Hero Button -->
-                <button class="hero-button" [@transitionTextEnter]="{value:'in', params: {animDelay: 600}}" routerLink="/questionarie-wizard">
-                    Inicia el cuestionario
-                </button>
-
-                <!-- Contact Info -->
-                <div class="hero-contact" [@transitionTextEnter]="{value:'in', params: {animDelay: 700}}">
-                    <p><i class="fas fa-phone"></i> Tlf: +34 682 391 660</p>
-                    <p><i class="fas fa-envelope"></i> Correo electrónico: info&#64;cuidadamente.org</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Dirección: c/Capitán Dema 1-4º. Puerta 2.</p>
-                </div>
-
-                <div ngClass.gt-sm="tb-height--80" ngClass.sm="tb-height--50" ngClass.xs="tb-height--30"></div>
-            </div>
-
+        <!-- Logo -->
+        <div class="hero-logo">
+          <img src="assets/images/LogoTransp.png" alt="Logo" class="navbar-logo">
         </div>
+
+        <div ngClass.gt-sm="tb-height--16" ngClass.sm="tb-height--12" ngClass.xs="tb-height--10"></div>
+
+        <!-- Main Headline -->
+        <h1 [@transitionTextEnter]="{value:'in', params:{animDelay:300}}"
+            ngClass.gt-sm="current-typo--h1-light"
+            ngClass.sm="current-typo--h2-light"
+            ngClass.xs="current-typo--h3"
+            class="hero-headline">
+          Cuidadamente: tu centro de salud mental.
+        </h1>
+
+        <!-- Subheadline -->
+        <h2 [@transitionTextEnter]="{value:'in', params:{animDelay:500}}"
+            class="hero-subheadline">
+          Un equipo de especialistas a tu servicio.
+        </h2>
+
+        <!-- Hero Button -->
+        <button class="hero-button"
+                [@transitionTextEnter]="{value:'in', params:{animDelay:600}}"
+                routerLink="/questionarie-wizard">
+          Inicia el cuestionario
+        </button>
+
+        <!-- Contact Info -->
+        <div class="hero-contact" [@transitionTextEnter]="{value:'in', params:{animDelay:700}}">
+          <p><i class="fas fa-phone"></i> Tlf: +34 682 391 660</p>
+          <p><i class="fas fa-envelope"></i> Correo electrónico: info&#64;cuidadamente.org</p>
+          <p><i class="fas fa-map-marker-alt"></i> Dirección: c/Capitán Dema 1-4º. Puerta 2.</p>
+        </div>
+
+        <div ngClass.gt-sm="tb-height--80" ngClass.sm="tb-height--50" ngClass.xs="tb-height--30"></div>
+      </div>
     </div>
+  </div>
 </div>

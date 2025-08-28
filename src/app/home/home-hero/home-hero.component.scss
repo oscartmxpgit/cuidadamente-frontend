@@ -1,8 +1,40 @@
 .hero {
-  background-color: #fff7f0; /* Soft warm cream background */
-  color: #333; /* Dark text color for better contrast */
+  position: relative;
+  background-color: #fff7f0; /* fallback color */
+  color: #333;
   padding: 60px 0;
   text-align: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  filter: blur(3px);
+
+  /* Smooth edges all around using radial gradient */
+  -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: cover;
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: cover;
+
+  z-index: 0;
+}
+
+.hero .tb-container {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-logo {
@@ -10,56 +42,21 @@
 }
 
 .navbar-logo {
-  max-height: 200px; /* Adjust the max height as needed */
+  max-height: 200px;
 }
 
 .hero-headline {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: #333; /* Dark text color */
+  color: #333;
 }
 
 .hero-subheadline {
   font-size: 3rem;
   font-weight: lighter;
   margin-bottom: 1rem;
-  color: #e65100; /* orange tone */
-}
-
-.hero-description {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  color: #666; /* Light grey text color */
-}
-
-.hero-buttons .btn-primary {
-  background-color: #e65100; /* primary orange */
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  color: #fff;
-}
-
-.hero-buttons .btn-primary:hover {
-  background-color: #ff6f00; /* brighter orange on hover */
-  transform: translateY(-2px); /* Subtle lift effect on hover */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .hero-headline {
-    font-size: 1.5rem;
-  }
-
-  .hero-subheadline {
-    font-size: 2.5rem;
-  }
-
-  .hero-description {
-    font-size: 1rem;
-  }
+  color: #e65100;
 }
 
 .hero-button {
@@ -68,7 +65,7 @@
   font-size: 1.25rem;
   font-weight: bold;
   color: #fff;
-  background-color: #f57c00; /* bold orange for main hero CTA */
+  background-color: #f57c00;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -76,5 +73,5 @@
 }
 
 .hero-button:hover {
-  background-color: #ef6c00; /* deeper orange hover */
+  background-color: #ef6c00;
 }
