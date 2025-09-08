@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, HostListener, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { FileService } from '../../tarjetas/fileService';
 import { HtmlChunkService } from '../../tarjetas/html-chunk.service';
@@ -36,7 +36,6 @@ export class AboutComponent implements OnInit {
   private loadTeamMembers(): void {
     this.http.get<TeamMember[]>('assets/data/team-members.json').subscribe({
       next: (members) => {
-        // Filter only members with valid images
         const validMembers: TeamMember[] = [];
         members.forEach(member => {
           this.fileService.loadImage(member.imageFileName).subscribe({
@@ -44,11 +43,9 @@ export class AboutComponent implements OnInit {
               this.imageUrls[member.imageFileName] = this.sanitizer.bypassSecurityTrustUrl(url);
               validMembers.push(member);
               this.loadHtmlChunk(member);
-              this.teamMembers = [...validMembers]; // Update after each image loads
+              this.teamMembers = [...validMembers];
             },
-            error: () => {
-              console.warn(`Image not found: ${member.imageFileName}. Skipping member.`);
-            }
+            error: () => console.warn(`Image not found: ${member.imageFileName}. Skipping member.`)
           });
         });
       },
@@ -76,6 +73,20 @@ export class AboutComponent implements OnInit {
 
   closeModal() {
     this.selectedMember = null;
+  }
+
+  // Close modal on ESC
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscape(event: KeyboardEvent) {
+    if (this.selectedMember) this.closeModal();
+  }
+
+  // Handle card click
+  onCardClick(event: MouseEvent, member: TeamMember) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('a') && !target.closest('button') && !target.classList.contains('show-more')) {
+      this.openModal(member);
+    }
   }
 
   truncateHtml(html: string, maxLength: number): string {

@@ -2,14 +2,16 @@
   max-width: 400px;
   margin: 1% auto 20px;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  border: 1px solid #ffb74d;      /* subtle orange border */
+  border-radius: 8px;
+  background-color: #fff3e0;      /* light warm orange background */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .login-container h2 {
   text-align: center;
   margin-bottom: 20px;
+  color: #e65100;                 /* bold orange header */
 }
 
 .login-container form div {
@@ -19,16 +21,25 @@
 .login-container label {
   display: block;
   margin-bottom: 5px;
+  color: #bf360c;                 /* darker orange for labels */
 }
 
 .login-container input {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
+  border: 1px solid #ffcc80;      /* soft orange border */
+  border-radius: 5px;
+  background-color: #fff8e1;      /* very light orange */
+}
+
+.login-container input:focus {
+  border-color: #ff9800;          /* highlight on focus */
+  outline: none;
 }
 
 .login-container .error-message {
-  color: red;
+  color: #d32f2f;
   text-align: center;
   margin-bottom: 15px;
 }
@@ -36,14 +47,19 @@
 .login-container button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #fb8c00;      /* orange button */
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-container button:hover:enabled {
+  background-color: #ef6c00;      /* deeper orange on hover */
 }
 
 .login-container button:disabled {
-  background-color: #ccc;
+  background-color: #ffcc80;      /* soft disabled orange */
   cursor: not-allowed;
 }

@@ -3,16 +3,17 @@
     <h2>¿Quiénes somos?</h2>
 
     <div class="about-section">
-      <h3>Nuestro equipo</h3>
-
       <div class="team-grid">
         <ng-container *ngFor="let member of teamMembers">
-          <div class="team-card" *ngIf="imageUrls[member.imageFileName]">
+          <div 
+            class="team-card" 
+            *ngIf="imageUrls[member.imageFileName]"
+            (click)="onCardClick($event, member)">
+            
             <img [src]="getImageUrl(member.imageFileName)" [alt]="member.altText" />
             
             <div class="team-content">
               <div [innerHTML]="truncateHtml(member.htmlContent || '', 100)"></div>
-              <span class="show-more" (click)="openModal(member)">...</span>
             </div>
           </div>
         </ng-container>
@@ -21,8 +22,8 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal" *ngIf="selectedMember">
-    <div class="modal-content">
+  <div class="modal" *ngIf="selectedMember" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
       <span class="close" (click)="closeModal()">&times;</span>
       <img [src]="getImageUrl(selectedMember.imageFileName)" [alt]="selectedMember.altText" />
       <div [innerHTML]="selectedMember.htmlContent"></div>

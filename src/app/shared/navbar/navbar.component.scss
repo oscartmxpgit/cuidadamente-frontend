@@ -1,191 +1,164 @@
+/* Navbar base */
 .navbar {
+  margin-top: 36px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #f5f0eb; /* Slightly darker neutral gray */
-  padding: 0.2rem 1rem; /* Reduced height */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 40px;
+  background-color: #fff7f0; /* fondo naranja suave */
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1000;
 }
 
-@media (max-width: 600px) {
-  .navbar {
-    margin-top: 25px; /* Ajusta a la altura real del toolbar en móvil */
-  }
-}
-
-
-.navbar-logo {
-  max-height: 40px; /* Adjust the max height as needed */
-}
-      
-
+/* Brand */
 .navbar-brand {
   flex: 1;
 }
 
+/* Burger toggle */
 .navbar-toggle {
   display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 25px;
+  height: 20px;
   cursor: pointer;
 }
 
-.navbar-toggle-icon {
-  width: 25px;
-  height: 2px;
-  background-color: #333; /* Darker toggle icon color */
+.navbar-toggle span {
   display: block;
-  margin: 5px 0;
+  height: 3px;
+  width: 100%;
+  background-color: #e65100; /* naranja fuerte */
+  border-radius: 2px;
 }
 
+/* Menu links */
 .navbar-menu {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  flex: 2;
+  gap: 1rem;
 }
 
 .navbar-menu.is-active {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Links & CTA */
 .nav-link {
-  color: #333; /* Dark text color */
+  color: #e65100; /* naranja fuerte para todos los links */
   text-decoration: none;
-  margin: 0 1rem;
   font-size: 1rem;
-  transition: color 0.3s ease;
-  cursor: pointer; /* Hand cursor */
+  cursor: pointer;
+  transition: color 0.3s;
 }
 
 .nav-link:hover {
-  color: #555; /* Slightly lighter text color on hover */
+  color: #ff6f00; /* naranja brillante al hover */
 }
 
-.nav-button {
-  background-color: #e65100; /* warm orange */
-  color: #fff; /* White text color */
-  border: none;
+.nav-cta {
+  background-color: #ff6f00;
+  color: #fff;
   padding: 0.5rem 1rem;
-  font-size: 1rem;
-  cursor: pointer; /* Hand cursor */
   border-radius: 6px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.nav-button:hover {
-  background-color: #ff6f00; /* brighter orange on hover */
-  transform: translateY(-2px); /* subtle lift effect */
-}
-
-/* Dropdown styles for "Pide tu cita" */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  min-width: 210px;
-  max-width: 95vw;
-  background: #fff;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  z-index: 1000;
-  padding: 0.3rem 0;
-  border-radius: 6px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.dropdown-menu a,
-.dropdown-menu .dropdown-phone {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  color: #333;
+  font-weight: bold;
   text-decoration: none;
-  font-size: 1rem;
-  cursor: pointer;
-  white-space: nowrap;
-  background: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-cta:hover {
+  background-color: #ff8f00;
+  transform: translateY(-2px);
+}
+
+/* Subtle buttons */
+.nav-subtle {
+  background: transparent;
   border: none;
-}
-
-.dropdown-menu a:hover,
-.dropdown-menu .dropdown-phone:hover {
-  background: #f1f1f1;
-}
-
-.dropdown-divider {
-  height: 1px;
-  background: #e0e0e0;
-  margin: 0.2rem 0;
-}
-
-.dropdown-phone {
-  font-weight: 500;
-  color: #007b5e;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
   cursor: pointer;
-  font-size: 1rem;
+  position: relative;
+  margin-left: 10px;
 }
 
-/* Responsive adjustments */
+.nav-subtle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: #e65100;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+}
+
+.nav-subtle:hover::before {
+  opacity: 0.9;
+}
+
+/* Highlighted brand */
+.highlighted-word {
+  color: #e65100; /* naranja fuerte */
+  font-weight: 400;
+  font-style: oblique 10deg;
+  letter-spacing: 0.07em;
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+}
+
+.highlighted-word:hover {
+  color: #ff6f00; /* naranja brillante */
+  cursor: pointer;
+}
+
+/* Botón de login discreto */
+.nav-login-discrete {
+  display: inline-block;
+  background-color: transparent;
+  color: #e65100; /* naranja fuerte */
+  border: 1px solid #e65100;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-login-discrete:hover {
+  background-color: #e65100;
+  color: #fff;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: wrap;
   }
 
   .navbar-toggle {
-    display: block;
+    display: flex;
   }
 
   .navbar-menu {
     display: none;
     flex-direction: column;
     width: 100%;
+    margin-top: 0.5rem;
   }
 
   .navbar-menu.is-active {
     display: flex;
   }
 
-  .nav-link {
+  .nav-link, .nav-cta, .nav-subtle, .nav-login-discrete {
     margin: 0.5rem 0;
   }
-
-  .nav-button {
-    margin-top: 1rem;
-  }
-
-  /* Responsive: make dropdown full width on mobile */
-  .dropdown-menu {
-    position: static;
-    left: 0;
-    transform: none;
-    min-width: 100%;
-    box-shadow: none;
-    border-radius: 0;
-  }
 }
-
-.highlighted-word {
-  color: #e65100;                /* warm orange tone */
-  font-weight: 400;              /* normal, sin negrita */
-  font-style: oblique 10deg;     /* cursiva ligera y suave */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* limpia y legible */
-  letter-spacing: 0.07em;        /* un poco más de espacio entre letras */
-  font-size: 1.4rem;             /* tamaño un poco más grande */
-  transition: color 0.3s ease;
-}
-
-.highlighted-word:hover {
-  color: #ff6f00;                /* brighter orange on hover */
-  cursor: pointer;
-}
-

@@ -3,58 +3,67 @@
   background: #e65100; /* deep burnt orange */
   color: #fff;
   display: flex;
+  flex-wrap: wrap; /* permite que los elementos bajen de línea si hace falta */
   align-items: center;
   justify-content: center;
-  gap: 1.2rem;
-  padding: 0.15rem 0.5rem;
+  gap: 1rem;
+  padding: 0.2rem 0.5rem;
   font-size: 0.97rem;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 2000;
   min-height: 36px;
-
-  a {
-    color: #fff;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    transition: color 0.2s;
-    font-weight: 400;
-    font-size: 0.97rem;
-    padding: 0 0.2rem;
-
-    &:hover {
-      color: #ffd54f; /* warm amber for hover */
-    }
-  }
-
-  .contact-link {
-    font-weight: 500;
-  }
-
-  i {
-    font-size: 1em;
-  }
+  box-sizing: border-box;
 }
 
-@media (max-width: 600px) {
+.contact-toolbar a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 0.2s;
+  font-weight: 400;
+  font-size: 0.97rem;
+  padding: 0 0.2rem;
+  min-width: 120px; /* evita que colapse demasiado */
+}
+
+.contact-toolbar a:hover {
+  color: #ffd54f; /* warm amber for hover */
+}
+
+.contact-toolbar .contact-link {
+  font-weight: 500;
+}
+
+.contact-toolbar i {
+  font-size: 1em;
+}
+
+/* RESPONSIVE: pantallas pequeñas */
+@media (max-width: 800px) {
   .contact-toolbar {
+    justify-content: flex-start;
     gap: 0.5rem;
-    font-size: 0.92rem;
-    flex-wrap: wrap;
-    padding: 0.1rem 0.1rem;
-    min-height: 32px;
+    font-size: 0.9rem;
+    padding: 0.1rem 0.3rem;
+  }
 
-    a {
-      font-size: 0.92rem;
-      padding: 0 0.1rem;
-    }
+  .contact-toolbar a {
+    flex: 1 1 auto; /* cada enlace ocupa espacio según disponible */
+    min-width: 80px;
+    font-size: 0.9rem;
+    padding: 0 0.1rem;
+  }
 
-    /* Opcional: solo iconos en móvil, descomenta si lo prefieres */
-    /* span, .contact-link {
-      display: none;
-    } */
+  .contact-toolbar .text {
+    display: none; /* oculta los textos largos */
+  }
+
+  /* mantiene solo los íconos visibles en móvil */
+  .contact-toolbar i {
+    font-size: 1.1em;
   }
 }

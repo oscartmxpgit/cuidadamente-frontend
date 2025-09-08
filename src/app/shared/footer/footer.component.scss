@@ -1,65 +1,68 @@
 .footer {
-  background-color: #3a3f51; /* Dark background color */
-  color: #fff; /* White text color */
-  padding: 2rem 0;
+  background-color: #001f3f; /* Azul marino oscuro */
+  color: #f0f0f0; /* Gris muy claro, casi blanco */
+  padding: 3rem 0;
   text-align: center;
+  font-family: 'Arial', sans-serif;
+}
 
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
 
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 1200px;
-    margin-bottom: 1rem;
-  }
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+}
 
-  .footer-section {
-    flex: 1;
-    padding: 1rem;
+.footer-section {
+  flex: 1;
+  padding: 1rem;
+  min-width: 200px;
+}
 
-    h3 {
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-      color: #66b2b2; /* Lighter bluish green */
-    }
+.footer-section h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #ff8c00; /* Naranja vibrante para los títulos */
+}
 
-    p, ul, li {
-      margin: 0.5rem 0;
-      font-size: 1rem;
-    }
+.footer-section p,
+.footer-section ul,
+.footer-section li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
 
-    ul {
-      list-style: none;
-      padding: 0;
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
 
-      li {
-        margin: 0.5rem 0;
+.footer-section a {
+  color: #f0f0f0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
-        a {
-          color: #66b2b2; /* Lighter bluish green */
-          text-decoration: none;
-          transition: color 0.3s ease;
+.footer-section a:hover {
+  color: #ff8c00; /* Naranja vibrante al pasar el cursor */
+}
 
-          &:hover {
-            color: #fff; /* White text color on hover */
-          }
-        }
-      }
-    }
+.footer-section i {
+  margin-right: 0.5rem;
+  color: #ff8c00; /* Naranja para los iconos */
+}
 
-    i {
-      margin-right: 0.5rem;
-    }
-  }
-
-  .footer-bottom {
-    font-size: 0.875rem;
-    color: #bbb; /* Light grey text color */
-  }
+.footer-bottom {
+  font-size: 0.8rem;
+  color: #b0b0b0; /* Gris claro para el texto de copyright */
+  margin-top: 1rem;
 }

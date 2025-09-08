@@ -16,21 +16,27 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.2;
-  filter: blur(3px);
+  opacity: 0.35;       /* slightly more visible in the center */
+  filter: blur(3px);   /* gentle blur */
 
-  /* Smooth edges all around using radial gradient */
-  -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+  /* Soft fade along all edges */
+  -webkit-mask-image: 
+    radial-gradient(circle at center, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   -webkit-mask-size: cover;
-  mask-image: radial-gradient(circle, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+
+  mask-image: 
+    radial-gradient(circle at center, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: cover;
 
+
   z-index: 0;
+  pointer-events: none;
 }
+
 
 .hero .tb-container {
   position: relative;

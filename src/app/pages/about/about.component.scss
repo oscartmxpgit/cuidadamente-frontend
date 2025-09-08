@@ -1,41 +1,64 @@
+.about {
+  background-color: #fff7f0; /* fondo suave naranja */
+  padding: 3rem 1rem;
+  color: #5d4037; /* texto marrón oscuro para buen contraste */
+}
+
+.about h2 {
+  color: #e65100; /* naranja fuerte para título principal */
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.about-section h3 {
+  color: #ff7043; /* naranja medio para subtítulos */
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+/* Team grid */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem; /* slightly bigger gap for breathing space */
+  gap: 2rem;
   margin-top: 2rem;
 }
 
 .team-card {
-  background: #fff;
-  border-radius: 12px; /* slightly more rounded for polish */
+  background: #fff3e0; /* fondo naranja suave */
+  border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  border: 1px solid #ffb74d33; /* borde naranja muy suave */
 }
 
 .team-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border-color: #ff7043; /* borde naranja al hover */
 }
 
 .team-card img {
   width: 100%;
-  height: 400px; /* taller for more visual impact */
+  height: 400px;
   object-fit: cover;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 3px solid #ff7043; /* borde naranja debajo de la imagen */
 }
 
 .team-content {
-  padding: 1.5rem; /* more breathing space */
+  padding: 1.5rem;
   font-size: 1rem;
   position: relative;
-  flex: 1; /* make content fill remaining space if needed */
+  flex: 1;
 }
 
 .show-more {
-  color: #e65100; /* warm orange accent */
+  color: #e65100; /* naranja vivo */
   font-weight: bold;
   cursor: pointer;
   margin-left: 0.3rem;
@@ -43,7 +66,7 @@
 }
 
 .show-more:hover {
-  color: #ff6f00; /* brighter orange on hover */
+  color: #ff6f00; /* naranja más brillante */
 }
 
 /* Modal */
@@ -61,14 +84,15 @@
 }
 
 .modal-content {
-  background: #fff;
-  padding: 2.5rem; /* slightly more padding */
+  background: #fff3e0; /* fondo naranja suave */
+  padding: 2rem;
   border-radius: 12px;
-  max-width: 700px; /* a bit wider */
+  max-width: 600px;
   width: 90%;
   max-height: 90%;
   overflow-y: auto;
   position: relative;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
 .modal-content .close {
@@ -77,33 +101,37 @@
   right: 15px;
   font-size: 2rem;
   cursor: pointer;
-  color: #333;
+  color: #e65100; /* naranja */
 }
 
 .modal-content img {
-  width: 100%;
+  width: 60%;
   height: auto;
   border-radius: 8px;
   margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #ff7043; /* borde naranja */
 }
 
 /* Responsive */
 @media (max-width: 900px) {
   .team-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .team-card img {
-    height: 250px;
+    height: 300px;
   }
 }
 
 @media (max-width: 600px) {
-  .team-card img {
-    height: 200px;
+  .team-grid {
+    grid-template-columns: 1fr;
   }
 
-  .team-grid {
-    grid-template-columns: 1fr; /* single column on small screens */
+  .team-card img {
+    height: 350px;
   }
 }
