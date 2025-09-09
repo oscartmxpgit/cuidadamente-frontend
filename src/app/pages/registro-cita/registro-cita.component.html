@@ -47,16 +47,18 @@
   <!-- Día -->
   <div>
     <label>Día:</label>
-    <mat-form-field appearance="fill">
-      <input matInput
-        formControlName="fecha"
-        [matDatepicker]="picker"
-        [matDatepickerFilter]="dateFilter"
-        placeholder="Selecciona un día"
-        autocomplete="off">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+    <input matInput
+      formControlName="fecha"
+      [matDatepicker]="picker"
+      [matDatepickerFilter]="dateFilter"
+      placeholder="Selecciona un día"
+      autocomplete="off"
+      [disabled]="!citaForm.get('servicio')?.value">
+    <!-- 👈 habilitado solo si hay servicio -->
+
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+
     <div class="error"
       *ngIf="citaForm.get('fecha')?.invalid && citaForm.get('fecha')?.touched">
       Selecciona un día válido.
@@ -66,7 +68,11 @@
   <!-- Hora -->
   <div>
     <label>Hora:</label>
-    <select formControlName="hora" required autocomplete="off">
+    <select formControlName="hora"
+      required
+      autocomplete="off"
+      [disabled]="!citaForm.get('servicio')?.value || !citaForm.get('fecha')?.value">
+      <!-- 👈 requiere servicio y fecha -->
       <option value>-- Selecciona una hora --</option>
       <option *ngFor="let h of horasDisponibles" [value]="h">{{h}}</option>
     </select>

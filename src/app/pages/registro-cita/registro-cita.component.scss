@@ -18,7 +18,7 @@ h2 {
 }
 
 label {
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 0.3rem;
   display: block;
   color: #e65100; /* accent color */
@@ -59,8 +59,9 @@ button[type="submit"]:hover:enabled {
   transform: translateY(-2px);
 }
 
-.mat-datepicker-toggle {
-  margin-left: 0.5rem;
+button:disabled {
+  background-color: #ffcc80; /* lighter orange for disabled */
+  cursor: not-allowed;
 }
 
 @media (max-width: 600px) {
@@ -79,12 +80,6 @@ form div {
   margin-bottom: 1em;
 }
 
-label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.3em;
-}
-
 input, select, button {
   width: 100%;
   padding: 0.5em;
@@ -92,48 +87,31 @@ input, select, button {
   box-sizing: border-box;
 }
 
-button {
-  background-color: #e65100; /* orange theme */
-  color: white;
-  border: none;
-  cursor: pointer;
-}
+/* === Angular Material datepicker adjustments === */
 
-button:disabled {
-  background-color: #ffcc80; /* lighter orange for disabled */
-  cursor: not-allowed;
-}
-
-/* Ajuste específico para que el mat-datepicker luzca como los demás inputs */
+/* Match Material field with other inputs */
 .mat-form-field-appearance-fill {
   width: 100%;
 }
 
 .mat-form-field-appearance-fill .mat-form-field-flex {
   border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  background-color: #fffaf5; /* cream input */
+  border-radius: 5px;
+  background-color: #fffaf5; /* same as inputs */
   padding: 0 12px;
   height: 40px;
-  align-items: center; /* center vertically */
-}
-
-.mat-form-field-appearance-fill .mat-input-element {
-  height: 100%;
-  padding: 8px 0;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-
-.mat-datepicker-toggle-default-icon {
-  color: #e65100; /* orange accent */
+  align-items: center;
 }
 
 .mat-form-field-appearance-fill.mat-focused .mat-form-field-flex {
   border-color: #e65100; /* orange focus */
+  box-shadow: 0 0 0 3px rgba(230,81,0,0.15);
 }
 
-.mat-mdc-form-field-flex {
-  background-color: transparent !important;
-  color: yellow;
+.mat-input-element {
+  color: #000; /* input text */
+  height: 100%;
+  padding: 8px 0;
+  font-size: 14px;
+  box-sizing: border-box;
 }

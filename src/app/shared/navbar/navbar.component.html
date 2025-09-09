@@ -14,13 +14,13 @@
   <div class="navbar-menu" [class.is-active]="menuActive">
     <a routerLink="/about" class="nav-link" (click)="closeMenu()">Quiénes Somos</a>
     <a routerLink="/services" class="nav-link" (click)="closeMenu()">Servicios</a>
-    <a routerLink="/registro-cita" class="nav-cta" (click)="closeMenu()">Pedir cita</a>
+    <a routerLink="/registro-cita" class="nav-cta" (click)="closeMenu()" *ngIf="shouldShowCitaBtn()"> Pedir cita</a>
     <ng-template #loginBtn>
       <a routerLink="/login" class="nav-login-discrete" (click)="closeMenu()">Login</a>
     </ng-template>
     <ng-container *ngIf="authService.isAuthenticated(); else loginBtn">
       <a routerLink="/admin-dashboard" *ngIf="authService.isAdmin()" class="nav-link" (click)="closeMenu()">Administración</a>
-      <button (click)="logout()" class="nav-subtle" title="Cerrar sesión"></button>
+      <button (click)="logout()" class="nav-subtle">Salir</button>
     </ng-container>
 
   </div>

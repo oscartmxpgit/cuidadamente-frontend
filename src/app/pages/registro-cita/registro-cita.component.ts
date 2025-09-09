@@ -78,7 +78,7 @@ export class RegistroCitaComponent implements OnInit {
     while (copia.getTime() + 60 * 60 * 1000 <= fin.getTime()) {
       const horaInicio = copia.getHours().toString().padStart(2, '0');
       const minInicio = copia.getMinutes().toString().padStart(2, '0');
-      copia.setHours(copia.getHours(), copia.getMinutes() + 60); // sumamos 1 hora
+      copia.setHours(copia.getHours(), copia.getMinutes() + 60);
       const horaFin = copia.getHours().toString().padStart(2, '0');
       const minFin = copia.getMinutes().toString().padStart(2, '0');
       bloques.push(`${horaInicio}:${minInicio}-${horaFin}:${minFin}`);
