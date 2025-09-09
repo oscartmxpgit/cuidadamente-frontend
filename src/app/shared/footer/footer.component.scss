@@ -1,26 +1,49 @@
 .footer {
-  background-color: #001f3f; /* Azul marino oscuro */
-  color: #f0f0f0; /* Gris muy claro, casi blanco */
-  padding: 3rem 0;
+  background-color: #ffe6cc;
+  color: #5d4037;
+  padding: 3rem 0 1rem 0; /* reduce bottom padding slightly to balance the wave */
   text-align: center;
   font-family: 'Arial', sans-serif;
+  position: relative;
 }
 
+/* Prominent wave separator */
+.footer-wave {
+  position: absolute;
+  top: -120px; /* move wave up so it overlaps nicely */
+  left: 0;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.footer-wave svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  position: relative; /* keep content above wave */
+  z-index: 1;
 }
 
+/* Footer content */
 .footer-content {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(93, 64, 55, 0.2);
   padding-bottom: 2rem;
   margin-bottom: 1rem;
 }
 
+/* Footer sections */
 .footer-section {
   flex: 1;
   padding: 1rem;
@@ -31,7 +54,7 @@
   margin-bottom: 1.5rem;
   font-size: 1.25rem;
   font-weight: bold;
-  color: #ff8c00; /* Naranja vibrante para los títulos */
+  color: #e65100;
 }
 
 .footer-section p,
@@ -47,22 +70,22 @@
 }
 
 .footer-section a {
-  color: #f0f0f0;
+  color: #5d4037;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-section a:hover {
-  color: #ff8c00; /* Naranja vibrante al pasar el cursor */
+  color: #ff6f00;
 }
 
 .footer-section i {
   margin-right: 0.5rem;
-  color: #ff8c00; /* Naranja para los iconos */
+  color: #ff7043;
 }
 
 .footer-bottom {
   font-size: 0.8rem;
-  color: #b0b0b0; /* Gris claro para el texto de copyright */
+  color: #8d6e63;
   margin-top: 1rem;
 }

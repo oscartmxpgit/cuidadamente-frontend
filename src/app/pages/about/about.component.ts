@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener, ViewEncapsulation } from '@angular/cor
 import { FileService } from '../../tarjetas/fileService';
 import { TarjetasService } from '../../tarjetas/tarjetas.service';
 import { Tarjeta } from '../../models/tarjeta';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-about',
@@ -16,8 +17,9 @@ export class AboutComponent implements OnInit {
 
   constructor(
     private fileService: FileService,
-    private tarjetasService: TarjetasService
-  ) {}
+    private tarjetasService: TarjetasService,
+    private sanitizer: DomSanitizer
+  ) { }
 
   ngOnInit(): void {
     this.tarjetasService.obtenerPorTipo('TeamMember').subscribe(members => {
@@ -59,5 +61,9 @@ export class AboutComponent implements OnInit {
     if (!target.closest('a') && !target.closest('button') && !target.classList.contains('show-more')) {
       this.openModal(member);
     }
+  }
+
+  sanitize(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 }
