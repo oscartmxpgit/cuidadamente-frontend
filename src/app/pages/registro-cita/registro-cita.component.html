@@ -1,87 +1,92 @@
 <h2>Registro de cita online</h2>
 
 <form [formGroup]="citaForm" (ngSubmit)="onSubmit()" autocomplete="on">
-  <!-- Nombre completo -->
-  <div>
-    <label>Nombre completo:</label>
-    <input formControlName="nombre" required autocomplete="name">
-    <div class="error"
-      *ngIf="citaForm.get('nombre')?.invalid && citaForm.get('nombre')?.touched">
-      El nombre es obligatorio.
+  <!-- Columna izquierda -->
+  <div class="form-left">
+    <!-- Nombre completo -->
+    <div class="form-group">
+      <label>Nombre completo:</label>
+      <input formControlName="nombre" required autocomplete="name">
+      <div class="error"
+        *ngIf="citaForm.get('nombre')?.invalid && citaForm.get('nombre')?.touched">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <!-- Teléfono -->
+    <div class="form-group">
+      <label>Teléfono:</label>
+      <input formControlName="telefono" required autocomplete="tel">
+      <div class="error"
+        *ngIf="citaForm.get('telefono')?.invalid && citaForm.get('telefono')?.touched">
+        El teléfono es obligatorio.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label>Email:</label>
+      <input formControlName="email" required type="email" autocomplete="email">
+      <div class="error"
+        *ngIf="citaForm.get('email')?.invalid && citaForm.get('email')?.touched">
+        Introduce un email válido.
+      </div>
     </div>
   </div>
 
-  <!-- Teléfono -->
-  <div>
-    <label>Teléfono:</label>
-    <input formControlName="telefono" required autocomplete="tel">
-    <div class="error"
-      *ngIf="citaForm.get('telefono')?.invalid && citaForm.get('telefono')?.touched">
-      El teléfono es obligatorio.
+  <!-- Columna derecha -->
+  <div class="form-right">
+    <!-- Servicio -->
+    <div class="form-group">
+      <label>Servicio:</label>
+      <select formControlName="servicio" required autocomplete="off">
+        <option value>-- Selecciona un servicio --</option>
+        <option *ngFor="let s of servicios" [value]="s.id">{{s.nombre}}</option>
+      </select>
+      <div class="error"
+        *ngIf="citaForm.get('servicio')?.invalid && citaForm.get('servicio')?.touched">
+        Selecciona un servicio.
+      </div>
     </div>
-  </div>
-
-  <!-- Email -->
-  <div>
-    <label>Email:</label>
-    <input formControlName="email" required type="email" autocomplete="email">
-    <div class="error"
-      *ngIf="citaForm.get('email')?.invalid && citaForm.get('email')?.touched">
-      Introduce un email válido.
+    <!-- Día -->
+    <div class="form-group">
+      <label>Día:</label>
+      <div class="datepicker-wrapper">
+        <input
+          formControlName="fecha"
+          [matDatepicker]="picker"
+          [matDatepickerFilter]="dateFilter"
+          placeholder="Selecciona un día"
+          autocomplete="off"
+          [disabled]="citaForm.get('servicio')?.value == null || citaForm.get('servicio')?.value === ''">
+        <mat-datepicker-toggle [disabled]="citaForm.get('servicio')?.value == null || citaForm.get('servicio')?.value === ''" matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+      <div class="error"
+        *ngIf="citaForm.get('fecha')?.invalid && citaForm.get('fecha')?.touched">
+        Selecciona un día válido.
+      </div>
     </div>
-  </div>
 
-  <!-- Servicio -->
-  <div>
-    <label>Servicio:</label>
-    <select formControlName="servicio" required autocomplete="off">
-      <option value>-- Selecciona un servicio --</option>
-      <option *ngFor="let s of servicios" [value]="s.id">{{s.nombre}}</option>
-    </select>
-    <div class="error"
-      *ngIf="citaForm.get('servicio')?.invalid && citaForm.get('servicio')?.touched">
-      Selecciona un servicio.
-    </div>
-  </div>
-
-  <!-- Día -->
-  <div>
-    <label>Día:</label>
-    <input matInput
-      formControlName="fecha"
-      [matDatepicker]="picker"
-      [matDatepickerFilter]="dateFilter"
-      placeholder="Selecciona un día"
-      autocomplete="off"
-      [disabled]="!citaForm.get('servicio')?.value">
-    <!-- 👈 habilitado solo si hay servicio -->
-
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-
-    <div class="error"
-      *ngIf="citaForm.get('fecha')?.invalid && citaForm.get('fecha')?.touched">
-      Selecciona un día válido.
-    </div>
-  </div>
-
-  <!-- Hora -->
-  <div>
-    <label>Hora:</label>
-    <select formControlName="hora"
-      required
-      autocomplete="off"
-      [disabled]="!citaForm.get('servicio')?.value || !citaForm.get('fecha')?.value">
-      <!-- 👈 requiere servicio y fecha -->
-      <option value>-- Selecciona una hora --</option>
-      <option *ngFor="let h of horasDisponibles" [value]="h">{{h}}</option>
-    </select>
-    <div class="error"
-      *ngIf="citaForm.get('hora')?.invalid && citaForm.get('hora')?.touched">
-      Selecciona una hora.
+    <!-- Hora -->
+    <div class="form-group">
+      <label>Hora:</label>
+      <select formControlName="hora"
+        required
+        autocomplete="off"
+        [disabled]="!citaForm.get('servicio')?.value || !citaForm.get('fecha')?.value">
+        <option value>-- Selecciona una hora --</option>
+        <option *ngFor="let h of horasDisponibles" [value]="h">{{h}}</option>
+      </select>
+      <div class="error"
+        *ngIf="citaForm.get('hora')?.invalid && citaForm.get('hora')?.touched">
+        Selecciona una hora.
+      </div>
     </div>
   </div>
 
   <!-- Botón de envío -->
-  <button type="submit" [disabled]="citaForm.invalid">Reservar cita</button>
+  <div class="form-actions">
+    <button type="submit" [disabled]="citaForm.invalid">Reservar cita</button>
+  </div>
 </form>

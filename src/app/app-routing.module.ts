@@ -43,7 +43,7 @@ const routes: Routes = [
   { path: 'html-chunks-managment', component: HtmlChunksListComponent, canActivate: [AuthGuard] },
   { path: 'questionarie-wizard', component: QuestionnaireWizardComponent },
   { path: 'questionarie-answers', component: AnswersListComponent },
-  { path: 'services-list', component: TarjetasListComponent, canActivate: [AuthGuard] },
+  { path: 'tarjetas-list', component: TarjetasListComponent, canActivate: [AuthGuard] },
   { path: 'ofertas-list', component: OfertaListComponent, canActivate: [AuthGuard] },
 
   { path: '**', redirectTo: '/', pathMatch: 'full' }

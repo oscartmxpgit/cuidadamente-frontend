@@ -14,7 +14,7 @@ export class TarjetasListComponent implements OnInit {
   loading = true;
   tipoSeleccionado: string = ''; // filtro de tipo, '' = todos
 
-  displayedColumns: string[] = ['title', 'imageFileName', 'description', 'acciones'];
+  displayedColumns: string[] = ['title', 'subtitle', 'imageFileName', 'description', 'language', 'acciones'];
 
   constructor(
     private servicesService: TarjetasService,

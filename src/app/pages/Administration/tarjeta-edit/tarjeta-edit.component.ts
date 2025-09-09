@@ -22,14 +22,16 @@ export class TarjetaEditComponent implements OnInit {
     private servicesService: TarjetasService,
     private dialogRef: MatDialogRef<TarjetaEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Partial<Tarjeta> // puede ser vacío al crear
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.esEdicion = !!this.data?.id;
 
     this.form = this.fb.group({
       title: [this.data?.title || '', Validators.required],
-      tipo: [this.data?.tipo || '', Validators.required],  // <-- nuevo control para tipo
+      subtitle: [this.data?.subtitle || ''],          // nuevo control
+      language: [this.data?.language || 'es'],       // nuevo control con valor por defecto 'es'
+      tipo: [this.data?.tipo || '', Validators.required],
       imageFileName: [this.data?.imageFileName || ''],
       description: [this.data?.description || '']
     });

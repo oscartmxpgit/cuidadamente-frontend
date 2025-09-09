@@ -1,15 +1,7 @@
 import { Component, OnInit, HostListener, ViewEncapsulation } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { FileService } from '../../tarjetas/fileService';
-import { HtmlChunkService } from '../../tarjetas/html-chunk.service';
-import { HttpClient } from '@angular/common/http';
-
-interface TeamMember {
-  imageFileName: string;
-  altText: string;
-  chunkName: string;
-  htmlContent?: string;
-}
+import { TarjetasService } from '../../tarjetas/tarjetas.service';
+import { Tarjeta } from '../../models/tarjeta';
 
 @Component({
   selector: 'app-about',
@@ -18,56 +10,38 @@ interface TeamMember {
   encapsulation: ViewEncapsulation.None
 })
 export class AboutComponent implements OnInit {
-  imageUrls: { [key: string]: SafeUrl } = {};
-  teamMembers: TeamMember[] = [];
-  selectedMember: TeamMember | null = null;
+  showFull: { [key: string]: boolean } = {};
+  teamMembers: Tarjeta[] = [];
+  selectedMember: Tarjeta | null = null;
 
   constructor(
     private fileService: FileService,
-    private sanitizer: DomSanitizer,
-    private htmlChunkService: HtmlChunkService,
-    private http: HttpClient
+    private tarjetasService: TarjetasService
   ) {}
 
   ngOnInit(): void {
-    this.loadTeamMembers();
-  }
+    this.tarjetasService.obtenerPorTipo('TeamMember').subscribe(members => {
+      this.teamMembers = members;
 
-  private loadTeamMembers(): void {
-    this.http.get<TeamMember[]>('assets/data/team-members.json').subscribe({
-      next: (members) => {
-        const validMembers: TeamMember[] = [];
-        members.forEach(member => {
-          this.fileService.loadImage(member.imageFileName).subscribe({
-            next: url => {
-              this.imageUrls[member.imageFileName] = this.sanitizer.bypassSecurityTrustUrl(url);
-              validMembers.push(member);
-              this.loadHtmlChunk(member);
-              this.teamMembers = [...validMembers];
-            },
-            error: () => console.warn(`Image not found: ${member.imageFileName}. Skipping member.`)
+      this.teamMembers.forEach(member => {
+        if (member.imageFileName) {
+          this.fileService.loadImage(member.imageFileName).subscribe(url => {
+            (member as any).imageUrl = url;
           });
-        });
-      },
-      error: err => console.error('Error loading team members JSON', err)
+        }
+      });
     });
   }
 
-  private loadHtmlChunk(member: TeamMember): void {
-    this.htmlChunkService.getHtmlChunkByName(member.chunkName).subscribe({
-      next: chunk => member.htmlContent = chunk.htmlContent,
-      error: err => {
-        console.error(`Error loading HTML chunk for ${member.chunkName}`, err);
-        member.htmlContent = '<p>Información no disponible.</p>';
-      }
-    });
+  getImageUrl(member: Tarjeta): string {
+    return (member as any).imageUrl || '';
   }
 
-  getImageUrl(fileName: string): SafeUrl {
-    return this.imageUrls[fileName] || '';
+  toggleDescription(title: string) {
+    this.showFull[title] = !this.showFull[title];
   }
 
-  openModal(member: TeamMember) {
+  openModal(member: Tarjeta) {
     this.selectedMember = member;
   }
 
@@ -75,28 +49,15 @@ export class AboutComponent implements OnInit {
     this.selectedMember = null;
   }
 
-  // Close modal on ESC
   @HostListener('document:keydown.escape', ['$event'])
   onEscape(event: KeyboardEvent) {
     if (this.selectedMember) this.closeModal();
   }
 
-  // Handle card click
-  onCardClick(event: MouseEvent, member: TeamMember) {
+  onCardClick(event: MouseEvent, member: Tarjeta) {
     const target = event.target as HTMLElement;
     if (!target.closest('a') && !target.closest('button') && !target.classList.contains('show-more')) {
       this.openModal(member);
     }
-  }
-
-  truncateHtml(html: string, maxLength: number): string {
-    const div = document.createElement('div');
-    div.innerHTML = html;
-    let text = div.textContent || div.innerText || '';
-    if (text.length > maxLength) {
-      text = text.substr(0, maxLength);
-      text = text.substr(0, Math.min(text.length, text.lastIndexOf(' '))) + '...';
-    }
-    return text;
   }
 }

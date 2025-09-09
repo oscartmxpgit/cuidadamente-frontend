@@ -1,60 +1,93 @@
 form {
-  max-width: 420px;
+  max-width: 1000px;
   margin: 2rem auto;
-  padding: 2rem 1.5rem;
+  padding: 2rem;
   background: #fff7f0; /* warm cream background */
   border-radius: 12px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
 
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 3rem; /* espacio entre columnas y filas */
 }
 
 h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: #e65100; /* warm orange */
+  grid-column: span 2;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
 }
 
 label {
   font-weight: 600;
-  margin-bottom: 0.3rem;
-  display: block;
   color: #e65100; /* accent color */
 }
 
-input, select {
+input,
+select {
   width: 100%;
-  padding: 0.5rem 0.7rem;
+  padding: 0.6rem 0.8rem;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
   font-size: 1rem;
-  margin-top: 0.2rem;
   background: #fffaf5; /* subtle cream input background */
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
   border-color: #e65100; /* orange border focus */
   outline: none;
-  box-shadow: 0 0 0 3px rgba(230,81,0,0.15);
+  box-shadow: 0 0 0 3px rgba(230, 81, 0, 0.15);
 }
 
-button[type="submit"] {
+/* --- Datepicker wrapper --- */
+.datepicker-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.datepicker-wrapper input {
+  flex: 1;
+}
+
+.mat-datepicker-toggle {
+  margin-left: -36px; /* coloca el ícono encima a la derecha */
+  z-index: 2;
+}
+
+.mat-datepicker-toggle button {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none;
+}
+
+.mat-datepicker-toggle-default-icon {
+  color: #e65100 !important; /* naranja */
+}
+
+button[type='submit'] {
   background: #e65100; /* warm orange */
   color: #fff;
   border: none;
-  border-radius: 5px;
-  padding: 0.7rem 0;
+  border-radius: 6px;
+  padding: 0.8rem 2rem;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 1rem;
   transition: background 0.2s, transform 0.2s;
+  min-width: 200px; /* ancho mínimo fijo */
 }
 
-button[type="submit"]:hover:enabled {
+button[type='submit']:hover:enabled {
   background: #ff6f00; /* brighter orange on hover */
   transform: translateY(-2px);
 }
@@ -64,54 +97,27 @@ button:disabled {
   cursor: not-allowed;
 }
 
-@media (max-width: 600px) {
-  form {
-    padding: 1rem 0.5rem;
-  }
-}
-
 .error {
   color: #d32f2f;
-  font-size: 0.95em;
-  margin-top: 0.2em;
+  font-size: 0.9em;
 }
 
-form div {
-  margin-bottom: 1em;
+.form-actions {
+  grid-column: span 2;
+  text-align: center;
+  margin-top: 1rem;
 }
 
-input, select, button {
-  width: 100%;
-  padding: 0.5em;
-  font-size: 1em;
-  box-sizing: border-box;
-}
+/* Responsive: una sola columna en móviles */
+@media (max-width: 700px) {
+  form {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
 
-/* === Angular Material datepicker adjustments === */
-
-/* Match Material field with other inputs */
-.mat-form-field-appearance-fill {
-  width: 100%;
-}
-
-.mat-form-field-appearance-fill .mat-form-field-flex {
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  background-color: #fffaf5; /* same as inputs */
-  padding: 0 12px;
-  height: 40px;
-  align-items: center;
-}
-
-.mat-form-field-appearance-fill.mat-focused .mat-form-field-flex {
-  border-color: #e65100; /* orange focus */
-  box-shadow: 0 0 0 3px rgba(230,81,0,0.15);
-}
-
-.mat-input-element {
-  color: #000; /* input text */
-  height: 100%;
-  padding: 8px 0;
-  font-size: 14px;
-  box-sizing: border-box;
+  h2,
+  .form-actions {
+    grid-column: span 1;
+  }
 }

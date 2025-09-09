@@ -2,22 +2,24 @@
   <div class="container">
     <h2>¿Quiénes somos?</h2>
 
-    <div class="about-section">
-      <div class="team-grid">
-        <ng-container *ngFor="let member of teamMembers">
-          <div 
-            class="team-card" 
-            *ngIf="imageUrls[member.imageFileName]"
-            (click)="onCardClick($event, member)">
-            
-            <img [src]="getImageUrl(member.imageFileName)" [alt]="member.altText" />
-            
-            <div class="team-content">
-              <div [innerHTML]="truncateHtml(member.htmlContent || '', 100)"></div>
-            </div>
+    <div class="team-grid">
+      <ng-container *ngFor="let member of teamMembers">
+        <div class="team-card" *ngIf="getImageUrl(member)" (click)="onCardClick($event, member)">
+          <img [src]="getImageUrl(member)" [alt]="member.title" />
+
+          <div class="team-content">
+            <h3>{{ member.title }}</h3>
+            <h4 *ngIf="member.subtitle" class="team-subtitle">{{ member.subtitle }}</h4>
+            <p>
+              {{
+                showFull[member.title]
+                  ? member.description
+                  : (member.description ? (member.description | slice:0:150) + '...' : '')
+              }}
+            </p>
           </div>
-        </ng-container>
-      </div>
+        </div>
+      </ng-container>
     </div>
   </div>
 
@@ -25,8 +27,10 @@
   <div class="modal" *ngIf="selectedMember" (click)="closeModal()">
     <div class="modal-content" (click)="$event.stopPropagation()">
       <span class="close" (click)="closeModal()">&times;</span>
-      <img [src]="getImageUrl(selectedMember.imageFileName)" [alt]="selectedMember.altText" />
-      <div [innerHTML]="selectedMember.htmlContent"></div>
+      <img *ngIf="getImageUrl(selectedMember)" [src]="getImageUrl(selectedMember)" [alt]="selectedMember.title" />
+      <h3>{{ selectedMember.title }}</h3>
+      <h4 *ngIf="selectedMember.subtitle">{{ selectedMember.subtitle }}</h4>
+      <p>{{ selectedMember.description }}</p>
     </div>
   </div>
 </section>

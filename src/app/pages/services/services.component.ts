@@ -14,11 +14,11 @@ export class ServicesComponent implements OnInit {
 
   constructor(
     private fileService: FileService,
-    private servicesService: TarjetasService  // inyectamos servicio backend
+    private tarjetasService: TarjetasService  // inyectamos servicio backend
   ) {}
 
   ngOnInit() {
-    this.servicesService.obtenerPorTipo('Servicio').subscribe(servicesFromApi => {
+    this.tarjetasService.obtenerPorTipo('Servicio').subscribe(servicesFromApi => {
       this.services = servicesFromApi;
 
       // Cargar las imágenes
