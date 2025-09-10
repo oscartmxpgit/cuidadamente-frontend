@@ -49,30 +49,37 @@ export class TarjetaEditComponent implements OnInit {
 
 
   guardar() {
-    if (this.form.invalid) return;
+  if (this.form.invalid) return;
 
-    const servicio: Tarjeta = {
-      ...this.data,
-      ...this.form.value
-    };
+  // Clean description: replace &nbsp; with normal spaces
+  const cleanDescription = this.form.value.description
+    ? this.form.value.description.replace(/&nbsp;/g, ' ')
+    : '';
 
-    this.loading = true;
+  const servicio: Tarjeta = {
+    ...this.data,
+    ...this.form.value,
+    description: cleanDescription   // use cleaned text
+  };
 
-    let operacion$: Observable<any> = this.esEdicion
-      ? this.servicesService.actualizar(servicio)
-      : this.servicesService.agregar(servicio);
+  this.loading = true;
 
-    operacion$.subscribe({
-      next: () => {
-        this.loading = false;
-        this.dialogRef.close(this.esEdicion ? 'actualizado' : 'creado');
-      },
-      error: err => {
-        this.loading = false;
-        console.error('Error al guardar servicio:', err);
-      }
-    });
-  }
+  let operacion$: Observable<any> = this.esEdicion
+    ? this.servicesService.actualizar(servicio)
+    : this.servicesService.agregar(servicio);
+
+  operacion$.subscribe({
+    next: () => {
+      this.loading = false;
+      this.dialogRef.close(this.esEdicion ? 'actualizado' : 'creado');
+    },
+    error: err => {
+      this.loading = false;
+      console.error('Error al guardar servicio:', err);
+    }
+  });
+}
+
 
   cancelar() {
     this.dialogRef.close();

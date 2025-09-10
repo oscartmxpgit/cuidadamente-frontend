@@ -8,6 +8,12 @@
     <td mat-cell *matCellDef="let chunk">{{ chunk.name }}</td>
   </ng-container>
 
+  <!-- Name Column -->
+  <ng-container matColumnDef="htmlContent">
+    <th mat-header-cell *matHeaderCellDef>Valor</th>
+    <td mat-cell *matCellDef="let chunk">{{ chunk.htmlContent }}</td>
+  </ng-container>
+
   <!-- Language Column -->
   <ng-container matColumnDef="language">
     <th mat-header-cell *matHeaderCellDef>Idioma</th>

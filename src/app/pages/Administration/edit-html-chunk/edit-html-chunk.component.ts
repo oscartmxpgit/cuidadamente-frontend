@@ -34,8 +34,15 @@ export class EditHtmlChunkComponent implements OnInit {
   }
 
   onSave() {
-    this.dialogRef.close({ ...this.chunk, htmlContent: this.editableHtml });
-  }
+  // Limpia &nbsp; y múltiples espacios
+  const cleanedHtml = this.editableHtml
+    .replace(/&nbsp;/g, ' ')       // reemplaza &nbsp; por espacio normal
+    .replace(/\s{2,}/g, ' ')       // reemplaza múltiples espacios por uno solo
+    .trim();                        // elimina espacios al inicio y fin
+
+  this.dialogRef.close({ ...this.chunk, htmlContent: cleanedHtml });
+}
+
 
   onCancel() {
     this.dialogRef.close(null);

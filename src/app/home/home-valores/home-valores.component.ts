@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { TarjetasService } from '../../tarjetas/tarjetas.service';
 import { Tarjeta } from '../../models/tarjeta';
 import { FileService } from '../../tarjetas/fileService';
+import { HtmlChunk } from '../../models/HtmlChunk';
+import { HtmlChunkService } from '../../tarjetas/html-chunk.service';
+import { forkJoin, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home-valores',
@@ -11,10 +15,13 @@ import { FileService } from '../../tarjetas/fileService';
 export class HomeValoresComponent implements OnInit {
   tarjetas: Tarjeta[] = [];
   loading = false;
+  valoresTitleChunk?: HtmlChunk | null;
+  valoresSubtitleChunk?: HtmlChunk | null;
 
   constructor(
     private tarjetasService: TarjetasService,
-    private fileService: FileService
+    private fileService: FileService,
+    private htmlChunkService: HtmlChunkService
   ) {}
 
   ngOnInit(): void {
@@ -23,19 +30,25 @@ export class HomeValoresComponent implements OnInit {
 
   cargarValores() {
     this.loading = true;
-    this.tarjetasService.obtenerPorTipo('Valores').subscribe({
-      next: data => {
-        this.tarjetas = data;
 
+    forkJoin({
+      tarjetas: this.tarjetasService.obtenerPorTipo('Valores').pipe(catchError(() => of([]))),
+      titleChunk: this.htmlChunkService.getHtmlChunkByName('valores-title').pipe(catchError(() => of(null))),
+      subtitleChunk: this.htmlChunkService.getHtmlChunkByName('valores-subtitle').pipe(catchError(() => of(null)))
+    }).subscribe({
+      next: ({ tarjetas, titleChunk, subtitleChunk }) => {
+        this.tarjetas = tarjetas as Tarjeta[];
+        this.valoresTitleChunk = titleChunk as HtmlChunk | null;
+        this.valoresSubtitleChunk = subtitleChunk as HtmlChunk | null;
+
+        // Cargar imágenes de tarjetas
         for (const tarjeta of this.tarjetas) {
-          if (tarjeta.imageFileName) {
-            this.fileService.loadImage(tarjeta.imageFileName).subscribe({
+          if ((tarjeta as any).imageFileName) {
+            this.fileService.loadImage((tarjeta as any).imageFileName).subscribe({
               next: blobUrl => {
-                tarjeta.imageUrl = blobUrl; // string
+                (tarjeta as any).imageUrl = blobUrl;
               },
-              error: err => {
-                console.error(`Error cargando imagen ${tarjeta.imageFileName}`, err);
-              }
+              error: err => console.error(`Error cargando imagen ${(tarjeta as any).imageFileName}`, err)
             });
           }
         }
@@ -44,6 +57,8 @@ export class HomeValoresComponent implements OnInit {
       },
       error: () => {
         this.tarjetas = [];
+        this.valoresTitleChunk = null;
+        this.valoresSubtitleChunk = null;
         this.loading = false;
       }
     });

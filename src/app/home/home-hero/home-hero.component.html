@@ -21,13 +21,13 @@
             ngClass.sm="current-typo--h2-light"
             ngClass.xs="current-typo--h3"
             class="hero-headline">
-          Cuidadamente: tu centro de salud mental.
+          {{ heroTitle }}
         </h1>
 
         <!-- Subheadline -->
         <h2 [@transitionTextEnter]="{value:'in', params:{animDelay:500}}"
             class="hero-subheadline">
-          Un equipo de especialistas a tu servicio.
+          {{ heroSubtitle }}
         </h2>
 
         <!-- Hero Button -->
@@ -38,10 +38,10 @@
         </button>
 
         <!-- Contact Info -->
-        <div class="hero-contact" [@transitionTextEnter]="{value:'in', params:{animDelay:700}}">
-          <p><i class="fas fa-phone"></i> Tlf: +34 682 391 660</p>
-          <p><i class="fas fa-envelope"></i> Correo electrónico: info&#64;cuidadamente.org</p>
-          <p><i class="fas fa-map-marker-alt"></i> Dirección: c/Capitán Dema 1-4º. Puerta 2.</p>
+        <div class="hero-contact" [@transitionTextEnter]="{value:'in', params:{animDelay:700}}" *ngIf="phone || email || address">
+          <p *ngIf="phone"><i class="fas fa-phone"></i> Tlf: {{ phone }}</p>
+          <p *ngIf="email"><i class="fas fa-envelope"></i> Correo electrónico: {{ email }}</p>
+          <p *ngIf="address"><i class="fas fa-map-marker-alt"></i> Dirección: {{ address }}</p>
         </div>
 
         <div ngClass.gt-sm="tb-height--80" ngClass.sm="tb-height--50" ngClass.xs="tb-height--30"></div>

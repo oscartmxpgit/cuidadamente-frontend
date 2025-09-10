@@ -36,10 +36,16 @@
     <input matInput formControlName="imageFileName" />
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Descripción</mat-label>
-    <textarea matInput formControlName="description" rows="5"></textarea>
-  </mat-form-field>
+  <div class="full-width">
+  <mat-label>Descripción</mat-label>
+  <quill-editor
+    formControlName="description"
+    [modules]="quillModules"
+    class="quill-editor"
+    placeholder="Escribe la descripción aquí..."
+  ></quill-editor>
+</div>
+
 
   <div class="form-actions">
     <button mat-raised-button color="primary" type="submit"
