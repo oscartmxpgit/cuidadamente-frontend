@@ -1,9 +1,10 @@
-<nav class="navbar">
+<nav class="navbar"> 
   <div class="navbar-brand">
     <a routerLink="/" class="nav-link" (click)="closeMenu()">
       <span class="highlighted-word">Cuidadamente</span>
     </a>
   </div>
+
   <a routerLink="/registro-cita" class="nav-cta" (click)="closeMenu()" *ngIf="shouldShowCitaBtn()"> 
     Pedir cita
   </a>
@@ -18,10 +19,10 @@
     <a routerLink="/about" class="nav-link" (click)="closeMenu()">Quiénes Somos</a>
     <a routerLink="/services" class="nav-link" (click)="closeMenu()">Servicios</a>
 
-    <!-- Selector de idioma -->
+    <!-- Language selector -->
     <div class="language-selector">
-      <button *ngFor="let lang of ['es','en']" 
-              (click)="switchLanguage(lang)" 
+      <button *ngFor="let lang of languages" 
+              (click)="switchLanguage(lang)"
               [class.active]="currentLanguage === lang">
         {{ lang.toUpperCase() }}
       </button>
