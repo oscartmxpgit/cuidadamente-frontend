@@ -12,8 +12,11 @@
             <h3>{{ member.title }}</h3>
             <h4 *ngIf="member.subtitle" class="team-subtitle">{{ member.subtitle
               }}</h4>
+
             <p *ngIf="!showFull[member.title]"
-              [innerHTML]="member.description ? (member.description | slice:0:150) + '...' : ''"></p>
+              [innerHTML]="member.description ? (member.description | truncateBeforeWord:'Servicios') : ''">
+            </p>
+
             <p *ngIf="showFull[member.title]"
               [innerHTML]="member.description"></p>
           </div>

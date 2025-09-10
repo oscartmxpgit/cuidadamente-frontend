@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { TruncateBeforeWordPipe } from '../pipes/TruncateBeforeWord';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     FooterComponent,
     InsertHtmlDirective,
     ContactToolbarComponent,
-    
+    TruncateBeforeWordPipe
   ],
   imports: [
     CommonModule,
@@ -42,6 +43,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     QuillModule.forRoot()
   ],
   exports: [ // ✅ Export components to make them available outside SharedModule
+    TruncateBeforeWordPipe,
     CommonModule,
     NavbarComponent,
     ContactToolbarComponent,

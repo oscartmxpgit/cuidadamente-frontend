@@ -41,6 +41,7 @@ private baseApiUrl: string = `${environment.apiUrl}staticfiles/`;
   }
 
   deleteImage(fileName: string): Observable<any> {
+    console.log('Deleting file:', fileName, this.baseApiUrl);
     return this.http.delete(`${this.baseApiUrl}img/delete/${fileName}`);
   }
 

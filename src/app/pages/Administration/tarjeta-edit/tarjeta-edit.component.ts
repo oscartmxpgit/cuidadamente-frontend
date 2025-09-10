@@ -37,6 +37,17 @@ export class TarjetaEditComponent implements OnInit {
     });
   }
 
+  quillModules = {
+    toolbar: [
+      ['bold', 'italic', 'underline'],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      [{ 'header': [1, 2, 3, false] }],
+      ['link'],
+      ['clean']
+    ]
+  };
+
+
   guardar() {
     if (this.form.invalid) return;
 

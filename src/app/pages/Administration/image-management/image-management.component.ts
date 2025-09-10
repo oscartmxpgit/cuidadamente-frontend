@@ -51,6 +51,7 @@ export class ImageManagementComponent implements OnInit {
   }
 
   deleteImage(imageName: string): void {
+    console.log('Attempting to delete image:', imageName);
     this.fileService.deleteImage(imageName).subscribe(
       () => this.loadImages(),
       error => console.error('Error deleting image:', error)
