@@ -45,7 +45,7 @@ export class HomeValoresComponent implements OnInit {
     this.loading = true;
 
     forkJoin({
-      tarjetas: this.tarjetasService.obtenerPorTipo('Valores').pipe(catchError(() => of([]))),
+      tarjetas: this.tarjetasService.obtenerPorTipoYLanguage('Valores', this.currentLanguage).pipe(catchError(() => of([]))),
       titleChunk: this.htmlChunkService.getHtmlChunkByName(`valores-title-${lang}`).pipe(catchError(() => of(null))),
       subtitleChunk: this.htmlChunkService.getHtmlChunkByName(`valores-subtitle-${lang}`).pipe(catchError(() => of(null)))
     }).subscribe({

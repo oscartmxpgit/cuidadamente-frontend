@@ -1,12 +1,14 @@
 <section class="services-section">
-  <h2 class="section-title">Nuestros Servicios</h2>
-  <p class="section-subtitle">
-    Apoyamos tu bienestar emocional con atención profesional y personalizada
-  </p>
+  <h2 class="section-title" [innerHTML]="sectionTitle"></h2>
+  <p class="section-subtitle" [innerHTML]="sectionSubtitle"></p>
 
   <div class="services-grid">
     <div class="service-card" *ngFor="let service of services">
-    <img *ngIf="service.imageUrl" [src]="service.imageUrl" [alt]="service.title" class="service-img" />
+      <img *ngIf="service.imageUrl"
+           [src]="service.imageUrl"
+           [alt]="service.title"
+           class="service-img" />
+
       <h3>{{ service.title }}</h3>
 
       <p>

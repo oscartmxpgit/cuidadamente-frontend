@@ -39,7 +39,7 @@ export class TarjetasListComponent implements OnInit {
         }
       });
     } else {
-      this.servicesService.obtenerTodos().subscribe({
+      this.servicesService.obtenerTodos('es').subscribe({
         next: (data) => {
           this.services = data;
           this.loading = false;
