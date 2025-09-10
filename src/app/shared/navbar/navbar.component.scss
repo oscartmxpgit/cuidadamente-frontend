@@ -161,3 +161,37 @@
     margin: 0.5rem 0;
   }
 }
+
+/* Language selector container */
+.language-selector {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+
+/* Language buttons */
+.language-selector button {
+  background-color: transparent;
+  color: #e65100; /* naranja fuerte */
+  border: 1px solid #e65100;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+.language-selector button:hover {
+  background-color: #e65100;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Active language */
+.language-selector button.active {
+  background-color: #ff6f00; /* naranja brillante */
+  color: #fff;
+  border-color: #ff6f00;
+}

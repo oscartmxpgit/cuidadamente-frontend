@@ -1,17 +1,39 @@
-import { Component } from '@angular/core';
-import { HtmlChunk } from '../../models/HtmlChunk';
+import { Component, OnInit } from '@angular/core';
+import { HtmlChunkService } from '../../services/html-chunk.service';
+import { LanguageService } from '../../services/language.service';
+import { forkJoin, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss']
 })
+export class HomeComponent implements OnInit {
 
-export class HomeComponent {
-  htmlChunk?: HtmlChunk;
+  contactoLabel: string = 'Contacto';
+  currentLanguage: string = 'es';
 
-  constructor() {}
+  constructor(
+    private htmlChunkService: HtmlChunkService,
+    private languageService: LanguageService
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.currentLanguage = this.languageService.getCurrentLanguage();
+    this.loadHtmlChunks(this.currentLanguage);
+
+    this.languageService.onLanguageChange().subscribe(lang => {
+      this.currentLanguage = lang;
+      this.loadHtmlChunks(lang);
+    });
+  }
+
+  private loadHtmlChunks(lang: string) {
+    this.htmlChunkService.getHtmlChunkByName(`home-contact-label-${lang}`)
+      .pipe(catchError(() => of(null)))
+      .subscribe(chunk => {
+        this.contactoLabel = chunk?.htmlContent || 'Contacto';
+      });
   }
 }

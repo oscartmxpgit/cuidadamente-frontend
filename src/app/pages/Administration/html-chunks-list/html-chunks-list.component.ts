@@ -12,7 +12,7 @@ import { HtmlChunk } from '../../../models/HtmlChunk';
 export class HtmlChunksListComponent implements OnInit {
   htmlChunks: HtmlChunk[] = [];
   loading = true;
-  displayedColumns = ['name', 'htmlContent', 'language', 'actions'];
+  displayedColumns = ['name', 'htmlContent', 'actions'];
 
   constructor(private htmlChunkService: HtmlChunkService, private dialog: MatDialog) {}
 

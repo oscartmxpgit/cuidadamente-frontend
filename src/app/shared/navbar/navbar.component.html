@@ -1,12 +1,13 @@
-<nav class="navbar"> 
+<nav class="navbar">
   <div class="navbar-brand">
     <a routerLink="/" class="nav-link" (click)="closeMenu()">
-      <span class="highlighted-word">Cuidadamente</span>
+      <span class="highlighted-word">{{ brandLabel }}</span>
     </a>
   </div>
 
-  <a routerLink="/registro-cita" class="nav-cta" (click)="closeMenu()" *ngIf="shouldShowCitaBtn()"> 
-    Pedir cita
+  <a routerLink="/registro-cita" class="nav-cta" (click)="closeMenu()"
+    *ngIf="shouldShowCitaBtn()">
+    {{ citaLabel }}
   </a>
 
   <div class="navbar-toggle" (click)="toggleMenu()">
@@ -16,24 +17,28 @@
   </div>
 
   <div class="navbar-menu" [class.is-active]="menuActive">
-    <a routerLink="/about" class="nav-link" (click)="closeMenu()">Quiénes Somos</a>
-    <a routerLink="/services" class="nav-link" (click)="closeMenu()">Servicios</a>
+    <a routerLink="/about" class="nav-link" (click)="closeMenu()">{{ aboutLabel
+      }}</a>
+    <a routerLink="/services" class="nav-link" (click)="closeMenu()">{{
+      servicesLabel }}</a>
 
     <!-- Language selector -->
     <div class="language-selector">
-      <button *ngFor="let lang of languages" 
-              (click)="switchLanguage(lang)"
-              [class.active]="currentLanguage === lang">
+      <button *ngFor="let lang of languages"
+        (click)="switchLanguage(lang)"
+        [class.active]="currentLanguage === lang">
         {{ lang.toUpperCase() }}
       </button>
     </div>
 
     <ng-template #loginBtn>
-      <a routerLink="/login" class="nav-login-discrete" (click)="closeMenu()">Login</a>
+      <a routerLink="/login" class="nav-login-discrete"
+        (click)="closeMenu()">Login</a>
     </ng-template>
 
     <ng-container *ngIf="authService.isAuthenticated(); else loginBtn">
-      <a routerLink="/admin-dashboard" *ngIf="authService.isAdmin()" class="nav-link" (click)="closeMenu()">Administración</a>
+      <a routerLink="/admin-dashboard" *ngIf="authService.isAdmin()"
+        class="nav-link" (click)="closeMenu()">Administración</a>
       <button (click)="logout()" class="nav-subtle">Salir</button>
     </ng-container>
   </div>

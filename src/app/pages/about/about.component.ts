@@ -1,70 +1,65 @@
-import { Component, OnInit, HostListener, ViewEncapsulation } from '@angular/core';
-import { TarjetasService } from '../../services/tarjetas.service';
-import { Tarjeta } from '../../models/tarjeta';
+import { Component, OnInit } from '@angular/core';
 import { FileService } from '../../services/fileService';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { TarjetasService } from '../../services/tarjetas.service';
 import { HtmlChunkService } from '../../services/html-chunk.service';
+import { LanguageService } from '../../services/language.service';
+import { Tarjeta } from '../../models/tarjeta';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
   showFull: { [key: string]: boolean } = {};
   teamMembers: Tarjeta[] = [];
   selectedMember: Tarjeta | null = null;
-  aboutTitle: SafeHtml = '';
-  currentLanguage: string = 'es'; // default language
+
+  aboutTitle: string = '';
+  currentLanguage: string = 'es';
 
   constructor(
     private fileService: FileService,
     private tarjetasService: TarjetasService,
-    private sanitizer: DomSanitizer,
     private htmlChunkService: HtmlChunkService,
     private languageService: LanguageService
-  ) { }
+  ) {}
 
-  ngOnInit(): void {
-    // Inicializa lenguaje actual
+  ngOnInit() {
     this.currentLanguage = this.languageService.getCurrentLanguage();
-    this.loadChunks(this.currentLanguage);
 
-    // Suscribirse a cambios de idioma
     this.languageService.onLanguageChange().subscribe(lang => {
       this.currentLanguage = lang;
-      this.loadChunks(lang);
+      this.loadHtmlChunks(lang);
+      this.loadTeamMembers(lang);
     });
 
-    // Cargar miembros del equipo
-    this.loadTeamMembers();
+    this.loadHtmlChunks(this.currentLanguage);
+    this.loadTeamMembers(this.currentLanguage);
   }
 
-
-  loadTeamMembers() {
-    this.tarjetasService.obtenerPorTipoYLanguage('TeamMember', this.currentLanguage).subscribe(members => {
-      this.teamMembers = members;
-      this.teamMembers.forEach(member => {
-        if (member.imageFileName) {
-          this.fileService.loadImage(member.imageFileName).subscribe(url => {
-            (member as any).imageUrl = url;
-          });
-        }
-      });
-    });
-  }
-
-  loadChunks(lang: string) {
+  loadHtmlChunks(lang: string) {
     this.htmlChunkService.getHtmlChunkByName(`about-title-${lang}`)
       .pipe(catchError(() => of(null)))
       .subscribe(chunk => {
-        this.aboutTitle = this.sanitize(chunk?.htmlContent || '¿Quiénes somos?');
+        this.aboutTitle = chunk?.htmlContent || '¿Quiénes somos?';
       });
   }
+
+  loadTeamMembers(lang: string) {
+  this.tarjetasService.obtenerPorTipoYLanguage('TeamMember', lang).subscribe(members => {
+    this.teamMembers = members;
+    this.teamMembers.forEach(member => {
+      if (member.imageFileName) {
+        this.fileService.loadImage(member.imageFileName).subscribe(url => {
+          (member as any).imageUrl = url;
+        });
+      }
+    });
+  });
+}
 
 
   toggleDescription(title: string) {
@@ -84,14 +79,5 @@ export class AboutComponent implements OnInit {
 
   getImageUrl(member: Tarjeta): string {
     return (member as any).imageUrl || '';
-  }
-
-  @HostListener('document:keydown.escape', ['$event'])
-  onEscape(event: KeyboardEvent) {
-    if (this.selectedMember) this.closeModal();
-  }
-
-  sanitize(html: string): SafeHtml {
-    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 }
