@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EditHtmlChunkComponent } from '../edit-html-chunk/edit-html-chunk.component';
-import { HtmlChunkService } from '../../../tarjetas/html-chunk.service';
+import { HtmlChunkService } from '../../../services/html-chunk.service';
 import { HtmlChunk } from '../../../models/HtmlChunk';
 
 @Component({

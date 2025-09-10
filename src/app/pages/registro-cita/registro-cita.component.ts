@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { RegistroCitaService } from '../../tarjetas/registroCita.service';
-import { OfertaApiService } from '../../tarjetas/oferta-api.service';
+import { RegistroCitaService } from '../../services/registroCita.service';
+import { OfertaApiService } from '../../services/oferta-api.service';
 import { Oferta } from '../../models/Oferta';
 
 @Component({

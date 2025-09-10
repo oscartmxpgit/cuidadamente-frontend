@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { OfertaApiService } from '../../../tarjetas/oferta-api.service';
+import { OfertaApiService } from '../../../services/oferta-api.service';
 import { Observable, forkJoin } from 'rxjs';
 import { Oferta } from '../../../models/Oferta';
 import { HorarioOferta } from '../../../models/HorarioOferta';

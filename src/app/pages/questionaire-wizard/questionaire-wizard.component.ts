@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Question } from '../../models/question';
-import { CuestionarioResponseService } from '../../tarjetas/cuestionario-response.service';
+import { CuestionarioResponseService } from '../../services/cuestionario-response.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

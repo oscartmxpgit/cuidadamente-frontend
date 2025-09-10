@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HtmlChunkService } from '../../tarjetas/html-chunk.service';
+import { HtmlChunkService } from '../../services/html-chunk.service';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HtmlChunk } from '../../models/HtmlChunk';

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TarjetasService } from '../../tarjetas/tarjetas.service';
+import { TarjetasService } from '../../services/tarjetas.service';
 import { Tarjeta } from '../../models/tarjeta';
-import { FileService } from '../../tarjetas/fileService';
+import { FileService } from '../../services/fileService';
 import { HtmlChunk } from '../../models/HtmlChunk';
-import { HtmlChunkService } from '../../tarjetas/html-chunk.service';
+import { HtmlChunkService } from '../../services/html-chunk.service';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 

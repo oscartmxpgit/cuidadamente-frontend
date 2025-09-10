@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { TRANSITION_TEXT, TRANSITION_TEXT_ENTER, ENTER_SCALE } from './transitions.constants';
-import { HtmlChunkService } from '../../tarjetas/html-chunk.service';
+import { HtmlChunkService } from '../../services/html-chunk.service';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HtmlChunk } from '../../models/HtmlChunk';
-import { FileService } from '../../tarjetas/fileService';
+import { FileService } from '../../services/fileService';
 
 @Component({
   selector: 'app-home-hero',

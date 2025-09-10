@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TarjetaEditComponent } from '../tarjeta-edit/tarjeta-edit.component';
 import { Tarjeta } from '../../../models/tarjeta';
-import { TarjetasService } from '../../../tarjetas/tarjetas.service';
+import { TarjetasService } from '../../../services/tarjetas.service';
 
 @Component({
   selector: 'app-tarjetas-list',

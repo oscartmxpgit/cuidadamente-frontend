@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AnswerService } from '../../../tarjetas/answerService';
+import { AnswerService } from '../../../services/answerService';
 import { CuestionarioResponse } from '../../../models/cuestionario-response.model';
 import { AnswerDetailsComponent } from '../answer-details/answer-details.component';
 

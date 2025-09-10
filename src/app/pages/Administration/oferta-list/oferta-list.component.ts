@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Oferta } from '../../../models/Oferta';
-import { OfertaApiService } from '../../../tarjetas/oferta-api.service';
+import { OfertaApiService } from '../../../services/oferta-api.service';
 import { Router } from '@angular/router';
 import { OfertaFormComponent } from '../oferta-form/oferta-form.component';
 import { MatDialog } from '@angular/material/dialog';

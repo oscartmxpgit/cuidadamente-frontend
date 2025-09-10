@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Oferta } from '../../../models/Oferta';
-import { OfertaApiService } from '../../../tarjetas/oferta-api.service';
+import { OfertaApiService } from '../../../services/oferta-api.service';
 
 @Component({
   selector: 'app-oferta-detalle',
