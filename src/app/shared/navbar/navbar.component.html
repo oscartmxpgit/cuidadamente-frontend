@@ -4,8 +4,9 @@
       <span class="highlighted-word">Cuidadamente</span>
     </a>
   </div>
-  <a routerLink="/registro-cita" class="nav-cta" (click)="closeMenu()"
-    *ngIf="shouldShowCitaBtn()"> Pedir cita</a>
+  <a routerLink="/registro-cita" class="nav-cta" (click)="closeMenu()" *ngIf="shouldShowCitaBtn()"> 
+    Pedir cita
+  </a>
 
   <div class="navbar-toggle" (click)="toggleMenu()">
     <span></span>
@@ -14,19 +15,25 @@
   </div>
 
   <div class="navbar-menu" [class.is-active]="menuActive">
-    <a routerLink="/about" class="nav-link" (click)="closeMenu()">Quiénes
-      Somos</a>
-    <a routerLink="/services" class="nav-link"
-      (click)="closeMenu()">Servicios</a>
+    <a routerLink="/about" class="nav-link" (click)="closeMenu()">Quiénes Somos</a>
+    <a routerLink="/services" class="nav-link" (click)="closeMenu()">Servicios</a>
+
+    <!-- Selector de idioma -->
+    <div class="language-selector">
+      <button *ngFor="let lang of ['es','en']" 
+              (click)="switchLanguage(lang)" 
+              [class.active]="currentLanguage === lang">
+        {{ lang.toUpperCase() }}
+      </button>
+    </div>
+
     <ng-template #loginBtn>
-      <a routerLink="/login" class="nav-login-discrete"
-        (click)="closeMenu()">Login</a>
+      <a routerLink="/login" class="nav-login-discrete" (click)="closeMenu()">Login</a>
     </ng-template>
+
     <ng-container *ngIf="authService.isAuthenticated(); else loginBtn">
-      <a routerLink="/admin-dashboard" *ngIf="authService.isAdmin()"
-        class="nav-link" (click)="closeMenu()">Administración</a>
+      <a routerLink="/admin-dashboard" *ngIf="authService.isAdmin()" class="nav-link" (click)="closeMenu()">Administración</a>
       <button (click)="logout()" class="nav-subtle">Salir</button>
     </ng-container>
-
   </div>
 </nav>

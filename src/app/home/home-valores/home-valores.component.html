@@ -1,16 +1,12 @@
 <section class="valores-section">
-  <div *ngIf="!loading">
-    <!-- HTML chunks para título y subtítulo -->
-    <div class="section-title" *ngIf="valoresTitleChunk" [innerHTML]="valoresTitleChunk.htmlContent"></div>
-    <div class="section-subtitle" *ngIf="valoresSubtitleChunk" [innerHTML]="valoresSubtitleChunk.htmlContent"></div>
+  <h2 class="section-title" [innerHTML]="valoresTitle"></h2>
+  <p class="section-subtitle" [innerHTML]="valoresSubtitle"></p>
 
-    <!-- Tarjetas dinámicas -->
-    <div class="valores-container">
-      <div class="valor-card" *ngFor="let valor of tarjetas">
-        <img *ngIf="valor.imageUrl" [src]="valor.imageUrl" alt="{{ valor.title }}" class="valor-icon" />
-        <h3 class="valor-title">{{ valor.title }}</h3>
-        <p class="valor-description">{{ valor.description }}</p>
-      </div>
+  <div class="valores-container">
+    <div class="valor-card" *ngFor="let valor of tarjetas">
+      <img *ngIf="valor.imageUrl" [src]="valor.imageUrl" alt="{{ valor.title }}" class="valor-icon" />
+      <h3 class="valor-title">{{ valor.title }}</h3>
+      <p class="valor-description">{{ valor.description }}</p>
     </div>
   </div>
 </section>

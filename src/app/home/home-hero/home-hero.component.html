@@ -39,9 +39,9 @@
 
         <!-- Contact Info -->
         <div class="hero-contact" [@transitionTextEnter]="{value:'in', params:{animDelay:700}}" *ngIf="phone || email || address">
-          <p *ngIf="phone"><i class="fas fa-phone"></i> Tlf: {{ phone }}</p>
-          <p *ngIf="email"><i class="fas fa-envelope"></i> Correo electrónico: {{ email }}</p>
-          <p *ngIf="address"><i class="fas fa-map-marker-alt"></i> Dirección: {{ address }}</p>
+          <p *ngIf="phone"><i class="fas fa-phone"></i> {{ phone }}</p>
+          <p *ngIf="email"><i class="fas fa-envelope"></i> {{ email }}</p>
+          <p *ngIf="address"><i class="fas fa-map-marker-alt"></i> {{ address }}</p>
         </div>
 
         <div ngClass.gt-sm="tb-height--80" ngClass.sm="tb-height--50" ngClass.xs="tb-height--30"></div>

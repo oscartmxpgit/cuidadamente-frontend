@@ -4,7 +4,6 @@ import { TRANSITION_TEXT, TRANSITION_TEXT_ENTER, ENTER_SCALE } from './transitio
 import { HtmlChunkService } from '../../services/html-chunk.service';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { HtmlChunk } from '../../models/HtmlChunk';
 import { FileService } from '../../services/fileService';
 
 @Component({
@@ -31,34 +30,45 @@ import { FileService } from '../../services/fileService';
 })
 export class HomeHeroComponent implements OnInit {
 
-  heroTitle?: string;
-  heroSubtitle?: string;
-  phone?: string;
-  email?: string;
-  address?: string;
+  heroTitle: string = '';
+  heroSubtitle: string = '';
+  phone: string = '';
+  email: string = '';
+  address: string = '';
 
   imageUrl: string = '';
+  currentLanguage: string = 'es'; // Default, se puede cambiar con un selector de idioma
 
   constructor(private fileService: FileService, private htmlChunkService: HtmlChunkService) { }
 
   ngOnInit(): void {
+    // Cargar imagen de fondo
     this.fileService.loadImage('FotoPrincipal.jpg').subscribe(url => {
       this.imageUrl = url;
     });
 
+    this.loadHtmlChunks();
+  }
+
+  loadHtmlChunks() {
     forkJoin({
-      heroTitle: this.htmlChunkService.getHtmlChunkByName('hero-title').pipe(catchError(() => of(null))),
-      heroSubtitle: this.htmlChunkService.getHtmlChunkByName('hero-subtitle').pipe(catchError(() => of(null))),
-      phone: this.htmlChunkService.getHtmlChunkByName('contact-phone').pipe(catchError(() => of(null))),
-      email: this.htmlChunkService.getHtmlChunkByName('contact-email').pipe(catchError(() => of(null))),
-      address: this.htmlChunkService.getHtmlChunkByName('contact-address').pipe(catchError(() => of(null)))
+      heroTitle: this.htmlChunkService.getHtmlChunkByName(`hero-title-${this.currentLanguage}`).pipe(catchError(() => of(null))),
+      heroSubtitle: this.htmlChunkService.getHtmlChunkByName(`hero-subtitle-${this.currentLanguage}`).pipe(catchError(() => of(null))),
+      phone: this.htmlChunkService.getHtmlChunkByName(`contact-phone-${this.currentLanguage}`).pipe(catchError(() => of(null))),
+      email: this.htmlChunkService.getHtmlChunkByName(`contact-email-${this.currentLanguage}`).pipe(catchError(() => of(null))),
+      address: this.htmlChunkService.getHtmlChunkByName(`contact-address-${this.currentLanguage}`).pipe(catchError(() => of(null)))
     }).subscribe(({ heroTitle, heroSubtitle, phone, email, address }) => {
-      this.heroTitle = heroTitle?.htmlContent;
-      this.heroSubtitle = heroSubtitle?.htmlContent;
-      this.phone = phone?.htmlContent;
-      this.email = email?.htmlContent;
-      this.address = address?.htmlContent;
+      this.heroTitle = heroTitle?.htmlContent || '';
+      this.heroSubtitle = heroSubtitle?.htmlContent || '';
+      this.phone = phone?.htmlContent || '';
+      this.email = email?.htmlContent || '';
+      this.address = address?.htmlContent || '';
     });
+  }
+
+  changeLanguage(lang: string) {
+    this.currentLanguage = lang;
+    this.loadHtmlChunks();
   }
 
   scrollToContact() {

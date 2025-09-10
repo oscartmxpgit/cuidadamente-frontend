@@ -20,7 +20,8 @@ import { AuthModule } from './auth/auth.module';
     PagesModule,
     HomeModule,
     SharedModule,
-    AuthModule
+    AuthModule,
+    
   ],
   providers: [
     provideClientHydration(),

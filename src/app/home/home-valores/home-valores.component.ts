@@ -4,6 +4,7 @@ import { Tarjeta } from '../../models/tarjeta';
 import { FileService } from '../../services/fileService';
 import { HtmlChunk } from '../../models/HtmlChunk';
 import { HtmlChunkService } from '../../services/html-chunk.service';
+import { LanguageService } from '../../services/language.service';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -13,33 +14,45 @@ import { catchError } from 'rxjs/operators';
   styleUrls: ['./home-valores.component.scss']
 })
 export class HomeValoresComponent implements OnInit {
+
   tarjetas: Tarjeta[] = [];
   loading = false;
-  valoresTitleChunk?: HtmlChunk | null;
-  valoresSubtitleChunk?: HtmlChunk | null;
+
+  valoresTitle?: string;
+  valoresSubtitle?: string;
+
+  currentLanguage: string = 'es';
 
   constructor(
     private tarjetasService: TarjetasService,
     private fileService: FileService,
-    private htmlChunkService: HtmlChunkService
+    private htmlChunkService: HtmlChunkService,
+    private languageService: LanguageService
   ) {}
 
   ngOnInit(): void {
-    this.cargarValores();
+    this.currentLanguage = this.languageService.getCurrentLanguage();
+    this.cargarValores(this.currentLanguage);
+
+    // Suscribirse a cambios de idioma
+    this.languageService.onLanguageChange().subscribe(lang => {
+      this.currentLanguage = lang;
+      this.cargarValores(lang);
+    });
   }
 
-  cargarValores() {
+  private cargarValores(lang: string) {
     this.loading = true;
 
     forkJoin({
       tarjetas: this.tarjetasService.obtenerPorTipo('Valores').pipe(catchError(() => of([]))),
-      titleChunk: this.htmlChunkService.getHtmlChunkByName('valores-title').pipe(catchError(() => of(null))),
-      subtitleChunk: this.htmlChunkService.getHtmlChunkByName('valores-subtitle').pipe(catchError(() => of(null)))
+      titleChunk: this.htmlChunkService.getHtmlChunkByName(`valores-title-${lang}`).pipe(catchError(() => of(null))),
+      subtitleChunk: this.htmlChunkService.getHtmlChunkByName(`valores-subtitle-${lang}`).pipe(catchError(() => of(null)))
     }).subscribe({
       next: ({ tarjetas, titleChunk, subtitleChunk }) => {
         this.tarjetas = tarjetas as Tarjeta[];
-        this.valoresTitleChunk = titleChunk as HtmlChunk | null;
-        this.valoresSubtitleChunk = subtitleChunk as HtmlChunk | null;
+        this.valoresTitle = titleChunk?.htmlContent || '';
+        this.valoresSubtitle = subtitleChunk?.htmlContent || '';
 
         // Cargar imágenes de tarjetas
         for (const tarjeta of this.tarjetas) {
@@ -57,8 +70,8 @@ export class HomeValoresComponent implements OnInit {
       },
       error: () => {
         this.tarjetas = [];
-        this.valoresTitleChunk = null;
-        this.valoresSubtitleChunk = null;
+        this.valoresTitle = '';
+        this.valoresSubtitle = '';
         this.loading = false;
       }
     });
