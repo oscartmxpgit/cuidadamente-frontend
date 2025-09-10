@@ -23,13 +23,13 @@
       servicesLabel }}</a>
 
     <!-- Language selector -->
-    <div class="language-selector">
+    <!-- <div class="language-selector">
       <button *ngFor="let lang of languages"
         (click)="switchLanguage(lang)"
         [class.active]="currentLanguage === lang">
         {{ lang.toUpperCase() }}
       </button>
-    </div>
+    </div> -->
 
     <ng-template #loginBtn>
       <a routerLink="/login" class="nav-login-discrete"
