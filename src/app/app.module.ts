@@ -9,10 +9,12 @@ import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { AuthModule } from './auth/auth.module';
+import { CookieConsentComponent } from './pages/cookie-consent/cookie-consent.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CookieConsentComponent
   ],
   imports: [
     BrowserModule,

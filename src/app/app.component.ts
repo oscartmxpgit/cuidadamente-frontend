@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CookieConsentService } from './services/cookie-consent.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cuidadamente-frontend';
+  cookieConsentGiven = false;
+
+  constructor(private cookieConsentService: CookieConsentService) { }
+
+  ngOnInit() {
+    this.cookieConsentGiven = this.cookieConsentService.consentGiven();
+  }
 }

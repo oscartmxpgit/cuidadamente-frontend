@@ -25,6 +25,7 @@ import { TarjetaEditComponent } from './Administration/tarjeta-edit/tarjeta-edit
 import { OfertaListComponent } from './Administration/oferta-list/oferta-list.component';
 import { OfertaDetalleComponent } from './Administration/oferta-detalle/oferta-detalle.component';
 import { OfertaFormComponent } from './Administration/oferta-form/oferta-form.component';
+import { CookieConsentComponent } from './cookie-consent/cookie-consent.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { OfertaFormComponent } from './Administration/oferta-form/oferta-form.co
     TarjetaEditComponent,
     OfertaListComponent,
     OfertaDetalleComponent,
-    OfertaFormComponent
+    OfertaFormComponent,
+    
   ],
   imports: [
     BrowserModule,

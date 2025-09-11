@@ -195,3 +195,20 @@
   color: #fff;
   border-color: #ff6f00;
 }
+
+
+/* navbar.component.scss */
+.nav-link.active,
+.nav-cta.active {
+  border-bottom: 2px solid #ff6600; /* underscore the active page */
+  font-weight: bold;
+}
+
+
+/* Wrap brand + registro-cita button */
+.navbar-brand-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* space between brand and registro-cita */
+  flex: 1;   /* takes remaining space on the left */
+}

@@ -1,0 +1,30 @@
+<div *ngIf="showPopup" class="cookie-consent-popup">
+    <h2>Consentimiento de cookies</h2>
+    <p>Utilizamos cookies para mejorar tu experiencia de navegación. Por favor, selecciona tus preferencias:</p>
+    <form>
+    <div>
+      <label>
+        <input type="checkbox" [checked]="consentCategories.necessary" disabled>
+        Cookies esenciales (siempre activas)
+      </label>
+    </div>
+    <div>
+      <label>
+        <input type="checkbox" [(ngModel)]="consentCategories.analytics" name="analytics">
+        Cookies analíticas
+      </label>
+    </div>
+    <div>
+      <label>
+        <input type="checkbox" [(ngModel)]="consentCategories.marketing" name="marketing">
+        Cookies de Marketing
+      </label>
+    </div>
+  </form>
+  <div class="cookie-consent-buttons">
+    <button class="btn btn-primary" (click)="acceptAll()">Aceptar todas</button>
+    <button class="btn btn-secondary" (click)="rejectAll()">Rechazar todas</button>
+    <button class="btn btn-secondary" (click)="acceptSelected()">Aceptar seleccionadas</button>
+  </div>
+  
+</div>
