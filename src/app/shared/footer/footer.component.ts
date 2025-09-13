@@ -3,6 +3,7 @@ import { HtmlChunkService } from '../../services/html-chunk.service';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { LanguageService } from '../../services/language.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-footer',
@@ -31,7 +32,8 @@ export class FooterComponent implements OnInit {
 
   constructor(
     private htmlChunkService: HtmlChunkService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    public authService: AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +45,12 @@ export class FooterComponent implements OnInit {
       this.currentLanguage = lang;
       this.loadChunks(lang);
     });
+  }
+
+  
+
+  logout() {
+    this.authService.logout();
   }
 
   private loadChunks(lang: string) {
@@ -76,4 +84,6 @@ export class FooterComponent implements OnInit {
 
     });
   }
+
+  
 }

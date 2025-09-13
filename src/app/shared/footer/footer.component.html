@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer"> 
   <!-- Wave separator -->
   <div class="footer-wave">
     <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
@@ -39,5 +39,20 @@
     <div class="footer-bottom">
       <div *ngIf="footerBottom">{{ footerBottom }}</div>
     </div>
+
+    <!-- Auth buttons -->
+    <div class="footer-auth">
+      <ng-container *ngIf="authService.isAuthenticated(); else loginBtn">
+        
+        <button (click)="logout()" class="footer-btn logout-btn">Salir</button>
+      </ng-container>
+
+      <ng-template #loginBtn>
+        <a routerLink="/login" 
+           class="footer-btn login-btn" 
+           routerLinkActive="active">Login (Administrador)</a>
+      </ng-template>
+    </div>
+
   </div>
 </footer>

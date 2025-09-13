@@ -35,20 +35,12 @@
       {{ servicesLabel }}
     </a>
 
-    <ng-template #loginBtn>
-      <a routerLink="/login" 
-         class="nav-login-discrete" 
-         routerLinkActive="active"
-         (click)="closeMenu()">Login</a>
-    </ng-template>
-
-    <ng-container *ngIf="authService.isAuthenticated(); else loginBtn">
+    <ng-container *ngIf="authService.isAuthenticated();">
       <a routerLink="/admin-dashboard" 
          *ngIf="authService.isAdmin()"
          class="nav-link" 
          routerLinkActive="active"
          (click)="closeMenu()">Administración</a>
-      <button (click)="logout()" class="nav-subtle">Salir</button>
     </ng-container>
   </div>
 </nav>

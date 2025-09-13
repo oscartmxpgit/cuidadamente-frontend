@@ -54,11 +54,6 @@ export class NavbarComponent implements OnInit {
     return !(this.router.url === '/' || this.router.url === '/registro-cita');
   }
 
-  logout() {
-    this.authService.logout();
-    this.closeMenu();
-  }
-
   switchLanguage(lang: string) {
     if (lang !== this.currentLanguage) {
       this.languageService.setLanguage(lang);
