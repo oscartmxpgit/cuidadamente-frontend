@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatCalendar } from '@angular/material/datepicker';
 import { RegistroCitaService } from '../../services/registroCita.service';
 import { OfertaApiService } from '../../services/oferta-api.service';
 import { Oferta } from '../../models/Oferta';
@@ -16,6 +17,10 @@ export class RegistroCitaComponent implements OnInit {
   horasDisponibles: string[] = [];
   diasDisponibles: number[] = [];
   diasYHoras: Record<number, string[]> = {};
+  minDate = new Date();
+
+  // referencia al calendario
+  @ViewChild(MatCalendar) calendar!: MatCalendar<Date>;
 
   constructor(
     private fb: FormBuilder,
@@ -40,27 +45,37 @@ export class RegistroCitaComponent implements OnInit {
       if (servicioId) {
         this.loadDiasYHorasDisponibles(servicioId);
       } else {
-        this.diasDisponibles = [];
-        this.horasDisponibles = [];
-        this.diasYHoras = {};
+        this.resetDisponibilidad();
       }
       this.citaForm.get('fecha')?.setValue('');
       this.citaForm.get('hora')?.setValue('');
     });
-
-    this.citaForm.get('fecha')?.valueChanges.subscribe((fecha: Date) => {
-      if (!fecha) {
-        this.horasDisponibles = [];
-        return;
-      }
-      const dia = fecha.getDay(); // 0=Domingo, 1=Lunes...
-      const rangos = this.diasYHoras[dia] || [];
-      this.horasDisponibles = rangos.flatMap(this.generarHorasPorBloque);
-      this.citaForm.get('hora')?.setValue('');
-    });
   }
 
-  // Función para generar bloques de 1 hora a partir de un rango "HH:mm-HH:mm"
+  onDateSelected(fecha: Date | null) {
+    if (!fecha) {
+      this.horasDisponibles = [];
+      this.citaForm.get('fecha')?.setValue('');
+      return;
+    }
+
+    if (!this.diasDisponibles.includes(fecha.getDay())) {
+      this.citaForm.get('fecha')?.setValue('');
+      this.horasDisponibles = [];
+      return;
+    }
+
+    this.citaForm.get('fecha')?.setValue(fecha);
+    const dia = fecha.getDay();
+    const rangos = this.diasYHoras[dia] || [];
+    this.horasDisponibles = rangos.flatMap(this.generarHorasPorBloque);
+    this.citaForm.get('hora')?.setValue('');
+  }
+
+  selectHora(hora: string) {
+    this.citaForm.get('hora')?.setValue(hora);
+  }
+
   generarHorasPorBloque(rango: string): string[] {
     const [inicioStr, finStr] = rango.split('-');
     const [hInicio, mInicio] = inicioStr.split(':').map(Number);
@@ -87,20 +102,16 @@ export class RegistroCitaComponent implements OnInit {
     return bloques;
   }
 
-
   private loadServicios() {
     this.ofertaApi.listar().subscribe({
-      next: (ofertas) => this.servicios = ofertas,
+      next: (ofertas) => (this.servicios = ofertas),
       error: (err) => console.error('Error cargando servicios:', err)
     });
   }
 
-
   private loadDiasYHorasDisponibles(servicioId: number) {
     this.ofertaApi.obtenerDiasYHoras(servicioId).subscribe({
-      next: (result) => { // TypeScript ya sabe que es Record<string,string[]>
-        console.log('Días y horas disponibles:', result);
-
+      next: (result) => {
         this.diasDisponibles = [];
         this.diasYHoras = {};
         this.horasDisponibles = [];
@@ -113,13 +124,41 @@ export class RegistroCitaComponent implements OnInit {
           }
         }
 
+        // regenerar el filtro (nueva referencia)
+        this.dateFilter = (d: Date | null): boolean => {
+          if (!d) return false;
+          return this.diasDisponibles.includes(d.getDay());
+        };
+
+        // forzar refresco visual del calendario
+        setTimeout(() => {
+          if (this.calendar) {
+            this.calendar.updateTodaysDate();
+          }
+        });
+
+        // reset selección si la fecha no es válida
+        const fechaSeleccionada: Date | null = this.citaForm.get('fecha')?.value;
+        if (fechaSeleccionada && !this.diasDisponibles.includes(fechaSeleccionada.getDay())) {
+          this.citaForm.get('fecha')?.setValue('');
+          this.horasDisponibles = [];
+        }
         this.citaForm.get('hora')?.setValue('');
       },
       error: (err) => console.error('Error cargando días y horas:', err)
     });
   }
 
+  private resetDisponibilidad() {
+    this.diasDisponibles = [];
+    this.horasDisponibles = [];
+    this.diasYHoras = {};
 
+    this.dateFilter = () => false;
+    if (this.calendar) {
+      this.calendar.updateTodaysDate();
+    }
+  }
 
   private mapDiaStringANumero(dia: string): number | null {
     switch (dia.toLowerCase()) {
@@ -134,18 +173,15 @@ export class RegistroCitaComponent implements OnInit {
     }
   }
 
-  // Filtro para datepicker: solo permitir días disponibles
-  dateFilter = (d: Date | null): boolean => {
-    if (!d) return false;
-    return this.diasDisponibles?.includes(d.getDay());
-  };
+  // importante: asignamos función que se puede reescribir
+  dateFilter: (d: Date | null) => boolean = () => false;
 
   onSubmit() {
     if (this.citaForm.invalid) {
       this.citaForm.markAllAsTouched();
       const invalidFields = Object.keys(this.citaForm.controls)
-        .filter(key => this.citaForm.get(key)?.invalid)
-        .map(key => {
+        .filter((key) => this.citaForm.get(key)?.invalid)
+        .map((key) => {
           switch (key) {
             case 'nombre': return 'Nombre';
             case 'telefono': return 'Teléfono';
@@ -170,18 +206,17 @@ export class RegistroCitaComponent implements OnInit {
       next: () => {
         this.snackBar.open('¡Cita registrada correctamente!', 'Cerrar', {
           duration: 3000,
-          verticalPosition: 'bottom',
+          verticalPosition: 'bottom'
         });
         this.citaForm.reset();
-        this.horasDisponibles = [];
-        this.diasDisponibles = [];
-        this.diasYHoras = {};
+        this.resetDisponibilidad();
       },
       error: () => {
-        this.snackBar.open('Error al registrar la cita. Inténtalo de nuevo.', 'Cerrar', {
-          duration: 3000,
-          verticalPosition: 'bottom',
-        });
+        this.snackBar.open(
+          'Error al registrar la cita. Inténtalo de nuevo.',
+          'Cerrar',
+          { duration: 3000, verticalPosition: 'bottom' }
+        );
       }
     });
   }

@@ -2,19 +2,19 @@ form {
   max-width: 1000px;
   margin: 2rem auto;
   padding: 2rem;
-  background: #fff7f0; /* warm cream background */
+  background: #fff7f0;
   border-radius: 12px;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
 
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem 3rem; /* espacio entre columnas y filas */
+  gap: 2rem 3rem;
 }
 
 h2 {
   text-align: center;
   margin-bottom: 1rem;
-  color: #e65100; /* warm orange */
+  color: #e65100;
   grid-column: span 2;
 }
 
@@ -27,7 +27,7 @@ h2 {
 
 label {
   font-weight: 600;
-  color: #e65100; /* accent color */
+  color: #e65100;
 }
 
 input,
@@ -37,45 +37,48 @@ select {
   border: 1px solid #e0e0e0;
   border-radius: 5px;
   font-size: 1rem;
-  background: #fffaf5; /* subtle cream input background */
+  background: #fffaf5;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 input:focus,
 select:focus {
-  border-color: #e65100; /* orange border focus */
+  border-color: #e65100;
   outline: none;
   box-shadow: 0 0 0 3px rgba(230, 81, 0, 0.15);
 }
 
-/* --- Datepicker wrapper --- */
-.datepicker-wrapper {
-  display: flex;
-  align-items: center;
-  position: relative;
+/* Slots de hora */
+.hora-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 0.5rem;
 }
 
-.datepicker-wrapper input {
-  flex: 1;
+.hora-slot {
+  background: #fffaf5;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 0.6rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s;
 }
 
-.mat-datepicker-toggle {
-  margin-left: -36px; /* coloca el ícono encima a la derecha */
-  z-index: 2;
+.hora-slot:hover {
+  background: #ffe0b2;
+  border-color: #e65100;
 }
 
-.mat-datepicker-toggle button {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none;
+.hora-slot.selected {
+  background: #e65100;
+  color: white;
+  font-weight: bold;
+  border-color: #e65100;
 }
 
-.mat-datepicker-toggle-default-icon {
-  color: #e65100 !important; /* naranja */
-}
-
-button[type='submit'] {
-  background: #e65100; /* warm orange */
+button[type="submit"] {
+  background: #e65100;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -84,16 +87,16 @@ button[type='submit'] {
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
-  min-width: 200px; /* ancho mínimo fijo */
+  min-width: 200px;
 }
 
-button[type='submit']:hover:enabled {
-  background: #ff6f00; /* brighter orange on hover */
+button[type="submit"]:hover:enabled {
+  background: #ff6f00;
   transform: translateY(-2px);
 }
 
 button:disabled {
-  background-color: #ffcc80; /* lighter orange for disabled */
+  background-color: #ffcc80;
   cursor: not-allowed;
 }
 
@@ -108,7 +111,7 @@ button:disabled {
   margin-top: 1rem;
 }
 
-/* Responsive: una sola columna en móviles */
+/* Responsive */
 @media (max-width: 700px) {
   form {
     grid-template-columns: 1fr;
