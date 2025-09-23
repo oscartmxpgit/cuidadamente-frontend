@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 export interface AuthResponse {
   token: string;

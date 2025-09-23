@@ -56,13 +56,14 @@ select:focus {
 }
 
 .hora-slot {
-  background: #fffaf5;
+  background: #fcefe6; /* más suave que el botón */
   border: 1px solid #e0e0e0;
   border-radius: 6px;
   padding: 0.6rem;
   text-align: center;
   cursor: pointer;
   transition: background 0.2s, border 0.2s;
+  color: #5d4037; /* marrón suave */
 }
 
 .hora-slot:hover {

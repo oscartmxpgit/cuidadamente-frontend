@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { HtmlChunkService } from '../../services/html-chunk.service';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -15,7 +15,7 @@ import { LanguageService } from '../../services/language.service';
 })
 export class HomeContactoComponent implements OnInit {
 
-  recaptchaSiteKey: string = 'YOUR_SITE_KEY_HERE';
+  recaptchaSiteKey: string = environment.recaptchaSiteKey;
   captchaResolved: boolean = false;
 
   private baseApiUrl: string = environment.apiUrl;

@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 import { CuestionarioResponse } from '../models/cuestionario-response.model';
 
 @Injectable({ providedIn: 'root' })

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HorarioOferta } from '../models/HorarioOferta';
 import { Oferta } from '../models/Oferta';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class OfertaApiService {
