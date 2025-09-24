@@ -20,9 +20,9 @@
   </ng-container>
 
   <!-- Fecha Envío -->
-  <ng-container matColumnDef="fechaEnvio">
+  <ng-container matColumnDef="fechaContacto">
     <th mat-header-cell *matHeaderCellDef>Fecha Envío</th>
-    <td mat-cell *matCellDef="let contacto">{{ contacto.fechaEnvio | date:'short' }}</td>
+    <td mat-cell *matCellDef="let contacto">{{ contacto.fechaContacto | date:'short' }}</td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Contacto, ContactService } from '../../../services/contactService';
+import { ContactService } from '../../../services/contactService';
+import { MensajeContact } from '../../../models/MensajeContact';
 
 @Component({
   selector: 'app-contact-list',
@@ -7,11 +8,11 @@ import { Contacto, ContactService } from '../../../services/contactService';
   styleUrls: ['./contact-list.component.scss']
 })
 export class ContactListComponent implements OnInit {
-  contactos: Contacto[] = [];
+  contactos: MensajeContact[] = [];
   loading = true;
 
   displayedColumns: string[] = [
-    'nombre', 'email', 'mensaje', 'fechaEnvio'
+    'nombre', 'email', 'mensaje', 'fechaContacto'
   ];
 
   constructor(private contactService: ContactService) {}

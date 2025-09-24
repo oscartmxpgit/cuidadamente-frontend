@@ -7,6 +7,7 @@ import { HtmlChunkService } from '../../services/html-chunk.service';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { LanguageService } from '../../services/language.service';
+import { MensajeContact } from '../../models/MensajeContact';
 
 @Component({
   selector: 'app-home-contacto',
@@ -18,8 +19,8 @@ export class HomeContactoComponent implements OnInit {
   recaptchaSiteKey: string = environment.recaptchaSiteKey;
   captchaResolved: boolean = false;
 
-  private baseApiUrl: string = environment.apiUrl;
-  private endpoint: string = `${this.baseApiUrl}api/Contacts`;
+  private apiUrl = `${environment.apiUrl}mensajescontacts`;
+
 
   currentLanguage: string = 'es';
 
@@ -81,17 +82,26 @@ export class HomeContactoComponent implements OnInit {
       this.snackBar.open('Por favor, complete el reCAPTCHA', 'Cerrar', {
         duration: 3000,
         horizontalPosition: 'center',
-        verticalPosition: 'top',
+        verticalPosition: 'bottom',
       });
       return;
     }
 
-    this.http.post(this.endpoint, this.contact).subscribe({
-      next: () => {
+    // Prepare the payload to match MensajeContact
+    const payload = {
+      nombre: this.contact.nombre,
+      email: this.contact.correoElectronico, // map frontend field to backend Email
+      asunto: this.contact.asunto,
+      mensaje: this.contact.mensaje,
+      fechaContacto: new Date() // set current date
+    };
+
+    this.http.post<MensajeContact>(this.apiUrl, payload).subscribe({
+      next: (response) => {
         this.snackBar.open('Mensaje enviado con éxito', 'Cerrar', {
           duration: 3000,
           horizontalPosition: 'center',
-          verticalPosition: 'top',
+          verticalPosition: 'bottom',
         });
         this.contact = { nombre: '', correoElectronico: '', asunto: '', mensaje: '' };
         this.captchaResolved = false;
@@ -100,11 +110,12 @@ export class HomeContactoComponent implements OnInit {
         this.snackBar.open('Hubo un error al enviar el mensaje', 'Cerrar', {
           duration: 3000,
           horizontalPosition: 'center',
-          verticalPosition: 'top',
+          verticalPosition: 'bottom',
         });
         console.error('Error sending message', err);
       }
     });
   }
+
 
 }

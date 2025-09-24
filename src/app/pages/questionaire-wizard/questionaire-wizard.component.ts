@@ -39,7 +39,7 @@ export class QuestionnaireWizardComponent implements OnInit {
         this.snackBar.open('Error cargando las preguntas', 'Cerrar', {
           duration: 4000,
           horizontalPosition: 'center',
-          verticalPosition: 'top',
+          verticalPosition: 'bottom',
         });
       }
     });
