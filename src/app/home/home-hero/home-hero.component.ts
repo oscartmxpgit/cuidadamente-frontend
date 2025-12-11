@@ -6,6 +6,7 @@ import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { FileService } from '../../services/fileService';
 import { LanguageService } from '../../services/language.service';
+import { ContactInfoService } from '../../services/contactInfoService';
 
 @Component({
   selector: 'app-home-hero',
@@ -44,7 +45,8 @@ export class HomeHeroComponent implements OnInit {
   constructor(
     private fileService: FileService,
     private htmlChunkService: HtmlChunkService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private contactService: ContactInfoService
   ) { }
 
   ngOnInit(): void {
@@ -79,6 +81,10 @@ export class HomeHeroComponent implements OnInit {
       this.email = email?.htmlContent || '';
       this.address = address?.htmlContent || '';
       this.citaLabel = citaLabel?.htmlContent || 'Pedir cita';
+
+      this.contactService.phone = this.phone;
+      this.contactService.email = this.email;
+      this.contactService.address = this.address;
     });
   }
 

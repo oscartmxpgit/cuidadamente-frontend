@@ -1,0 +1,26 @@
+<div class="contact-page">
+
+  <h1>Contacto</h1>
+
+  <div class="contact-section" *ngIf="phone || email || address">
+
+    <p *ngIf="phone">
+      <i class="fas fa-phone"></i>
+      <a [href]="'tel:' + phone">{{ phone }}</a>
+    </p>
+
+    <p *ngIf="email">
+      <i class="fas fa-envelope"></i>
+      <a [href]="'mailto:' + email">{{ email }}</a>
+    </p>
+
+    <p *ngIf="address">
+      <i class="fas fa-map-marker-alt"></i>
+      <a [href]="'https://www.google.com/maps/search/?api=1&query=' + address"
+         target="_blank" rel="noopener noreferrer">
+        {{ address }}
+      </a>
+    </p>
+
+  </div>
+</div>

@@ -81,3 +81,13 @@
 .hero-button:hover {
   background-color: #ef6c00;
 }
+
+.hero-contact a {
+  text-decoration: none;
+  color: inherit; /* keeps the same text color */
+}
+
+.hero-contact a:hover {
+  text-decoration: underline; /* optional hover underline */
+  opacity: .8; /* optional effect */
+}

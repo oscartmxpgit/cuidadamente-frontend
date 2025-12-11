@@ -20,7 +20,7 @@ import { QuestionnaireWizardComponent } from './pages/questionaire-wizard/questi
 import { AnswersListComponent } from './pages/Administration/answers-list/answers-list.component';
 import { TarjetasListComponent } from './pages/Administration/tarjetas-list/tarjetas-list.component';
 import { OfertaListComponent } from './pages/Administration/oferta-list/oferta-list.component';
-import { OfertaFormComponent } from './pages/Administration/oferta-form/oferta-form.component';
+import { ContactInfoComponent } from './pages/contact-info/contact-info.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,6 +36,8 @@ const routes: Routes = [
   { path: 'registro-cita-list', component: RegistroCitaListComponent },
   { path: 'contact-list', component: ContactListComponent },
   { path: 'cancelar-cita', component: CancelarCitaComponent },
+  { path: 'contacto', component: ContactInfoComponent },
+
   
   /* management */
   { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard] },

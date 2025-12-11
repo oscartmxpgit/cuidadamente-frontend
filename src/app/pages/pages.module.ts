@@ -26,6 +26,7 @@ import { OfertaListComponent } from './Administration/oferta-list/oferta-list.co
 import { OfertaDetalleComponent } from './Administration/oferta-detalle/oferta-detalle.component';
 import { OfertaFormComponent } from './Administration/oferta-form/oferta-form.component';
 import { CookieConsentComponent } from './cookie-consent/cookie-consent.component';
+import { ContactInfoComponent } from './contact-info/contact-info.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { CookieConsentComponent } from './cookie-consent/cookie-consent.componen
     OfertaListComponent,
     OfertaDetalleComponent,
     OfertaFormComponent,
+    ContactInfoComponent,
     
   ],
   imports: [
